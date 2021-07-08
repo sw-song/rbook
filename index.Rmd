@@ -13,7 +13,11 @@ description: "It's R quick guide for anyone who start to study R"
 # Intro to R {-}
 
 
-R is one of the best language for statistics. Sometimes it is compared with python, but being able to handle `R` give a huge advantage for anyone who works with data and statistics.
+R is one of the best language for statistics. Sometimes it is compared with python. Python is nice tool for data analysis, especially machine learning or deep learning. But being able to handle R will gives anyone who works with data and statistics another huge advantage. 
+
+This note will not cover too detailed grammar, internal principles, or advanced techniques. However, it focuses on how to handle data through R even if you do not know R syntax.
+
+Then, let's start lightly!
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages
