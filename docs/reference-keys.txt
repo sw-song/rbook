@@ -1,3 +1,2 @@
-intro-to-r
 data-visualization
 qplot
