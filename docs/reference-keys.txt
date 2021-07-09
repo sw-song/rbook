@@ -1,6 +1,9 @@
 data-visualization
 qplot
+hist
 exploratory-data-analysis
 head-and-tail
 dim-and-str
 summary
+data-preprocessing
+ifelse

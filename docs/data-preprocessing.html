@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Data Visualization | R Note</title>
+  <title>Chapter 3 Data Preprocessing | R Note</title>
   <meta name="description" content="It’s R quick guide for anyone who start to study R" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Data Visualization | R Note" />
+  <meta property="og:title" content="Chapter 3 Data Preprocessing | R Note" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Data Visualization | R Note" />
+  <meta name="twitter:title" content="Chapter 3 Data Preprocessing | R Note" />
   
   <meta name="twitter:description" content="It’s R quick guide for anyone who start to study R" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="exploratory-data-analysis.html"/>
+<link rel="prev" href="exploratory-data-analysis.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -174,67 +174,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-visualization" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Data Visualization</h1>
-<div id="qplot" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> qplot</h2>
-<p>first, let’s import <code>ggplot2</code> library</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="data-visualization.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
-<p>and we use <code>mpg</code> dataset. Extract top 5 rows</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="data-visualization.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mpg)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 11
-##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class 
-##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
-## 1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compa…
-## 2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compa…
-## 3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compa…
-## 4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compa…
-## 5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compa…
-## 6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…</code></pre>
-<p><code>qplot</code> means “quick plot.” It is useful for quickly running our plot.</p>
-<p>let’s see some feature’s frequency using <code>qplot</code></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="data-visualization.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data=</span>mpg, <span class="at">x=</span>manufacturer)</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="data-visualization.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data=</span>mpg, <span class="at">x=</span>fl)</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="data-visualization.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data=</span>mpg, <span class="at">x=</span>year)</span></code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="rbook_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<p>it’s weired. <code>year</code> data have only 2 cases.
-let’s check that.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="data-visualization.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(mpg<span class="sc">$</span>year)</span></code></pre></div>
-<pre><code>## 
-## 1999 2008 
-##  117  117</code></pre>
-<p>yes. it’s contain only the car data that manufacturered in 1999 and 2008. We have to think about this when analysis this dataset.</p>
-<p>and let’s go ahead and check the other feature one more.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="data-visualization.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data=</span>mpg, <span class="at">x=</span>class)</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<p>like this, we can show data’s frequency by input x(feature).</p>
-<p>and <code>class</code> contains types of car like size or shape etc.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="data-visualization.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(mpg<span class="sc">$</span>class)</span></code></pre></div>
-<pre><code>## 
-##    2seater    compact    midsize    minivan     pickup subcompact        suv 
-##          5         47         41         11         33         35         62</code></pre>
-<p>Then, what will happen if we input y into qplot function?</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="data-visualization.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data=</span>mpg, <span class="at">x=</span>class, <span class="at">y=</span>hwy)</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
-<p>This is scatter plot. From this plot, we can check highway fuel economy of each car class. Pick-up truck and SUV are not good at average fuel economy.</p>
-<p>But, we have more useful plot than scatter plot for checking the mean of data. Let’s use that.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="data-visualization.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data=</span>mpg, <span class="at">x=</span>class, <span class="at">y=</span>hwy, <span class="at">geom=</span><span class="st">&#39;boxplot&#39;</span>, <span class="at">color=</span>class)</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
-<p>It’s box plot. We can check means easily and even outliers. It’s very important that how our data visualized and what tools we use.</p>
-<p>If we use line plot for this situation, It is difficult to accurately show the data.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="data-visualization.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data=</span>mpg, <span class="at">x=</span>class, <span class="at">y=</span>hwy, <span class="at">geom=</span><span class="st">&#39;line&#39;</span>, <span class="at">color=</span>class)</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
-</div>
-<div id="hist" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> hist</h2>
-<p><code>hist</code> means histogram. It shows the distribution of continuous(numeric) variable.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="data-visualization.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mpg<span class="sc">$</span>hwy)</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
-<p>If you input categorical variable(ex. mpg$class) into <code>hist</code> function,</p>
-<p>it returns error that <code>Error in hist.default(mpg$class) : 'x' must be numeric</code></p>
+<div id="data-preprocessing" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Data Preprocessing</h1>
+<p>While exploring data, we need to preprocess it properly for our purpose.
+And these work can be repeat until we construct a dataset that can make our probabilistic model well.</p>
+<div id="ifelse" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> ifelse</h2>
+<p><code>ifelse</code> is <code>Conditional Statments function</code> that is very simple and useful in R. We can use this with just 3 parameters - condition, return value when it’s true, return value when it’s false.</p>
+<p>let’s see example code.</p>
+<p>first, print the head of dataset</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="data-preprocessing.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mpg<span class="sc">$</span>hwy)</span></code></pre></div>
+<pre><code>## [1] 29 29 31 30 26 26</code></pre>
+<p>And let’s apply ifelse to this head.
+if the hwy(highway fuel efficiency) is higher than 30, returns ‘Good.’</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="data-preprocessing.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">head</span>(mpg<span class="sc">$</span>hwy) <span class="sc">&gt;</span> <span class="dv">30</span>, <span class="st">&#39;Good&#39;</span>, <span class="st">&#39;Bad&#39;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Good&quot; &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;</code></pre>
+<p>We can use this data by assign method(<code>&lt;-</code>). Let’s Control Entire variable.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="data-preprocessing.html#cb41-1" aria-hidden="true" tabindex="-1"></a>evaluate_hwy <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(mpg<span class="sc">$</span>hwy <span class="sc">&gt;</span> <span class="dv">30</span>, <span class="st">&#39;Good&#39;</span>, <span class="st">&#39;Bad&#39;</span>)</span>
+<span id="cb41-2"><a href="data-preprocessing.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(evaluate_hwy)</span></code></pre></div>
+<pre><code>##   [1] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Good&quot; &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
+##  [11] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
+##  [21] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
+##  [31] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
+##  [41] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
+##  [51] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
+##  [61] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
+##  [71] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
+##  [81] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
+##  [91] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Good&quot;
+## [101] &quot;Good&quot; &quot;Good&quot; &quot;Bad&quot;  &quot;Good&quot; &quot;Good&quot; &quot;Good&quot; &quot;Good&quot; &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
+## [111] &quot;Bad&quot;  &quot;Good&quot; &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
+## [121] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
+## [131] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
+## [141] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Good&quot; &quot;Good&quot; &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
+## [151] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
+## [161] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
+## [171] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
+## [181] &quot;Bad&quot;  &quot;Good&quot; &quot;Good&quot; &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Good&quot; &quot;Good&quot;
+## [191] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Good&quot; &quot;Good&quot; &quot;Good&quot; &quot;Good&quot; &quot;Bad&quot;  &quot;Bad&quot; 
+## [201] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
+## [211] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Good&quot; &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
+## [221] &quot;Bad&quot;  &quot;Good&quot; &quot;Good&quot; &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
+## [231] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;</code></pre>
+<p>Then, Why is this necessary?</p>
+<p>Sometimes we need categorical data(nominal data or ordinal data) for not only visualization but also data handling. Especially, We do not always get gaussian distribution dataset, so since the data is not uniform, it is necessary to divide it into appropriate intervals.</p>
 
 </div>
 </div>
@@ -243,8 +226,8 @@ let’s check that.</p>
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="exploratory-data-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="exploratory-data-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

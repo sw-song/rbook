@@ -6,7 +6,8 @@
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
----
+
+
 first, let's import `ggplot2` library
 ```{r}
 library(ggplot2)
@@ -77,6 +78,20 @@ If we use line plot for this situation, It is difficult to accurately show the d
 ```{r}
 qplot(data=mpg, x=class, y=hwy, geom='line', color=class)
 ```
+
+
+## hist
+
+`hist` means histogram. It shows the distribution of continuous(numeric) variable.
+
+```{r}
+hist(mpg$hwy)
+```
+
+If you input categorical variable(ex. mpg$class) into `hist` function, 
+
+it returns error that `Error in hist.default(mpg$class) : 'x' must be numeric`
+
 
 
 

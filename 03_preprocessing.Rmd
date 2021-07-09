@@ -1,0 +1,34 @@
+# Data Preprocessing
+
+While exploring data, we need to preprocess it properly for our purpose.
+And these work can be repeat until we construct a dataset that can make our probabilistic model well.
+
+## ifelse
+
+`ifelse` is `Conditional Statments function` that is very simple and useful in R. We can use this with just 3 parameters - condition, return value when it's true, return value when it's false.
+
+let's see example code.
+
+first, print the head of dataset
+```{r}
+head(mpg$hwy)
+```
+
+And let's apply ifelse to this head.
+if the hwy(highway fuel efficiency) is higher than 30, returns 'Good'.
+```{r}
+ifelse(head(mpg$hwy) > 30, 'Good', 'Bad')
+```
+
+We can use this data by assign method(`<-`). Let's Control Entire variable.
+
+```{r}
+evaluate_hwy <- ifelse(mpg$hwy > 30, 'Good', 'Bad')
+print(evaluate_hwy)
+```
+
+Then, Why is this necessary?
+
+Sometimes we need categorical data(nominal data or ordinal data) for not only visualization but also data handling. Especially, We do not always get gaussian distribution dataset, so since the data is not uniform, it is necessary to divide it into appropriate intervals.
+
+
