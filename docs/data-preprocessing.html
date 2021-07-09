@@ -155,6 +155,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-mutate"><i class="fa fa-check"></i><b>3.2</b> dplyr :: mutate</a></li>
 <li class="chapter" data-level="3.3" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-filter"><i class="fa fa-check"></i><b>3.3</b> dplyr :: filter</a></li>
 <li class="chapter" data-level="3.4" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-select"><i class="fa fa-check"></i><b>3.4</b> dplyr :: select</a></li>
+<li class="chapter" data-level="3.5" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-arrange"><i class="fa fa-check"></i><b>3.5</b> dplyr :: arrange</a></li>
+<li class="chapter" data-level="3.6" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-summarise"><i class="fa fa-check"></i><b>3.6</b> dplyr :: summarise</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -397,7 +399,202 @@ if the hwy(highway fuel efficiency) is higher than 30, returns ‘Good.’</p>
 </div>
 <div id="dplyr-select" class="section level2" number="3.4">
 <h2><span class="header-section-number">3.4</span> dplyr :: select</h2>
-<p>next, <code>select()</code> function.</p>
+<p>Next, <code>select()</code> function.
+We have used <code>filter()</code> to extract rows, now we’ll use <code>select()</code> to extract columns.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="data-preprocessing.html#cb77-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb77-2"><a href="data-preprocessing.html#cb77-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer) <span class="sc">%&gt;%</span></span>
+<span id="cb77-3"><a href="data-preprocessing.html#cb77-3" aria-hidden="true" tabindex="-1"></a>  head</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 1
+##   manufacturer
+##   &lt;chr&gt;       
+## 1 audi        
+## 2 audi        
+## 3 audi        
+## 4 audi        
+## 5 audi        
+## 6 audi</code></pre>
+<p>Two or more columns can be extracted at the same time.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="data-preprocessing.html#cb79-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb79-2"><a href="data-preprocessing.html#cb79-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, class, hwy) <span class="sc">%&gt;%</span></span>
+<span id="cb79-3"><a href="data-preprocessing.html#cb79-3" aria-hidden="true" tabindex="-1"></a>  head</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 3
+##   manufacturer class     hwy
+##   &lt;chr&gt;        &lt;chr&gt;   &lt;int&gt;
+## 1 audi         compact    29
+## 2 audi         compact    29
+## 3 audi         compact    31
+## 4 audi         compact    30
+## 5 audi         compact    26
+## 6 audi         compact    26</code></pre>
+<p>And with pipe, we can extract some rows and some columns at the same time too.</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="data-preprocessing.html#cb81-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb81-2"><a href="data-preprocessing.html#cb81-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, model, class, hwy) <span class="sc">%&gt;%</span></span>
+<span id="cb81-3"><a href="data-preprocessing.html#cb81-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(hwy <span class="sc">&gt;</span> <span class="dv">23</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb81-4"><a href="data-preprocessing.html#cb81-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 10 x 4
+##    manufacturer model      class     hwy
+##    &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;   &lt;int&gt;
+##  1 audi         a4         compact    29
+##  2 audi         a4         compact    29
+##  3 audi         a4         compact    31
+##  4 audi         a4         compact    30
+##  5 audi         a4         compact    26
+##  6 audi         a4         compact    26
+##  7 audi         a4         compact    27
+##  8 audi         a4 quattro compact    26
+##  9 audi         a4 quattro compact    25
+## 10 audi         a4 quattro compact    28</code></pre>
+</div>
+<div id="dplyr-arrange" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> dplyr :: arrange</h2>
+<p>In case of numerical data(variable), we can order it. If data is categorical variable, It’ll return error.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="data-preprocessing.html#cb83-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb83-2"><a href="data-preprocessing.html#cb83-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, model, class, hwy) <span class="sc">%&gt;%</span></span>
+<span id="cb83-3"><a href="data-preprocessing.html#cb83-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(hwy) <span class="sc">%&gt;%</span></span>
+<span id="cb83-4"><a href="data-preprocessing.html#cb83-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 10 x 4
+##    manufacturer model               class    hwy
+##    &lt;chr&gt;        &lt;chr&gt;               &lt;chr&gt;  &lt;int&gt;
+##  1 dodge        dakota pickup 4wd   pickup    12
+##  2 dodge        durango 4wd         suv       12
+##  3 dodge        ram 1500 pickup 4wd pickup    12
+##  4 dodge        ram 1500 pickup 4wd pickup    12
+##  5 jeep         grand cherokee 4wd  suv       12
+##  6 chevrolet    k1500 tahoe 4wd     suv       14
+##  7 jeep         grand cherokee 4wd  suv       14
+##  8 chevrolet    c1500 suburban 2wd  suv       15
+##  9 chevrolet    k1500 tahoe 4wd     suv       15
+## 10 dodge        dakota pickup 4wd   pickup    15</code></pre>
+<p>If you want to sort dataset from highest to lowest highway fuel economy, wrapping arrange variable by <code>desc()</code></p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="data-preprocessing.html#cb85-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb85-2"><a href="data-preprocessing.html#cb85-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, model, class, hwy) <span class="sc">%&gt;%</span></span>
+<span id="cb85-3"><a href="data-preprocessing.html#cb85-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(hwy)) <span class="sc">%&gt;%</span></span>
+<span id="cb85-4"><a href="data-preprocessing.html#cb85-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 10 x 4
+##    manufacturer model      class        hwy
+##    &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;      &lt;int&gt;
+##  1 volkswagen   jetta      compact       44
+##  2 volkswagen   new beetle subcompact    44
+##  3 volkswagen   new beetle subcompact    41
+##  4 toyota       corolla    compact       37
+##  5 honda        civic      subcompact    36
+##  6 honda        civic      subcompact    36
+##  7 toyota       corolla    compact       35
+##  8 toyota       corolla    compact       35
+##  9 honda        civic      subcompact    34
+## 10 honda        civic      subcompact    33</code></pre>
+</div>
+<div id="dplyr-summarise" class="section level2" number="3.6">
+<h2><span class="header-section-number">3.6</span> dplyr :: summarise</h2>
+<p>The function <code>summarise()</code> can be used to get basic statistics by specifying functions such as mean(), sd(), median(), etc.</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="data-preprocessing.html#cb87-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb87-2"><a href="data-preprocessing.html#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer<span class="sc">==</span><span class="st">&#39;audi&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb87-3"><a href="data-preprocessing.html#cb87-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_hwy =</span> <span class="fu">mean</span>(hwy))</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 1
+##   mean_hwy
+##      &lt;dbl&gt;
+## 1     26.4</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="data-preprocessing.html#cb89-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="data-preprocessing.html#cb91-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb91-2"><a href="data-preprocessing.html#cb91-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer<span class="sc">==</span><span class="st">&#39;audi&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb91-3"><a href="data-preprocessing.html#cb91-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_hwy =</span> <span class="fu">mean</span>(hwy),</span>
+<span id="cb91-4"><a href="data-preprocessing.html#cb91-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_hwy =</span> <span class="fu">max</span>(hwy),</span>
+<span id="cb91-5"><a href="data-preprocessing.html#cb91-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_hwy =</span> <span class="fu">min</span>(hwy))</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 3
+##   mean_hwy max_hwy min_hwy
+##      &lt;dbl&gt;   &lt;int&gt;   &lt;int&gt;
+## 1     26.4      31      23</code></pre>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="data-preprocessing.html#cb93-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<p>But, this function can be more useful if used together with groupby.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="data-preprocessing.html#cb95-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb95-2"><a href="data-preprocessing.html#cb95-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer) <span class="sc">%&gt;%</span></span>
+<span id="cb95-3"><a href="data-preprocessing.html#cb95-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_hwy =</span> <span class="fu">mean</span>(hwy),</span>
+<span id="cb95-4"><a href="data-preprocessing.html#cb95-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_hwy =</span> <span class="fu">max</span>(hwy),</span>
+<span id="cb95-5"><a href="data-preprocessing.html#cb95-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_hwy =</span> <span class="fu">min</span>(hwy))</span></code></pre></div>
+<pre><code>## # A tibble: 15 x 4
+##    manufacturer mean_hwy max_hwy min_hwy
+##    &lt;chr&gt;           &lt;dbl&gt;   &lt;int&gt;   &lt;int&gt;
+##  1 audi             26.4      31      23
+##  2 chevrolet        21.9      30      14
+##  3 dodge            17.9      24      12
+##  4 ford             19.4      26      15
+##  5 honda            32.6      36      29
+##  6 hyundai          26.9      31      24
+##  7 jeep             17.6      22      12
+##  8 land rover       16.5      18      15
+##  9 lincoln          17        18      16
+## 10 mercury          18        19      17
+## 11 nissan           24.6      32      17
+## 12 pontiac          26.4      28      25
+## 13 subaru           25.6      27      23
+## 14 toyota           24.9      37      15
+## 15 volkswagen       29.2      44      23</code></pre>
+<p>we can apply <code>arrange()</code> too.</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="data-preprocessing.html#cb97-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb97-2"><a href="data-preprocessing.html#cb97-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer) <span class="sc">%&gt;%</span></span>
+<span id="cb97-3"><a href="data-preprocessing.html#cb97-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_hwy =</span> <span class="fu">mean</span>(hwy),</span>
+<span id="cb97-4"><a href="data-preprocessing.html#cb97-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_hwy =</span> <span class="fu">max</span>(hwy),</span>
+<span id="cb97-5"><a href="data-preprocessing.html#cb97-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_hwy =</span> <span class="fu">min</span>(hwy)) <span class="sc">%&gt;%</span></span>
+<span id="cb97-6"><a href="data-preprocessing.html#cb97-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_hwy))</span></code></pre></div>
+<pre><code>## # A tibble: 15 x 4
+##    manufacturer mean_hwy max_hwy min_hwy
+##    &lt;chr&gt;           &lt;dbl&gt;   &lt;int&gt;   &lt;int&gt;
+##  1 honda            32.6      36      29
+##  2 volkswagen       29.2      44      23
+##  3 hyundai          26.9      31      24
+##  4 audi             26.4      31      23
+##  5 pontiac          26.4      28      25
+##  6 subaru           25.6      27      23
+##  7 toyota           24.9      37      15
+##  8 nissan           24.6      32      17
+##  9 chevrolet        21.9      30      14
+## 10 ford             19.4      26      15
+## 11 mercury          18        19      17
+## 12 dodge            17.9      24      12
+## 13 jeep             17.6      22      12
+## 14 lincoln          17        18      16
+## 15 land rover       16.5      18      15</code></pre>
+<p>We select 2 or more columns to <code>group_by</code> function like this.</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="data-preprocessing.html#cb99-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb99-2"><a href="data-preprocessing.html#cb99-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer, model) <span class="sc">%&gt;%</span></span>
+<span id="cb99-3"><a href="data-preprocessing.html#cb99-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_hwy =</span> <span class="fu">mean</span>(hwy),</span>
+<span id="cb99-4"><a href="data-preprocessing.html#cb99-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_hwy =</span> <span class="fu">max</span>(hwy),</span>
+<span id="cb99-5"><a href="data-preprocessing.html#cb99-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_hwy =</span> <span class="fu">min</span>(hwy))</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;manufacturer&#39;. You can override using the `.groups` argument.</code></pre>
+<pre><code>## # A tibble: 38 x 5
+## # Groups:   manufacturer [15]
+##    manufacturer model              mean_hwy max_hwy min_hwy
+##    &lt;chr&gt;        &lt;chr&gt;                 &lt;dbl&gt;   &lt;int&gt;   &lt;int&gt;
+##  1 audi         a4                     28.3      31      26
+##  2 audi         a4 quattro             25.8      28      25
+##  3 audi         a6 quattro             24        25      23
+##  4 chevrolet    c1500 suburban 2wd     17.8      20      15
+##  5 chevrolet    corvette               24.8      26      23
+##  6 chevrolet    k1500 tahoe 4wd        16.2      19      14
+##  7 chevrolet    malibu                 27.6      30      26
+##  8 dodge        caravan 2wd            22.4      24      17
+##  9 dodge        dakota pickup 4wd      17        19      12
+## 10 dodge        durango 4wd            16        18      12
+## # … with 28 more rows</code></pre>
+<p>and apply <code>filter()</code> too.</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="data-preprocessing.html#cb102-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb102-2"><a href="data-preprocessing.html#cb102-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer, model) <span class="sc">%&gt;%</span></span>
+<span id="cb102-3"><a href="data-preprocessing.html#cb102-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_hwy =</span> <span class="fu">mean</span>(hwy),</span>
+<span id="cb102-4"><a href="data-preprocessing.html#cb102-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_hwy =</span> <span class="fu">max</span>(hwy),</span>
+<span id="cb102-5"><a href="data-preprocessing.html#cb102-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_hwy =</span> <span class="fu">min</span>(hwy)) <span class="sc">%&gt;%</span></span>
+<span id="cb102-6"><a href="data-preprocessing.html#cb102-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer<span class="sc">==</span><span class="st">&#39;audi&#39;</span> <span class="sc">|</span> manufacturer<span class="sc">==</span><span class="st">&#39;hyundai&#39;</span>)</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;manufacturer&#39;. You can override using the `.groups` argument.</code></pre>
+<pre><code>## # A tibble: 5 x 5
+## # Groups:   manufacturer [2]
+##   manufacturer model      mean_hwy max_hwy min_hwy
+##   &lt;chr&gt;        &lt;chr&gt;         &lt;dbl&gt;   &lt;int&gt;   &lt;int&gt;
+## 1 audi         a4             28.3      31      26
+## 2 audi         a4 quattro     25.8      28      25
+## 3 audi         a6 quattro     24        25      23
+## 4 hyundai      sonata         27.7      31      26
+## 5 hyundai      tiburon        26        29      24</code></pre>
 
 </div>
 </div>

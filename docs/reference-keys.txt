@@ -11,3 +11,5 @@ ifelse
 dplyr-mutate
 dplyr-filter
 dplyr-select
+dplyr-arrange
+dplyr-summarise

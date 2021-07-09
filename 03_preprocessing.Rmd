@@ -120,5 +120,112 @@ Yes, now you can choose the car that you want.
 
 ## dplyr :: select
 
-next, `select()` function.
+Next, `select()` function. 
+We have used `filter()` to extract rows, now we'll use `select()` to extract columns.
+
+```{r}
+new_mpg %>%
+  select(manufacturer) %>%
+  head
+```
+
+Two or more columns can be extracted at the same time.
+
+```{r}
+new_mpg %>%
+  select(manufacturer, class, hwy) %>%
+  head
+```
+
+
+And with pipe, we can extract some rows and some columns at the same time too.
+
+```{r}
+new_mpg %>%
+  select(manufacturer, model, class, hwy) %>%
+  filter(hwy > 23) %>%
+  head(10)
+```
+
+## dplyr :: arrange
+
+In case of numerical data(variable), we can order it. If data is categorical variable, It'll return error.
+
+```{r}
+new_mpg %>%
+  select(manufacturer, model, class, hwy) %>%
+  arrange(hwy) %>%
+  head(10)
+```
+
+If you want to sort dataset from highest to lowest highway fuel economy, wrapping arrange variable by `desc()`
+
+```{r}
+new_mpg %>%
+  select(manufacturer, model, class, hwy) %>%
+  arrange(desc(hwy)) %>%
+  head(10)
+```
+
+## dplyr :: summarise
+
+The function `summarise()` can be used to get basic statistics by specifying functions such as mean(), sd(), median(), etc.
+
+```{r}
+new_mpg %>%
+  filter(manufacturer=='audi') %>%
+  summarise(mean_hwy = mean(hwy))
+  head(10)
+```
+
+```{r}
+new_mpg %>%
+  filter(manufacturer=='audi') %>%
+  summarise(mean_hwy = mean(hwy),
+            max_hwy = max(hwy),
+            min_hwy = min(hwy))
+  head(10)
+```
+But, this function can be more useful if used together with groupby.
+
+```{r}
+new_mpg %>%
+  group_by(manufacturer) %>%
+  summarise(mean_hwy = mean(hwy),
+            max_hwy = max(hwy),
+            min_hwy = min(hwy))
+```
+
+we can apply `arrange()` too.
+```{r}
+new_mpg %>%
+  group_by(manufacturer) %>%
+  summarise(mean_hwy = mean(hwy),
+            max_hwy = max(hwy),
+            min_hwy = min(hwy)) %>%
+  arrange(desc(mean_hwy))
+```
+
+We select 2 or more columns to `group_by` function like this.
+
+```{r}
+new_mpg %>%
+  group_by(manufacturer, model) %>%
+  summarise(mean_hwy = mean(hwy),
+            max_hwy = max(hwy),
+            min_hwy = min(hwy))
+```
+
+and apply `filter()` too.
+
+```{r}
+new_mpg %>%
+  group_by(manufacturer, model) %>%
+  summarise(mean_hwy = mean(hwy),
+            max_hwy = max(hwy),
+            min_hwy = min(hwy)) %>%
+  filter(manufacturer=='audi' | manufacturer=='hyundai')
+```
+
+
 
