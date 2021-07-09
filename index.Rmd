@@ -1,7 +1,7 @@
 --- 
 title: "R Note"
 author: "Seungwon Song"
-date: "`r Sys.Date()`"
+date: "Update - `r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
