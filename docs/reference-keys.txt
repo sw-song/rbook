@@ -8,3 +8,4 @@ summary
 table
 data-preprocessing
 ifelse
+dplyr-mutate

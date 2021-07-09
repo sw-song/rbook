@@ -31,4 +31,61 @@ Then, Why is this necessary?
 
 Sometimes we need categorical data(nominal data or ordinal data) for not only visualization but also data handling. Especially, We do not always get gaussian distribution dataset, so since the data is not uniform, it is necessary to divide it into appropriate intervals.
 
+We can use this function to not only create new variable but also add another column.
+```{r}
+df_mpg <- mpg
+df_mpg['eval_hwy'] <- ifelse(df_mpg$hwy>30, 'High', 'Low')
+df_mpg$eval_hwy
+```
 
+## dplyr :: mutate
+
+In R, `dplyr` package is the most popular library for data preprocessing. Especially it provides pipe('%>%'), and it's very helpful for intuitive coding. And `mutate` in `dplyr` package do exactly same work as the one above, However it is simpler and easier to use. Let's see this.
+
+(before load, you have to install "dplyr" package)
+```{r}
+# install.packages("dplyr") 
+library(dplyr)
+```
+
+```{r}
+head(df_mpg)
+```
+We'll use `mutate` function and `pipe` syntex to handle `cty`(city fuel economy) column.
+
+```{r}
+df_mpg %>%
+  mutate(mean_fuel = (cty + hwy)/2) %>%
+  head
+```
+
+We can see the last column is added and named with `mean_fuel`. We didn't have to use the name of dataframa(df_mpg) repeatly to use columns. It's very nice.
+
+And of course we can use `ifelse` function with the `pipe` and `mutate`.
+
+```{r}
+df_mpg %>%
+  mutate(mean_fuel = (cty + hwy)/2, 
+         eval_fuel = ifelse(mean_fuel > 20, 'high', 'low')) %>%
+  head
+```
+
+If you want to use this data table continuously, you have to assign this table to the new variable like this.
+
+```{r}
+new_mpg <- df_mpg %>%
+            mutate(mean_fuel = (cty + hwy)/2, 
+            eval_fuel = ifelse(mean_fuel > 20, 'high', 'low'))
+```
+
+```{r}
+str(new_mpg)
+```
+
+```{r}
+qplot(new_mpg$mean_fuel)
+```
+
+```{r}
+qplot(new_mpg$eval_fuel)
+```

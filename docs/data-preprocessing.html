@@ -153,6 +153,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="data-preprocessing.html"><a href="data-preprocessing.html"><i class="fa fa-check"></i><b>3</b> Data Preprocessing</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="data-preprocessing.html"><a href="data-preprocessing.html#ifelse"><i class="fa fa-check"></i><b>3.1</b> ifelse</a></li>
+<li class="chapter" data-level="3.2" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-mutate"><i class="fa fa-check"></i><b>3.2</b> dplyr :: mutate</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -219,6 +220,115 @@ if the hwy(highway fuel efficiency) is higher than 30, returns ‘Good.’</p>
 ## [231] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;</code></pre>
 <p>Then, Why is this necessary?</p>
 <p>Sometimes we need categorical data(nominal data or ordinal data) for not only visualization but also data handling. Especially, We do not always get gaussian distribution dataset, so since the data is not uniform, it is necessary to divide it into appropriate intervals.</p>
+<p>We can use this function to not only create new variable but also add another column.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="data-preprocessing.html#cb51-1" aria-hidden="true" tabindex="-1"></a>df_mpg <span class="ot">&lt;-</span> mpg</span>
+<span id="cb51-2"><a href="data-preprocessing.html#cb51-2" aria-hidden="true" tabindex="-1"></a>df_mpg[<span class="st">&#39;eval_hwy&#39;</span>] <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df_mpg<span class="sc">$</span>hwy<span class="sc">&gt;</span><span class="dv">30</span>, <span class="st">&#39;High&#39;</span>, <span class="st">&#39;Low&#39;</span>)</span>
+<span id="cb51-3"><a href="data-preprocessing.html#cb51-3" aria-hidden="true" tabindex="-1"></a>df_mpg<span class="sc">$</span>eval_hwy</span></code></pre></div>
+<pre><code>##   [1] &quot;Low&quot;  &quot;Low&quot;  &quot;High&quot; &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
+##  [11] &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
+##  [21] &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
+##  [31] &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
+##  [41] &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
+##  [51] &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
+##  [61] &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
+##  [71] &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
+##  [81] &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
+##  [91] &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;High&quot;
+## [101] &quot;High&quot; &quot;High&quot; &quot;Low&quot;  &quot;High&quot; &quot;High&quot; &quot;High&quot; &quot;High&quot; &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
+## [111] &quot;Low&quot;  &quot;High&quot; &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
+## [121] &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
+## [131] &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
+## [141] &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;High&quot; &quot;High&quot; &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
+## [151] &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
+## [161] &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
+## [171] &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
+## [181] &quot;Low&quot;  &quot;High&quot; &quot;High&quot; &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;High&quot; &quot;High&quot;
+## [191] &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;High&quot; &quot;High&quot; &quot;High&quot; &quot;High&quot; &quot;Low&quot;  &quot;Low&quot; 
+## [201] &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
+## [211] &quot;Low&quot;  &quot;Low&quot;  &quot;High&quot; &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
+## [221] &quot;Low&quot;  &quot;High&quot; &quot;High&quot; &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
+## [231] &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;</code></pre>
+</div>
+<div id="dplyr-mutate" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> dplyr :: mutate</h2>
+<p>In R, <code>dplyr</code> package is the most popular library for data preprocessing. Especially it provides pipe(‘%&gt;%’), and it’s very helpful for intuitive coding. And <code>mutate</code> in <code>dplyr</code> package do exactly same work as the one above, However it is simpler and easier to use. Let’s see this.</p>
+<p>(before load, you have to install “dplyr” package)</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="data-preprocessing.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;dplyr&quot;) </span></span>
+<span id="cb53-2"><a href="data-preprocessing.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="data-preprocessing.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_mpg)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 12
+##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class 
+##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
+## 1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compa…
+## 2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compa…
+## 3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compa…
+## 4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compa…
+## 5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compa…
+## 6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…
+## # … with 1 more variable: eval_hwy &lt;chr&gt;</code></pre>
+<p>We’ll use <code>mutate</code> function and <code>pipe</code> syntex to handle <code>cty</code>(city fuel economy) column.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="data-preprocessing.html#cb59-1" aria-hidden="true" tabindex="-1"></a>df_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb59-2"><a href="data-preprocessing.html#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean_fuel =</span> (cty <span class="sc">+</span> hwy)<span class="sc">/</span><span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb59-3"><a href="data-preprocessing.html#cb59-3" aria-hidden="true" tabindex="-1"></a>  head</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 13
+##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class 
+##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
+## 1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compa…
+## 2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compa…
+## 3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compa…
+## 4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compa…
+## 5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compa…
+## 6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…
+## # … with 2 more variables: eval_hwy &lt;chr&gt;, mean_fuel &lt;dbl&gt;</code></pre>
+<p>We can see the last column is added and named with <code>mean_fuel</code>. We didn’t have to use the name of dataframa(df_mpg) repeatly to use columns. It’s very nice.</p>
+<p>And of course we can use <code>ifelse</code> function with the <code>pipe</code> and <code>mutate</code>.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="data-preprocessing.html#cb61-1" aria-hidden="true" tabindex="-1"></a>df_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb61-2"><a href="data-preprocessing.html#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean_fuel =</span> (cty <span class="sc">+</span> hwy)<span class="sc">/</span><span class="dv">2</span>, </span>
+<span id="cb61-3"><a href="data-preprocessing.html#cb61-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">eval_fuel =</span> <span class="fu">ifelse</span>(mean_fuel <span class="sc">&gt;</span> <span class="dv">20</span>, <span class="st">&#39;high&#39;</span>, <span class="st">&#39;low&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb61-4"><a href="data-preprocessing.html#cb61-4" aria-hidden="true" tabindex="-1"></a>  head</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 14
+##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class 
+##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
+## 1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compa…
+## 2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compa…
+## 3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compa…
+## 4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compa…
+## 5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compa…
+## 6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…
+## # … with 3 more variables: eval_hwy &lt;chr&gt;, mean_fuel &lt;dbl&gt;, eval_fuel &lt;chr&gt;</code></pre>
+<p>If you want to use this data table continuously, you have to assign this table to the new variable like this.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="data-preprocessing.html#cb63-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="ot">&lt;-</span> df_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb63-2"><a href="data-preprocessing.html#cb63-2" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mutate</span>(<span class="at">mean_fuel =</span> (cty <span class="sc">+</span> hwy)<span class="sc">/</span><span class="dv">2</span>, </span>
+<span id="cb63-3"><a href="data-preprocessing.html#cb63-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">eval_fuel =</span> <span class="fu">ifelse</span>(mean_fuel <span class="sc">&gt;</span> <span class="dv">20</span>, <span class="st">&#39;high&#39;</span>, <span class="st">&#39;low&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="data-preprocessing.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(new_mpg)</span></code></pre></div>
+<pre><code>## tibble [234 × 14] (S3: tbl_df/tbl/data.frame)
+##  $ manufacturer: chr [1:234] &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...
+##  $ model       : chr [1:234] &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; ...
+##  $ displ       : num [1:234] 1.8 1.8 2 2 2.8 2.8 3.1 1.8 1.8 2 ...
+##  $ year        : int [1:234] 1999 1999 2008 2008 1999 1999 2008 1999 1999 2008 ...
+##  $ cyl         : int [1:234] 4 4 4 4 6 6 6 4 4 4 ...
+##  $ trans       : chr [1:234] &quot;auto(l5)&quot; &quot;manual(m5)&quot; &quot;manual(m6)&quot; &quot;auto(av)&quot; ...
+##  $ drv         : chr [1:234] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; ...
+##  $ cty         : int [1:234] 18 21 20 21 16 18 18 18 16 20 ...
+##  $ hwy         : int [1:234] 29 29 31 30 26 26 27 26 25 28 ...
+##  $ fl          : chr [1:234] &quot;p&quot; &quot;p&quot; &quot;p&quot; &quot;p&quot; ...
+##  $ class       : chr [1:234] &quot;compact&quot; &quot;compact&quot; &quot;compact&quot; &quot;compact&quot; ...
+##  $ eval_hwy    : chr [1:234] &quot;Low&quot; &quot;Low&quot; &quot;High&quot; &quot;Low&quot; ...
+##  $ mean_fuel   : num [1:234] 23.5 25 25.5 25.5 21 22 22.5 22 20.5 24 ...
+##  $ eval_fuel   : chr [1:234] &quot;high&quot; &quot;high&quot; &quot;high&quot; &quot;high&quot; ...</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="data-preprocessing.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(new_mpg<span class="sc">$</span>mean_fuel)</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="rbook_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="data-preprocessing.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(new_mpg<span class="sc">$</span>eval_fuel)</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
 
 </div>
 </div>
