@@ -1,0 +1,70 @@
+# Exploratory Data Analysis
+
+EDA(Exploratory Data Analysis) is necessary for data analyst to check the dataset before statistical modeling(or machine learning)
+
+## head and tail
+
+```{r}
+df_mpg <- data.frame(ggplot2::mpg)
+head(df_mpg)
+```
+
+we have loaded `mpg` dataset from `ggplot2` package. `ggplot2` contains multiple useful datasets and various visualization tools.
+`head` function extract top 6 rows of input dataset. In contrast, we can extract bottom 6 rows using `tail` function.
+
+```{r}
+tail(df_mpg)
+```
+
+It's important to check rows in this way, because most of dataset we meet are so large that it can't be shown just in one page.
+
+## dim and str
+
+using `dim` function, we can check the size of dataset. The size means rows x columns.
+
+```{r}
+dim(df_mpg)
+```
+
+This `mpg` dataset has 234 rows and 11 columns(features).
+
+We do not need to use this function just for check entire dataset.
+
+```{r}
+dim(head(df_mpg))
+```
+
+```{r}
+dim(df_mpg[,2:4])
+```
+```{r}
+dim(df_mpg['model'])
+```
+
+but we can't use `dim` for 1-dim vector. Note that df_mpg['model'] is not a vector, it's dataframe yet.
+```{r}
+str(df_mpg['model'])
+```
+
+It's different from df_mpg$model
+```{r}
+str(df_mpg$model)
+```
+This is vector. And it's same with df_mpg[['model']]
+```{r}
+str(df_mpg[['model']])
+```
+
+
+## summary
+
+we can check summary statistics using `summary` function.
+
+```{r}
+summary(df_mpg)
+```
+
+
+If column is categorical variable, like `model`, `trans`, `drv`, `manufacturer`, `fl`, `class`, it just shows Length, Class and Mode. But in case of numerical, it can shows mean of variable, median of variable, minimum of variable, maximum of variable and 1st and 3rd quartile.
+
+

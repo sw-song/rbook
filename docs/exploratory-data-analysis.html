@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Exploratory Data Analysis | R Note</title>
+  <meta name="description" content="It’s R quick guide for anyone who start to study R" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Exploratory Data Analysis | R Note" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="It’s R quick guide for anyone who start to study R" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Exploratory Data Analysis | R Note" />
+  
+  <meta name="twitter:description" content="It’s R quick guide for anyone who start to study R" />
+  
+
+<meta name="author" content="Seungwon Song" />
+
+
+<meta name="date" content="2021-07-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-visualization.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R Note</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Intro to R</a></li>
+<li class="chapter" data-level="1" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>1</b> Data Visualization</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="data-visualization.html"><a href="data-visualization.html#qplot"><i class="fa fa-check"></i><b>1.1</b> qplot</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>2</b> Exploratory Data Analysis</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#head-and-tail"><i class="fa fa-check"></i><b>2.1</b> head and tail</a></li>
+<li class="chapter" data-level="2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#dim-and-str"><i class="fa fa-check"></i><b>2.2</b> dim and str</a></li>
+<li class="chapter" data-level="2.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#summary"><i class="fa fa-check"></i><b>2.3</b> summary</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Note</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="exploratory-data-analysis" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Exploratory Data Analysis</h1>
+<p>EDA(Exploratory Data Analysis) is necessary for data analyst to check the dataset before statistical modeling(or machine learning)</p>
+<div id="head-and-tail" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> head and tail</h2>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="exploratory-data-analysis.html#cb16-1" aria-hidden="true" tabindex="-1"></a>df_mpg <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(ggplot2<span class="sc">::</span>mpg)</span>
+<span id="cb16-2"><a href="exploratory-data-analysis.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_mpg)</span></code></pre></div>
+<pre><code>##   manufacturer model displ year cyl      trans drv cty hwy fl   class
+## 1         audi    a4   1.8 1999   4   auto(l5)   f  18  29  p compact
+## 2         audi    a4   1.8 1999   4 manual(m5)   f  21  29  p compact
+## 3         audi    a4   2.0 2008   4 manual(m6)   f  20  31  p compact
+## 4         audi    a4   2.0 2008   4   auto(av)   f  21  30  p compact
+## 5         audi    a4   2.8 1999   6   auto(l5)   f  16  26  p compact
+## 6         audi    a4   2.8 1999   6 manual(m5)   f  18  26  p compact</code></pre>
+<p>we have loaded <code>mpg</code> dataset from <code>ggplot2</code> package. <code>ggplot2</code> contains multiple useful datasets and various visualization tools.
+<code>head</code> function extract top 6 rows of input dataset. In contrast, we can extract bottom 6 rows using <code>tail</code> function.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="exploratory-data-analysis.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(df_mpg)</span></code></pre></div>
+<pre><code>##     manufacturer  model displ year cyl      trans drv cty hwy fl   class
+## 229   volkswagen passat   1.8 1999   4   auto(l5)   f  18  29  p midsize
+## 230   volkswagen passat   2.0 2008   4   auto(s6)   f  19  28  p midsize
+## 231   volkswagen passat   2.0 2008   4 manual(m6)   f  21  29  p midsize
+## 232   volkswagen passat   2.8 1999   6   auto(l5)   f  16  26  p midsize
+## 233   volkswagen passat   2.8 1999   6 manual(m5)   f  18  26  p midsize
+## 234   volkswagen passat   3.6 2008   6   auto(s6)   f  17  26  p midsize</code></pre>
+<p>It’s important to check rows in this way, because most of dataset we meet are so large that it can’t be shown just in one page.</p>
+</div>
+<div id="dim-and-str" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> dim and str</h2>
+<p>using <code>dim</code> function, we can check the size of dataset. The size means rows x columns.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="exploratory-data-analysis.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_mpg)</span></code></pre></div>
+<pre><code>## [1] 234  11</code></pre>
+<p>This <code>mpg</code> dataset has 234 rows and 11 columns(features).</p>
+<p>We do not need to use this function just for check entire dataset.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="exploratory-data-analysis.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(<span class="fu">head</span>(df_mpg))</span></code></pre></div>
+<pre><code>## [1]  6 11</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="exploratory-data-analysis.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_mpg[,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div>
+<pre><code>## [1] 234   3</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="exploratory-data-analysis.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_mpg[<span class="st">&#39;model&#39;</span>])</span></code></pre></div>
+<pre><code>## [1] 234   1</code></pre>
+<p>but we can’t use <code>dim</code> for 1-dim vector. Note that df_mpg[‘model’] is not a vector, it’s dataframe yet.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="exploratory-data-analysis.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df_mpg[<span class="st">&#39;model&#39;</span>])</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    234 obs. of  1 variable:
+##  $ model: chr  &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; ...</code></pre>
+<p>It’s different from df_mpg$model</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="exploratory-data-analysis.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df_mpg<span class="sc">$</span>model)</span></code></pre></div>
+<pre><code>##  chr [1:234] &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4 quattro&quot; &quot;a4 quattro&quot; ...</code></pre>
+<p>This is vector. And it’s same with df_mpg[[‘model’]]</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="exploratory-data-analysis.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df_mpg[[<span class="st">&#39;model&#39;</span>]])</span></code></pre></div>
+<pre><code>##  chr [1:234] &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4 quattro&quot; &quot;a4 quattro&quot; ...</code></pre>
+</div>
+<div id="summary" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> summary</h2>
+<p>we can check summary statistics using <code>summary</code> function.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="exploratory-data-analysis.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df_mpg)</span></code></pre></div>
+<pre><code>##  manufacturer          model               displ            year     
+##  Length:234         Length:234         Min.   :1.600   Min.   :1999  
+##  Class :character   Class :character   1st Qu.:2.400   1st Qu.:1999  
+##  Mode  :character   Mode  :character   Median :3.300   Median :2004  
+##                                        Mean   :3.472   Mean   :2004  
+##                                        3rd Qu.:4.600   3rd Qu.:2008  
+##                                        Max.   :7.000   Max.   :2008  
+##       cyl           trans               drv                 cty       
+##  Min.   :4.000   Length:234         Length:234         Min.   : 9.00  
+##  1st Qu.:4.000   Class :character   Class :character   1st Qu.:14.00  
+##  Median :6.000   Mode  :character   Mode  :character   Median :17.00  
+##  Mean   :5.889                                         Mean   :16.86  
+##  3rd Qu.:8.000                                         3rd Qu.:19.00  
+##  Max.   :8.000                                         Max.   :35.00  
+##       hwy             fl               class          
+##  Min.   :12.00   Length:234         Length:234        
+##  1st Qu.:18.00   Class :character   Class :character  
+##  Median :24.00   Mode  :character   Mode  :character  
+##  Mean   :23.44                                        
+##  3rd Qu.:27.00                                        
+##  Max.   :44.00</code></pre>
+<p>If column is categorical variable, like <code>model</code>, <code>trans</code>, <code>drv</code>, <code>manufacturer</code>, <code>fl</code>, <code>class</code>, it just shows Length, Class and Mode. But in case of numerical, it can shows mean of variable, median of variable, minimum of variable, maximum of variable and 1st and 3rd quartile.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-visualization.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["rbook.pdf", "rbook.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

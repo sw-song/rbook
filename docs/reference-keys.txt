@@ -1,2 +1,6 @@
 data-visualization
 qplot
+exploratory-data-analysis
+head-and-tail
+dim-and-str
+summary
