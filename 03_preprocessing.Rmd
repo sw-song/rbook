@@ -89,3 +89,36 @@ qplot(new_mpg$mean_fuel)
 ```{r}
 qplot(new_mpg$eval_fuel)
 ```
+
+We can use more functions from `dplyr` package. The commonly used functions that except mutate we have seen already are `filter()`, `select()`, `arrange()`, `summarise()`. Let's look at these one by one.
+
+## dplyr :: filter
+
+First, `filter()` function. `filter` extracts rows by some conditions. 
+```{r}
+head(new_mpg)
+```
+If you want to extract only `audi`, you can use `filter`.
+
+```{r}
+new_mpg %>%
+  filter(manufacturer=='audi')
+```
+
+If you want to extract `audi a4` model, 
+```{r}
+new_mpg %>%
+  filter(manufacturer=='audi' & model=='a4')
+```
+
+If you want to extract `audi a4` that have `Good for highway fuel economy`,
+```{r}
+new_mpg %>%
+  filter(manufacturer=='audi' & model=='a4' & eval_hwy == 'High')
+```
+Yes, now you can choose the car that you want.
+
+## dplyr :: select
+
+next, `select()` function.
+

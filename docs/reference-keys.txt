@@ -9,3 +9,5 @@ table
 data-preprocessing
 ifelse
 dplyr-mutate
+dplyr-filter
+dplyr-select
