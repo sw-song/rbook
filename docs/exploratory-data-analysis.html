@@ -148,6 +148,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#head-and-tail"><i class="fa fa-check"></i><b>2.1</b> head and tail</a></li>
 <li class="chapter" data-level="2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#dim-and-str"><i class="fa fa-check"></i><b>2.2</b> dim and str</a></li>
 <li class="chapter" data-level="2.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#summary"><i class="fa fa-check"></i><b>2.3</b> summary</a></li>
+<li class="chapter" data-level="2.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#table"><i class="fa fa-check"></i><b>2.4</b> table</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-preprocessing.html"><a href="data-preprocessing.html"><i class="fa fa-check"></i><b>3</b> Data Preprocessing</a>
 <ul>
@@ -250,6 +251,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  3rd Qu.:27.00                                        
 ##  Max.   :44.00</code></pre>
 <p>If column is categorical variable, like <code>model</code>, <code>trans</code>, <code>drv</code>, <code>manufacturer</code>, <code>fl</code>, <code>class</code>, it just shows Length, Class and Mode. But in case of numerical, it can shows mean of variable, median of variable, minimum of variable, maximum of variable and 1st and 3rd quartile.</p>
+</div>
+<div id="table" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> table</h2>
+<p>And R also provides a frequency table. We can use this as call <code>table</code> function.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="exploratory-data-analysis.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df_mpg<span class="sc">$</span>model)</span></code></pre></div>
+<pre><code>## 
+##            4runner 4wd                     a4             a4 quattro 
+##                      6                      7                      8 
+##             a6 quattro                 altima     c1500 suburban 2wd 
+##                      3                      6                      5 
+##                  camry           camry solara            caravan 2wd 
+##                      7                      7                     11 
+##                  civic                corolla               corvette 
+##                      9                      5                      5 
+##      dakota pickup 4wd            durango 4wd         expedition 2wd 
+##                      9                      7                      3 
+##           explorer 4wd        f150 pickup 4wd           forester awd 
+##                      6                      7                      6 
+##     grand cherokee 4wd             grand prix                    gti 
+##                      8                      5                      5 
+##            impreza awd                  jetta        k1500 tahoe 4wd 
+##                      8                      9                      4 
+## land cruiser wagon 4wd                 malibu                 maxima 
+##                      2                      5                      3 
+##        mountaineer 4wd                mustang          navigator 2wd 
+##                      4                      9                      3 
+##             new beetle                 passat         pathfinder 4wd 
+##                      6                      7                      4 
+##    ram 1500 pickup 4wd            range rover                 sonata 
+##                     10                      4                      7 
+##                tiburon      toyota tacoma 4wd 
+##                      7                      7</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="exploratory-data-analysis.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df_mpg<span class="sc">$</span>class)</span></code></pre></div>
+<pre><code>## 
+##    2seater    compact    midsize    minivan     pickup subcompact        suv 
+##          5         47         41         11         33         35         62</code></pre>
+<p>It’s helpful to check counts of each values in variable. To better use, we can use this table with visualizing original variable.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="exploratory-data-analysis.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(df_mpg<span class="sc">$</span>class)</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+You should be careful to visualize the table as it is. If you visualize the table, it shows the different one.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="exploratory-data-analysis.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="fu">table</span>(df_mpg<span class="sc">$</span>class))</span></code></pre></div>
+<pre><code>## Don&#39;t know how to automatically pick scale for object of type table. Defaulting to continuous.</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="rbook_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 
 </div>
 </div>

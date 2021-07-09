@@ -148,6 +148,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#head-and-tail"><i class="fa fa-check"></i><b>2.1</b> head and tail</a></li>
 <li class="chapter" data-level="2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#dim-and-str"><i class="fa fa-check"></i><b>2.2</b> dim and str</a></li>
 <li class="chapter" data-level="2.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#summary"><i class="fa fa-check"></i><b>2.3</b> summary</a></li>
+<li class="chapter" data-level="2.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#table"><i class="fa fa-check"></i><b>2.4</b> table</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-preprocessing.html"><a href="data-preprocessing.html"><i class="fa fa-check"></i><b>3</b> Data Preprocessing</a>
 <ul>
@@ -183,15 +184,15 @@ And these work can be repeat until we construct a dataset that can make our prob
 <p><code>ifelse</code> is <code>Conditional Statments function</code> that is very simple and useful in R. We can use this with just 3 parameters - condition, return value when it’s true, return value when it’s false.</p>
 <p>let’s see example code.</p>
 <p>first, print the head of dataset</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="data-preprocessing.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mpg<span class="sc">$</span>hwy)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="data-preprocessing.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mpg<span class="sc">$</span>hwy)</span></code></pre></div>
 <pre><code>## [1] 29 29 31 30 26 26</code></pre>
 <p>And let’s apply ifelse to this head.
 if the hwy(highway fuel efficiency) is higher than 30, returns ‘Good.’</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="data-preprocessing.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">head</span>(mpg<span class="sc">$</span>hwy) <span class="sc">&gt;</span> <span class="dv">30</span>, <span class="st">&#39;Good&#39;</span>, <span class="st">&#39;Bad&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="data-preprocessing.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">head</span>(mpg<span class="sc">$</span>hwy) <span class="sc">&gt;</span> <span class="dv">30</span>, <span class="st">&#39;Good&#39;</span>, <span class="st">&#39;Bad&#39;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Good&quot; &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;</code></pre>
 <p>We can use this data by assign method(<code>&lt;-</code>). Let’s Control Entire variable.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="data-preprocessing.html#cb41-1" aria-hidden="true" tabindex="-1"></a>evaluate_hwy <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(mpg<span class="sc">$</span>hwy <span class="sc">&gt;</span> <span class="dv">30</span>, <span class="st">&#39;Good&#39;</span>, <span class="st">&#39;Bad&#39;</span>)</span>
-<span id="cb41-2"><a href="data-preprocessing.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(evaluate_hwy)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="data-preprocessing.html#cb49-1" aria-hidden="true" tabindex="-1"></a>evaluate_hwy <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(mpg<span class="sc">$</span>hwy <span class="sc">&gt;</span> <span class="dv">30</span>, <span class="st">&#39;Good&#39;</span>, <span class="st">&#39;Bad&#39;</span>)</span>
+<span id="cb49-2"><a href="data-preprocessing.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(evaluate_hwy)</span></code></pre></div>
 <pre><code>##   [1] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Good&quot; &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
 ##  [11] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
 ##  [21] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 

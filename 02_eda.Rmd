@@ -68,3 +68,26 @@ summary(df_mpg)
 If column is categorical variable, like `model`, `trans`, `drv`, `manufacturer`, `fl`, `class`, it just shows Length, Class and Mode. But in case of numerical, it can shows mean of variable, median of variable, minimum of variable, maximum of variable and 1st and 3rd quartile.
 
 
+## table
+
+And R also provides a frequency table. We can use this as call `table` function.
+```{r}
+table(df_mpg$model)
+```
+
+```{r}
+table(df_mpg$class)
+```
+
+It's helpful to check counts of each values in variable. To better use, we can use this table with visualizing original variable.
+
+```{r}
+qplot(df_mpg$class)
+```
+You should be careful to visualize the table as it is. If you visualize the table, it shows the different one.
+
+```{r}
+qplot(table(df_mpg$class))
+```
+
+
