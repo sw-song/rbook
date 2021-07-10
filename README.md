@@ -2,7 +2,7 @@
 
 [R Note](https://sw-song.github.io/rbook/) is R quick start tutorial written in english. 
 
-I started making this tutorial in July(2021-07) for the purpose of studying English and R together, and anyone is welcome to join this project.I started making this tutorial in January for the purpose of studying English and R together, and anyone is welcome to join this project.
+I started making this tutorial in July(2021-07) for the purpose of studying English and R together, and anyone is welcome to join this project.
 
 If there are any incorrect expressions or errors, please feel free to leave them as issues or pull-requests, and I hope that many people will join me in my long data analysis journey.
 
