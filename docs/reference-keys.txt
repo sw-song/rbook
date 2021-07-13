@@ -16,3 +16,5 @@ dplyr-left_join
 dplyr-right_join
 dplyr-inner_join
 dplyr-full_join
+dplyr-bind_cols
+dplyr-bind_rows

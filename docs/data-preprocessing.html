@@ -158,6 +158,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.8" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-right_join"><i class="fa fa-check"></i><b>2.8</b> dplyr :: right_join</a></li>
 <li class="chapter" data-level="2.9" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-inner_join"><i class="fa fa-check"></i><b>2.9</b> dplyr :: inner_join</a></li>
 <li class="chapter" data-level="2.10" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-full_join"><i class="fa fa-check"></i><b>2.10</b> dplyr :: full_join</a></li>
+<li class="chapter" data-level="2.11" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-bind_cols"><i class="fa fa-check"></i><b>2.11</b> dplyr :: bind_cols</a></li>
+<li class="chapter" data-level="2.12" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-bind_rows"><i class="fa fa-check"></i><b>2.12</b> dplyr :: bind_rows</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -721,6 +723,40 @@ But we want to get result that without missing value. In this case, we can use <
 ## 3      Jay       D    J     177      80
 ## 4      Bob       E    B     180      88
 ## 5      Tom    &lt;NA&gt;    T     190     101</code></pre>
+</div>
+<div id="dplyr-bind_cols" class="section level2" number="2.11">
+<h2><span class="header-section-number">2.11</span> dplyr :: bind_cols</h2>
+<p>If two data tables have the same number of rows, you can use <code>bind_cols()</code>. It is simple and return different result from <code>join</code>.</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="data-preprocessing.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_cols</span>(class_info2, students_info2)</span></code></pre></div>
+<pre><code>## New names:
+## * students -&gt; students...1
+## * students -&gt; students...3</code></pre>
+<pre><code>##   students...1 classes students...3 keys heights weights
+## 1       Jennie       A          Tom    T     190     101
+## 2        Minsu       C        Minsu    M     165      64
+## 3          Jay       D          Jay    J     177      80
+## 4          Bob       E          Bob    B     180      88</code></pre>
+<p>Yes, it just concatenate two tables. There is no reference column.
+So, same number of rows should be noted. If each number of rows are different, It returns error.</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="data-preprocessing.html#cb132-1" aria-hidden="true" tabindex="-1"></a>class_info</span></code></pre></div>
+<pre><code>##   students classes
+## 1   Jennie       A
+## 2      Tom       B
+## 3    Minsu       C
+## 4      Jay       D
+## 5      Bob       E</code></pre>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="data-preprocessing.html#cb134-1" aria-hidden="true" tabindex="-1"></a>students_info2</span></code></pre></div>
+<pre><code>##   students keys heights weights
+## 2      Tom    T     190     101
+## 3    Minsu    M     165      64
+## 4      Jay    J     177      80
+## 5      Bob    B     180      88</code></pre>
+<pre><code>bind_cols(class_info, students_info2)</code></pre>
+<pre><code>## Error: Can&#39;t recycle `..1` (size 5) to match `..2` (size 4). Run `rlang::last_error()` to see where the error occurred.</code></pre>
+</div>
+<div id="dplyr-bind_rows" class="section level2" number="2.12">
+<h2><span class="header-section-number">2.12</span> dplyr :: bind_rows</h2>
+<p>Unlike <code>bind_cols()</code>, it can receive input values.even if the number of each input columns is different.</p>
 
 </div>
 </div>
