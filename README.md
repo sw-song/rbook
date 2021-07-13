@@ -33,5 +33,7 @@ Thank you!
       2.8 dplyr :: right_join
       2.9 dplyr :: inner_join
       2.10 dplyr :: full_join
+      2.11 dplyr :: bind_cols
+      2.12 dplyr :: bind_rows
       
     References
