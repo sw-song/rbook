@@ -157,6 +157,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-select"><i class="fa fa-check"></i><b>3.4</b> dplyr :: select</a></li>
 <li class="chapter" data-level="3.5" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-arrange"><i class="fa fa-check"></i><b>3.5</b> dplyr :: arrange</a></li>
 <li class="chapter" data-level="3.6" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-summarise"><i class="fa fa-check"></i><b>3.6</b> dplyr :: summarise</a></li>
+<li class="chapter" data-level="3.7" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-left_join"><i class="fa fa-check"></i><b>3.7</b> dplyr :: left_join</a></li>
+<li class="chapter" data-level="3.8" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-right_join"><i class="fa fa-check"></i><b>3.8</b> dplyr :: right_join</a></li>
+<li class="chapter" data-level="3.9" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-inner_join"><i class="fa fa-check"></i><b>3.9</b> dplyr :: inner_join</a></li>
+<li class="chapter" data-level="3.10" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-full_join"><i class="fa fa-check"></i><b>3.10</b> dplyr :: full_join</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -595,6 +599,131 @@ We have used <code>filter()</code> to extract rows, now we’ll use <code>select
 ## 3 audi         a6 quattro     24        25      23
 ## 4 hyundai      sonata         27.7      31      26
 ## 5 hyundai      tiburon        26        29      24</code></pre>
+</div>
+<div id="dplyr-left_join" class="section level2" number="3.7">
+<h2><span class="header-section-number">3.7</span> dplyr :: left_join</h2>
+<p><code>dplyr</code> package contain <code>join</code> functions. First, we try <code>left_join()</code> for our custom data.</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="data-preprocessing.html#cb105-1" aria-hidden="true" tabindex="-1"></a>students <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Jennie&#39;</span>, <span class="st">&#39;Tom&#39;</span>, <span class="st">&#39;Minsu&#39;</span>, <span class="st">&#39;Jay&#39;</span>, <span class="st">&#39;Bob&#39;</span>)</span>
+<span id="cb105-2"><a href="data-preprocessing.html#cb105-2" aria-hidden="true" tabindex="-1"></a>classes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;A&#39;</span>,<span class="st">&#39;B&#39;</span>,<span class="st">&#39;C&#39;</span>,<span class="st">&#39;D&#39;</span>,<span class="st">&#39;E&#39;</span>)</span>
+<span id="cb105-3"><a href="data-preprocessing.html#cb105-3" aria-hidden="true" tabindex="-1"></a>keys <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;JN&#39;</span>, <span class="st">&#39;T&#39;</span>, <span class="st">&#39;M&#39;</span>, <span class="st">&#39;J&#39;</span>, <span class="st">&#39;B&#39;</span>)</span>
+<span id="cb105-4"><a href="data-preprocessing.html#cb105-4" aria-hidden="true" tabindex="-1"></a>heights <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">155</span>, <span class="dv">190</span>, <span class="dv">165</span>, <span class="dv">177</span>, <span class="dv">180</span>)</span>
+<span id="cb105-5"><a href="data-preprocessing.html#cb105-5" aria-hidden="true" tabindex="-1"></a>weights <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">57</span>, <span class="dv">101</span>, <span class="dv">64</span>, <span class="dv">80</span>, <span class="dv">88</span>)</span>
+<span id="cb105-6"><a href="data-preprocessing.html#cb105-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-7"><a href="data-preprocessing.html#cb105-7" aria-hidden="true" tabindex="-1"></a>class_info <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(students, classes)</span>
+<span id="cb105-8"><a href="data-preprocessing.html#cb105-8" aria-hidden="true" tabindex="-1"></a>students_info <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(students, keys, heights, weights)</span>
+<span id="cb105-9"><a href="data-preprocessing.html#cb105-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-10"><a href="data-preprocessing.html#cb105-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(class_info)</span></code></pre></div>
+<pre><code>##   students classes
+## 1   Jennie       A
+## 2      Tom       B
+## 3    Minsu       C
+## 4      Jay       D
+## 5      Bob       E</code></pre>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="data-preprocessing.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(students_info)</span></code></pre></div>
+<pre><code>##   students keys heights weights
+## 1   Jennie   JN     155      57
+## 2      Tom    T     190     101
+## 3    Minsu    M     165      64
+## 4      Jay    J     177      80
+## 5      Bob    B     180      88</code></pre>
+<p>If we have to combine this two table, We need some “point”s. This means some “column”s that two table have in common. In this example, <code>students</code> column is that.</p>
+<p>Let’s combine datasets by Setting <code>students</code> column as a point.</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="data-preprocessing.html#cb109-1" aria-hidden="true" tabindex="-1"></a>all_info <span class="ot">&lt;-</span> <span class="fu">left_join</span>(class_info, students_info, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
+<span id="cb109-2"><a href="data-preprocessing.html#cb109-2" aria-hidden="true" tabindex="-1"></a>all_info</span></code></pre></div>
+<pre><code>##   students classes keys heights weights
+## 1   Jennie       A   JN     155      57
+## 2      Tom       B    T     190     101
+## 3    Minsu       C    M     165      64
+## 4      Jay       D    J     177      80
+## 5      Bob       E    B     180      88</code></pre>
+</div>
+<div id="dplyr-right_join" class="section level2" number="3.8">
+<h2><span class="header-section-number">3.8</span> dplyr :: right_join</h2>
+<p>What if we use <code>right_join()</code>?
+In this table, it’s same.</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="data-preprocessing.html#cb111-1" aria-hidden="true" tabindex="-1"></a>all_info2 <span class="ot">&lt;-</span> <span class="fu">right_join</span>(class_info, students_info, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
+<span id="cb111-2"><a href="data-preprocessing.html#cb111-2" aria-hidden="true" tabindex="-1"></a>all_info2</span></code></pre></div>
+<pre><code>##   students classes keys heights weights
+## 1   Jennie       A   JN     155      57
+## 2      Tom       B    T     190     101
+## 3    Minsu       C    M     165      64
+## 4      Jay       D    J     177      80
+## 5      Bob       E    B     180      88</code></pre>
+<p>Because left table(class_info) and right rable(students_info) have same variable(students).</p>
+<p>If one side has Na in <code>students</code> column, the result will be different.</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="data-preprocessing.html#cb113-1" aria-hidden="true" tabindex="-1"></a>students_info2 <span class="ot">&lt;-</span> students_info[<span class="sc">-</span><span class="dv">1</span>,]</span>
+<span id="cb113-2"><a href="data-preprocessing.html#cb113-2" aria-hidden="true" tabindex="-1"></a>students_info2</span></code></pre></div>
+<pre><code>##   students keys heights weights
+## 2      Tom    T     190     101
+## 3    Minsu    M     165      64
+## 4      Jay    J     177      80
+## 5      Bob    B     180      88</code></pre>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="data-preprocessing.html#cb115-1" aria-hidden="true" tabindex="-1"></a>all_info3 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(class_info, students_info2, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
+<span id="cb115-2"><a href="data-preprocessing.html#cb115-2" aria-hidden="true" tabindex="-1"></a>all_info3</span></code></pre></div>
+<pre><code>##   students classes keys heights weights
+## 1   Jennie       A &lt;NA&gt;      NA      NA
+## 2      Tom       B    T     190     101
+## 3    Minsu       C    M     165      64
+## 4      Jay       D    J     177      80
+## 5      Bob       E    B     180      88</code></pre>
+<p>let’s see this. We have founded 3 NA values. It’s bacause students_info2 didn’t have the Jennie’s informatino(row)
+But,</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="data-preprocessing.html#cb117-1" aria-hidden="true" tabindex="-1"></a>all_info4 <span class="ot">&lt;-</span> <span class="fu">right_join</span>(class_info, students_info2, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
+<span id="cb117-2"><a href="data-preprocessing.html#cb117-2" aria-hidden="true" tabindex="-1"></a>all_info4</span></code></pre></div>
+<pre><code>##   students classes keys heights weights
+## 1      Tom       B    T     190     101
+## 2    Minsu       C    M     165      64
+## 3      Jay       D    J     177      80
+## 4      Bob       E    B     180      88</code></pre>
+<p>If we have chosen <code>right_join()</code> at this moment, we can get different result like this.
+It’s because students_info2 didn’t have the Jennie’s informatino(row). Same.</p>
+<p><code>right_join()</code> receives two inputs like <code>left_join()</code>, and joins tables based on the right (second) input.</p>
+</div>
+<div id="dplyr-inner_join" class="section level2" number="3.9">
+<h2><span class="header-section-number">3.9</span> dplyr :: inner_join</h2>
+<p>How can we join tables if we met all of tables are have <code>NA</code> at base column of reference?
+Like this case,</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="data-preprocessing.html#cb119-1" aria-hidden="true" tabindex="-1"></a>class_info2 <span class="ot">&lt;-</span> class_info[<span class="sc">-</span><span class="dv">2</span>,]</span>
+<span id="cb119-2"><a href="data-preprocessing.html#cb119-2" aria-hidden="true" tabindex="-1"></a>class_info2</span></code></pre></div>
+<pre><code>##   students classes
+## 1   Jennie       A
+## 3    Minsu       C
+## 4      Jay       D
+## 5      Bob       E</code></pre>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="data-preprocessing.html#cb121-1" aria-hidden="true" tabindex="-1"></a>all_info4 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(class_info2, students_info2, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
+<span id="cb121-2"><a href="data-preprocessing.html#cb121-2" aria-hidden="true" tabindex="-1"></a>all_info4</span></code></pre></div>
+<pre><code>##   students classes keys heights weights
+## 1   Jennie       A &lt;NA&gt;      NA      NA
+## 2    Minsu       C    M     165      64
+## 3      Jay       D    J     177      80
+## 4      Bob       E    B     180      88</code></pre>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="data-preprocessing.html#cb123-1" aria-hidden="true" tabindex="-1"></a>all_info5 <span class="ot">&lt;-</span> <span class="fu">right_join</span>(class_info2, students_info2, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
+<span id="cb123-2"><a href="data-preprocessing.html#cb123-2" aria-hidden="true" tabindex="-1"></a>all_info5</span></code></pre></div>
+<pre><code>##   students classes keys heights weights
+## 1    Minsu       C    M     165      64
+## 2      Jay       D    J     177      80
+## 3      Bob       E    B     180      88
+## 4      Tom    &lt;NA&gt;    T     190     101</code></pre>
+<p>Yes, returns have <code>NA</code> all as expected.
+But we want to get result that without missing value. In this case, we can use <code>inner_join()</code></p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="data-preprocessing.html#cb125-1" aria-hidden="true" tabindex="-1"></a>all_info6 <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(class_info2, students_info2, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
+<span id="cb125-2"><a href="data-preprocessing.html#cb125-2" aria-hidden="true" tabindex="-1"></a>all_info6</span></code></pre></div>
+<pre><code>##   students classes keys heights weights
+## 1    Minsu       C    M     165      64
+## 2      Jay       D    J     177      80
+## 3      Bob       E    B     180      88</code></pre>
+</div>
+<div id="dplyr-full_join" class="section level2" number="3.10">
+<h2><span class="header-section-number">3.10</span> dplyr :: full_join</h2>
+<p>Conversely, if we want to display all values together even if there are missing values in left or right, we can use <code>full_join()</code></p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="data-preprocessing.html#cb127-1" aria-hidden="true" tabindex="-1"></a>all_info7 <span class="ot">&lt;-</span> <span class="fu">full_join</span>(class_info2, students_info2, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
+<span id="cb127-2"><a href="data-preprocessing.html#cb127-2" aria-hidden="true" tabindex="-1"></a>all_info7</span></code></pre></div>
+<pre><code>##   students classes keys heights weights
+## 1   Jennie       A &lt;NA&gt;      NA      NA
+## 2    Minsu       C    M     165      64
+## 3      Jay       D    J     177      80
+## 4      Bob       E    B     180      88
+## 5      Tom    &lt;NA&gt;    T     190     101</code></pre>
 
 </div>
 </div>

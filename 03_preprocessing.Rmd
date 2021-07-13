@@ -228,4 +228,106 @@ new_mpg %>%
 ```
 
 
+## dplyr :: left_join
+
+`dplyr` package contain `join` functions. First, we try `left_join()` for our custom data.
+
+
+```{r}
+students <- c('Jennie', 'Tom', 'Minsu', 'Jay', 'Bob')
+classes <- c('A','B','C','D','E')
+keys <- c('JN', 'T', 'M', 'J', 'B')
+heights <- c(155, 190, 165, 177, 180)
+weights <- c(57, 101, 64, 80, 88)
+
+class_info <- data.frame(students, classes)
+students_info <- data.frame(students, keys, heights, weights)
+
+head(class_info)
+head(students_info)
+```
+
+If we have to combine this two table, We need some "point"s. This means some "column"s that two table have in common. In this example, `students` column is that.
+
+Let's combine datasets by Setting `students` column as a point.
+```{r}
+all_info <- left_join(class_info, students_info, by='students')
+all_info
+```
+
+
+## dplyr :: right_join
+
+What if we use `right_join()`?
+In this table, it's same.
+
+```{r}
+all_info2 <- right_join(class_info, students_info, by='students')
+all_info2
+```
+
+Because left table(class_info) and right rable(students_info) have same variable(students).
+
+If one side has Na in `students` column, the result will be different.
+
+```{r}
+students_info2 <- students_info[-1,]
+students_info2
+```
+
+```{r}
+all_info3 <- left_join(class_info, students_info2, by='students')
+all_info3
+```
+
+let's see this. We have founded 3 NA values. It's bacause students_info2 didn't have the Jennie's informatino(row)
+But,
+```{r}
+all_info4 <- right_join(class_info, students_info2, by='students')
+all_info4
+```
+
+If we have chosen `right_join()` at this moment, we can get different result like this.
+It's because students_info2 didn't have the Jennie's informatino(row). Same.
+
+`right_join()` receives two inputs like `left_join()`, and joins tables based on the right (second) input.
+
+
+## dplyr :: inner_join
+
+How can we join tables if we met all of tables are have `NA` at base column of reference?
+Like this case,
+```{r}
+class_info2 <- class_info[-2,]
+class_info2
+```
+
+```{r}
+all_info4 <- left_join(class_info2, students_info2, by='students')
+all_info4
+```
+
+```{r}
+all_info5 <- right_join(class_info2, students_info2, by='students')
+all_info5
+```
+
+Yes, returns have `NA` all as expected.
+But we want to get result that without missing value. In this case, we can use `inner_join()`
+```{r}
+all_info6 <- inner_join(class_info2, students_info2, by='students')
+all_info6
+```
+
+
+## dplyr :: full_join
+
+Conversely, if we want to display all values together even if there are missing values in left or right, we can use `full_join()`
+
+```{r}
+all_info7 <- full_join(class_info2, students_info2, by='students')
+all_info7
+```
+
+
 
