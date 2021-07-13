@@ -1,11 +1,10 @@
-data-visualization
-qplot
-hist
 exploratory-data-analysis
 head-and-tail
 dim-and-str
 summary
 table
+qplot
+hist
 data-preprocessing
 ifelse
 dplyr-mutate

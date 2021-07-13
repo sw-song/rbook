@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Data Preprocessing | R Note</title>
+  <title>Chapter 2 Data Preprocessing | R Note</title>
   <meta name="description" content="It’s R quick guide for anyone who start to study R" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Data Preprocessing | R Note" />
+  <meta property="og:title" content="Chapter 2 Data Preprocessing | R Note" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Data Preprocessing | R Note" />
+  <meta name="twitter:title" content="Chapter 2 Data Preprocessing | R Note" />
   
   <meta name="twitter:description" content="It’s R quick guide for anyone who start to study R" />
   
@@ -120,7 +120,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 
-<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 
 <body>
@@ -133,38 +133,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">R Note</a></li>
+<li><a href="./index.html">R Note</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Intro to R</a></li>
-<li class="chapter" data-level="1" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>1</b> Data Visualization</a>
+<li class="chapter" data-level="1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>1</b> Exploratory Data Analysis</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="data-visualization.html"><a href="data-visualization.html#qplot"><i class="fa fa-check"></i><b>1.1</b> qplot</a></li>
-<li class="chapter" data-level="1.2" data-path="data-visualization.html"><a href="data-visualization.html#hist"><i class="fa fa-check"></i><b>1.2</b> hist</a></li>
+<li class="chapter" data-level="1.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#head-and-tail"><i class="fa fa-check"></i><b>1.1</b> head and tail</a></li>
+<li class="chapter" data-level="1.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#dim-and-str"><i class="fa fa-check"></i><b>1.2</b> dim and str</a></li>
+<li class="chapter" data-level="1.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#summary"><i class="fa fa-check"></i><b>1.3</b> summary</a></li>
+<li class="chapter" data-level="1.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#table"><i class="fa fa-check"></i><b>1.4</b> table</a></li>
+<li class="chapter" data-level="1.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#qplot"><i class="fa fa-check"></i><b>1.5</b> qplot</a></li>
+<li class="chapter" data-level="1.6" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#hist"><i class="fa fa-check"></i><b>1.6</b> hist</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>2</b> Exploratory Data Analysis</a>
+<li class="chapter" data-level="2" data-path="data-preprocessing.html"><a href="data-preprocessing.html"><i class="fa fa-check"></i><b>2</b> Data Preprocessing</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#head-and-tail"><i class="fa fa-check"></i><b>2.1</b> head and tail</a></li>
-<li class="chapter" data-level="2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#dim-and-str"><i class="fa fa-check"></i><b>2.2</b> dim and str</a></li>
-<li class="chapter" data-level="2.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#summary"><i class="fa fa-check"></i><b>2.3</b> summary</a></li>
-<li class="chapter" data-level="2.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#table"><i class="fa fa-check"></i><b>2.4</b> table</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="data-preprocessing.html"><a href="data-preprocessing.html"><i class="fa fa-check"></i><b>3</b> Data Preprocessing</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="data-preprocessing.html"><a href="data-preprocessing.html#ifelse"><i class="fa fa-check"></i><b>3.1</b> ifelse</a></li>
-<li class="chapter" data-level="3.2" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-mutate"><i class="fa fa-check"></i><b>3.2</b> dplyr :: mutate</a></li>
-<li class="chapter" data-level="3.3" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-filter"><i class="fa fa-check"></i><b>3.3</b> dplyr :: filter</a></li>
-<li class="chapter" data-level="3.4" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-select"><i class="fa fa-check"></i><b>3.4</b> dplyr :: select</a></li>
-<li class="chapter" data-level="3.5" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-arrange"><i class="fa fa-check"></i><b>3.5</b> dplyr :: arrange</a></li>
-<li class="chapter" data-level="3.6" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-summarise"><i class="fa fa-check"></i><b>3.6</b> dplyr :: summarise</a></li>
-<li class="chapter" data-level="3.7" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-left_join"><i class="fa fa-check"></i><b>3.7</b> dplyr :: left_join</a></li>
-<li class="chapter" data-level="3.8" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-right_join"><i class="fa fa-check"></i><b>3.8</b> dplyr :: right_join</a></li>
-<li class="chapter" data-level="3.9" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-inner_join"><i class="fa fa-check"></i><b>3.9</b> dplyr :: inner_join</a></li>
-<li class="chapter" data-level="3.10" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-full_join"><i class="fa fa-check"></i><b>3.10</b> dplyr :: full_join</a></li>
+<li class="chapter" data-level="2.1" data-path="data-preprocessing.html"><a href="data-preprocessing.html#ifelse"><i class="fa fa-check"></i><b>2.1</b> ifelse</a></li>
+<li class="chapter" data-level="2.2" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-mutate"><i class="fa fa-check"></i><b>2.2</b> dplyr :: mutate</a></li>
+<li class="chapter" data-level="2.3" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-filter"><i class="fa fa-check"></i><b>2.3</b> dplyr :: filter</a></li>
+<li class="chapter" data-level="2.4" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-select"><i class="fa fa-check"></i><b>2.4</b> dplyr :: select</a></li>
+<li class="chapter" data-level="2.5" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-arrange"><i class="fa fa-check"></i><b>2.5</b> dplyr :: arrange</a></li>
+<li class="chapter" data-level="2.6" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-summarise"><i class="fa fa-check"></i><b>2.6</b> dplyr :: summarise</a></li>
+<li class="chapter" data-level="2.7" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-left_join"><i class="fa fa-check"></i><b>2.7</b> dplyr :: left_join</a></li>
+<li class="chapter" data-level="2.8" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-right_join"><i class="fa fa-check"></i><b>2.8</b> dplyr :: right_join</a></li>
+<li class="chapter" data-level="2.9" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-inner_join"><i class="fa fa-check"></i><b>2.9</b> dplyr :: inner_join</a></li>
+<li class="chapter" data-level="2.10" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-full_join"><i class="fa fa-check"></i><b>2.10</b> dplyr :: full_join</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="https://github.com/sw-song/rbook" target="blank">R Note - Github</a></li>
 
 </ul>
 
@@ -183,12 +180,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-preprocessing" class="section level1" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Data Preprocessing</h1>
+<div id="data-preprocessing" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Data Preprocessing</h1>
 <p>While exploring data, we need to preprocess it properly for our purpose.
 And these work can be repeat until we construct a dataset that can make our probabilistic model well.</p>
-<div id="ifelse" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> ifelse</h2>
+<div id="ifelse" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> ifelse</h2>
 <p><code>ifelse</code> is <code>Conditional Statments function</code> that is very simple and useful in R. We can use this with just 3 parameters - condition, return value when it’s true, return value when it’s false.</p>
 <p>let’s see example code.</p>
 <p>first, print the head of dataset</p>
@@ -256,8 +253,8 @@ if the hwy(highway fuel efficiency) is higher than 30, returns ‘Good.’</p>
 ## [221] &quot;Low&quot;  &quot;High&quot; &quot;High&quot; &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
 ## [231] &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;</code></pre>
 </div>
-<div id="dplyr-mutate" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> dplyr :: mutate</h2>
+<div id="dplyr-mutate" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> dplyr :: mutate</h2>
 <p>In R, <code>dplyr</code> package is the most popular library for data preprocessing. Especially it provides pipe(‘%&gt;%’), and it’s very helpful for intuitive coding. And <code>mutate</code> in <code>dplyr</code> package do exactly same work as the one above, However it is simpler and easier to use. Let’s see this.</p>
 <p>(before load, you have to install “dplyr” package)</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="data-preprocessing.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;dplyr&quot;) </span></span>
@@ -338,8 +335,8 @@ if the hwy(highway fuel efficiency) is higher than 30, returns ‘Good.’</p>
 <p><img src="rbook_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
 <p>We can use more functions from <code>dplyr</code> package. The commonly used functions that except mutate we have seen already are <code>filter()</code>, <code>select()</code>, <code>arrange()</code>, <code>summarise()</code>. Let’s look at these one by one.</p>
 </div>
-<div id="dplyr-filter" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> dplyr :: filter</h2>
+<div id="dplyr-filter" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> dplyr :: filter</h2>
 <p>First, <code>filter()</code> function. <code>filter</code> extracts rows by some conditions.</p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="data-preprocessing.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(new_mpg)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 14
@@ -401,8 +398,8 @@ if the hwy(highway fuel efficiency) is higher than 30, returns ‘Good.’</p>
 ## # … with 3 more variables: eval_hwy &lt;chr&gt;, mean_fuel &lt;dbl&gt;, eval_fuel &lt;chr&gt;</code></pre>
 <p>Yes, now you can choose the car that you want.</p>
 </div>
-<div id="dplyr-select" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> dplyr :: select</h2>
+<div id="dplyr-select" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> dplyr :: select</h2>
 <p>Next, <code>select()</code> function.
 We have used <code>filter()</code> to extract rows, now we’ll use <code>select()</code> to extract columns.</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="data-preprocessing.html#cb77-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
@@ -449,8 +446,8 @@ We have used <code>filter()</code> to extract rows, now we’ll use <code>select
 ##  9 audi         a4 quattro compact    25
 ## 10 audi         a4 quattro compact    28</code></pre>
 </div>
-<div id="dplyr-arrange" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> dplyr :: arrange</h2>
+<div id="dplyr-arrange" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> dplyr :: arrange</h2>
 <p>In case of numerical data(variable), we can order it. If data is categorical variable, It’ll return error.</p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="data-preprocessing.html#cb83-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
 <span id="cb83-2"><a href="data-preprocessing.html#cb83-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, model, class, hwy) <span class="sc">%&gt;%</span></span>
@@ -488,8 +485,8 @@ We have used <code>filter()</code> to extract rows, now we’ll use <code>select
 ##  9 honda        civic      subcompact    34
 ## 10 honda        civic      subcompact    33</code></pre>
 </div>
-<div id="dplyr-summarise" class="section level2" number="3.6">
-<h2><span class="header-section-number">3.6</span> dplyr :: summarise</h2>
+<div id="dplyr-summarise" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> dplyr :: summarise</h2>
 <p>The function <code>summarise()</code> can be used to get basic statistics by specifying functions such as mean(), sd(), median(), etc.</p>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="data-preprocessing.html#cb87-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
 <span id="cb87-2"><a href="data-preprocessing.html#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer<span class="sc">==</span><span class="st">&#39;audi&#39;</span>) <span class="sc">%&gt;%</span></span>
@@ -600,8 +597,8 @@ We have used <code>filter()</code> to extract rows, now we’ll use <code>select
 ## 4 hyundai      sonata         27.7      31      26
 ## 5 hyundai      tiburon        26        29      24</code></pre>
 </div>
-<div id="dplyr-left_join" class="section level2" number="3.7">
-<h2><span class="header-section-number">3.7</span> dplyr :: left_join</h2>
+<div id="dplyr-left_join" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> dplyr :: left_join</h2>
 <p><code>dplyr</code> package contain <code>join</code> functions. First, we try <code>left_join()</code> for our custom data.</p>
 <div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="data-preprocessing.html#cb105-1" aria-hidden="true" tabindex="-1"></a>students <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Jennie&#39;</span>, <span class="st">&#39;Tom&#39;</span>, <span class="st">&#39;Minsu&#39;</span>, <span class="st">&#39;Jay&#39;</span>, <span class="st">&#39;Bob&#39;</span>)</span>
 <span id="cb105-2"><a href="data-preprocessing.html#cb105-2" aria-hidden="true" tabindex="-1"></a>classes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;A&#39;</span>,<span class="st">&#39;B&#39;</span>,<span class="st">&#39;C&#39;</span>,<span class="st">&#39;D&#39;</span>,<span class="st">&#39;E&#39;</span>)</span>
@@ -637,8 +634,8 @@ We have used <code>filter()</code> to extract rows, now we’ll use <code>select
 ## 4      Jay       D    J     177      80
 ## 5      Bob       E    B     180      88</code></pre>
 </div>
-<div id="dplyr-right_join" class="section level2" number="3.8">
-<h2><span class="header-section-number">3.8</span> dplyr :: right_join</h2>
+<div id="dplyr-right_join" class="section level2" number="2.8">
+<h2><span class="header-section-number">2.8</span> dplyr :: right_join</h2>
 <p>What if we use <code>right_join()</code>?
 In this table, it’s same.</p>
 <div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="data-preprocessing.html#cb111-1" aria-hidden="true" tabindex="-1"></a>all_info2 <span class="ot">&lt;-</span> <span class="fu">right_join</span>(class_info, students_info, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
@@ -679,8 +676,8 @@ But,</p>
 It’s because students_info2 didn’t have the Jennie’s informatino(row). Same.</p>
 <p><code>right_join()</code> receives two inputs like <code>left_join()</code>, and joins tables based on the right (second) input.</p>
 </div>
-<div id="dplyr-inner_join" class="section level2" number="3.9">
-<h2><span class="header-section-number">3.9</span> dplyr :: inner_join</h2>
+<div id="dplyr-inner_join" class="section level2" number="2.9">
+<h2><span class="header-section-number">2.9</span> dplyr :: inner_join</h2>
 <p>How can we join tables if we met all of tables are have <code>NA</code> at base column of reference?
 Like this case,</p>
 <div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="data-preprocessing.html#cb119-1" aria-hidden="true" tabindex="-1"></a>class_info2 <span class="ot">&lt;-</span> class_info[<span class="sc">-</span><span class="dv">2</span>,]</span>
@@ -713,8 +710,8 @@ But we want to get result that without missing value. In this case, we can use <
 ## 2      Jay       D    J     177      80
 ## 3      Bob       E    B     180      88</code></pre>
 </div>
-<div id="dplyr-full_join" class="section level2" number="3.10">
-<h2><span class="header-section-number">3.10</span> dplyr :: full_join</h2>
+<div id="dplyr-full_join" class="section level2" number="2.10">
+<h2><span class="header-section-number">2.10</span> dplyr :: full_join</h2>
 <p>Conversely, if we want to display all values together even if there are missing values in left or right, we can use <code>full_join()</code></p>
 <div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="data-preprocessing.html#cb127-1" aria-hidden="true" tabindex="-1"></a>all_info7 <span class="ot">&lt;-</span> <span class="fu">full_join</span>(class_info2, students_info2, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
 <span id="cb127-2"><a href="data-preprocessing.html#cb127-2" aria-hidden="true" tabindex="-1"></a>all_info7</span></code></pre></div>
@@ -778,7 +775,7 @@ gitbook.start({
 },
 "download": ["rbook.pdf", "rbook.epub"],
 "toc": {
-"collapse": "subsection"
+"collapse": "section"
 }
 });
 });

@@ -81,6 +81,12 @@ table(df_mpg$class)
 
 It's helpful to check counts of each values in variable. To better use, we can use this table with visualizing original variable.
 
+first, let's import `ggplot2` library
+```{r}
+library(ggplot2)
+```
+
+
 ```{r}
 qplot(df_mpg$class)
 ```
@@ -89,5 +95,90 @@ You should be careful to visualize the table as it is. If you visualize the tabl
 ```{r}
 qplot(table(df_mpg$class))
 ```
+
+## qplot
+
+Visualization is always important part for EDA. Let's study more about `qplot`.
+we use `mpg` dataset. Extract top 5 rows
+```{r}
+head(mpg)
+```
+
+`qplot` means "quick plot". It is useful for quickly running our plot.
+
+let's see some feature's frequency using `qplot`
+
+```{r}
+qplot(data=mpg, x=manufacturer)
+```
+
+```{r}
+qplot(data=mpg, x=fl)
+```
+
+```{r}
+qplot(data=mpg, x=year)
+```
+
+it's weired. `year` data have only 2 cases.
+let's check that.
+
+```{r}
+table(mpg$year)
+```
+
+yes. it's contain only the car data that manufacturered in 1999 and 2008. We have to think about this when analysis this dataset.
+
+and let's go ahead and check the other feature one more.
+
+```{r}
+qplot(data=mpg, x=class)
+```
+
+like this, we can show data's frequency by input x(feature). 
+
+and `class` contains types of car like size or shape etc.
+```{r}
+table(mpg$class)
+```
+
+
+Then, what will happen if we input y into qplot function?
+
+```{r}
+qplot(data=mpg, x=class, y=hwy)
+```
+
+This is scatter plot. From this plot, we can check highway fuel economy of each car class. Pick-up truck and SUV are not good at average fuel economy.
+
+But, we have more useful plot than scatter plot for checking the mean of data. Let's use that.
+
+```{r}
+qplot(data=mpg, x=class, y=hwy, geom='boxplot', color=class)
+```
+
+It's box plot. We can check means easily and even outliers. It's very important that how our data visualized and what tools we use.
+
+If we use line plot for this situation, It is difficult to accurately show the data.
+
+```{r}
+qplot(data=mpg, x=class, y=hwy, geom='line', color=class)
+```
+
+
+## hist
+
+R have basic histplot function. We can use this by calling `hist()`. `hist` means histogram. It shows the distribution of continuous(numeric) variable.
+
+```{r}
+hist(mpg$hwy)
+```
+
+If you input categorical variable(ex. mpg$class) into `hist` function, 
+
+it returns error that `Error in hist.default(mpg$class) : 'x' must be numeric`
+
+
+
 
 
