@@ -148,7 +148,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#is.na"><i class="fa fa-check"></i><b>1.7</b> is.na</a></li>
 <li class="chapter" data-level="1.8" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#na.omit"><i class="fa fa-check"></i><b>1.8</b> na.omit</a></li>
 <li class="chapter" data-level="1.9" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#barplot"><i class="fa fa-check"></i><b>1.9</b> barplot</a></li>
-<li class="chapter" data-level="1.10" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#baxplot"><i class="fa fa-check"></i><b>1.10</b> baxplot</a></li>
+<li class="chapter" data-level="1.10" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#boxplot"><i class="fa fa-check"></i><b>1.10</b> boxplot</a></li>
+<li class="chapter" data-level="1.11" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#ggplot2-ggplot"><i class="fa fa-check"></i><b>1.11</b> ggplot2 :: ggplot</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="data-preprocessing.html"><a href="data-preprocessing.html"><i class="fa fa-check"></i><b>2</b> Data Preprocessing</a>
 <ul>
@@ -436,8 +437,8 @@ let’s check that.</p>
 No. It’s may be typing error. maybe it’s 170, 177 etc.</p>
 <p>In many case, there are so many data in dataset so that it’s hard to check one by one through table, so it’s so useful to use visualization.</p>
 </div>
-<div id="baxplot" class="section level2" number="1.10">
-<h2><span class="header-section-number">1.10</span> baxplot</h2>
+<div id="boxplot" class="section level2" number="1.10">
+<h2><span class="header-section-number">1.10</span> boxplot</h2>
 <p>Especially when you do not have deep domain knowledge or want to look for statistical outliers, boxplot is a great help.</p>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="exploratory-data-analysis.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(mpg<span class="sc">$</span>cty)</span></code></pre></div>
 <p><img src="rbook_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
@@ -498,6 +499,34 @@ let’s check them.</p>
 ## 3 volkswagen   jetta     1.9  1999     4 manual… f        33    44 d     compact
 ## 4 volkswagen   new be…   1.9  1999     4 manual… f        35    44 d     subcom…
 ## 5 volkswagen   new be…   1.9  1999     4 auto(l… f        29    41 d     subcom…</code></pre>
+</div>
+<div id="ggplot2-ggplot" class="section level2" number="1.11">
+<h2><span class="header-section-number">1.11</span> ggplot2 :: ggplot</h2>
+<p>ggplot2 is a package that helps with structural visualization using the R.</p>
+<p>scatter plot, box plot, line plot, hist plot etc. all type of chart that we discussed can all be used in ggplot. Let’s try it.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="exploratory-data-analysis.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mpg)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 11
+##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class 
+##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
+## 1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compa…
+## 2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compa…
+## 3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compa…
+## 4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compa…
+## 5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compa…
+## 6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="exploratory-data-analysis.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb81-2"><a href="exploratory-data-analysis.html#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mpg, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>cty)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-45-1.png" width="672" />
+Scatter plot is useful for checking distribution of dataset. But in this case, the <code>year</code> variable isn’t continuous. Let’s deal with other variable.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="exploratory-data-analysis.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mpg, <span class="fu">aes</span>(<span class="at">x=</span>displ, <span class="at">y=</span>cty)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<p>As with this one, if the two variables are not continuous, you should consider another chart.</p>
+<p>As another example,</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="exploratory-data-analysis.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mpg, <span class="fu">aes</span>(<span class="at">x=</span>class, <span class="at">y=</span>cty)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<p>It is better to use a box plot to compare the fuel efficiency of each class.</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="exploratory-data-analysis.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mpg, <span class="fu">aes</span>(<span class="at">x=</span>class, <span class="at">y=</span>cty)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
 
 </div>
 </div>

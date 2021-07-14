@@ -8,7 +8,8 @@ hist
 is.na
 na.omit
 barplot
-baxplot
+boxplot
+ggplot2-ggplot
 data-preprocessing
 ifelse
 dplyr-mutate
