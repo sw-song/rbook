@@ -145,6 +145,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#table"><i class="fa fa-check"></i><b>1.4</b> table</a></li>
 <li class="chapter" data-level="1.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#qplot"><i class="fa fa-check"></i><b>1.5</b> qplot</a></li>
 <li class="chapter" data-level="1.6" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#hist"><i class="fa fa-check"></i><b>1.6</b> hist</a></li>
+<li class="chapter" data-level="1.7" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#is.na"><i class="fa fa-check"></i><b>1.7</b> is.na</a></li>
+<li class="chapter" data-level="1.8" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#na.omit"><i class="fa fa-check"></i><b>1.8</b> na.omit</a></li>
+<li class="chapter" data-level="1.9" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#barplot"><i class="fa fa-check"></i><b>1.9</b> barplot</a></li>
+<li class="chapter" data-level="1.10" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#baxplot"><i class="fa fa-check"></i><b>1.10</b> baxplot</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="data-preprocessing.html"><a href="data-preprocessing.html"><i class="fa fa-check"></i><b>2</b> Data Preprocessing</a>
 <ul>
@@ -363,6 +367,137 @@ let’s check that.</p>
 <p><img src="rbook_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 <p>If you input categorical variable(ex. mpg$class) into <code>hist</code> function,</p>
 <p>it returns error that <code>Error in hist.default(mpg$class) : 'x' must be numeric</code></p>
+</div>
+<div id="is.na" class="section level2" number="1.7">
+<h2><span class="header-section-number">1.7</span> is.na</h2>
+<p><code>is.na()</code> is the function that check whether the input has missing value or not.</p>
+<p>and the input can be vector, list, data.frame etc.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="exploratory-data-analysis.html#cb45-1" aria-hidden="true" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Kim&#39;</span>, <span class="st">&#39;Jay&#39;</span>, <span class="st">&#39;toreto&#39;</span>, <span class="cn">NA</span>)</span>
+<span id="cb45-2"><a href="exploratory-data-analysis.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(names)</span></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE  TRUE</code></pre>
+<p>we can count <code>NA</code> by using <code>table</code> function.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="exploratory-data-analysis.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">is.na</span>(names))</span></code></pre></div>
+<pre><code>## 
+## FALSE  TRUE 
+##     3     1</code></pre>
+<p>How about a dataframe?</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="exploratory-data-analysis.html#cb49-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;0000&#39;</span>, <span class="st">&#39;0010&#39;</span>, <span class="st">&#39;0022&#39;</span>, <span class="cn">NA</span>)</span>
+<span id="cb49-2"><a href="exploratory-data-analysis.html#cb49-2" aria-hidden="true" tabindex="-1"></a>birth <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;880201&#39;</span>, <span class="st">&#39;000106&#39;</span>, <span class="st">&#39;930128&#39;</span>, <span class="cn">NA</span>)</span>
+<span id="cb49-3"><a href="exploratory-data-analysis.html#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="exploratory-data-analysis.html#cb49-4" aria-hidden="true" tabindex="-1"></a>customer_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(names, id, birth)</span>
+<span id="cb49-5"><a href="exploratory-data-analysis.html#cb49-5" aria-hidden="true" tabindex="-1"></a>customer_df</span></code></pre></div>
+<pre><code>##    names   id  birth
+## 1    Kim 0000 880201
+## 2    Jay 0010 000106
+## 3 toreto 0022 930128
+## 4   &lt;NA&gt; &lt;NA&gt;   &lt;NA&gt;</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="exploratory-data-analysis.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">is.na</span>(customer_df))</span></code></pre></div>
+<pre><code>## 
+## FALSE  TRUE 
+##     9     3</code></pre>
+<p>we can visualize table by using <code>plot()</code> method</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="exploratory-data-analysis.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">table</span>(<span class="fu">is.na</span>(customer_df)))</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p>If we just need to check only <code>NA</code>, we can use <code>sum()</code>.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="exploratory-data-analysis.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(customer_df))</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>There are many ways to fill <code>NA</code>.</p>
+<p>first, just fill <code>NA</code> as specific value.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="exploratory-data-analysis.html#cb56-1" aria-hidden="true" tabindex="-1"></a>customer_df[<span class="dv">4</span>,][<span class="st">&#39;names&#39;</span>] <span class="ot">&lt;-</span> <span class="st">&#39;haword&#39;</span></span>
+<span id="cb56-2"><a href="exploratory-data-analysis.html#cb56-2" aria-hidden="true" tabindex="-1"></a>customer_df</span></code></pre></div>
+<pre><code>##    names   id  birth
+## 1    Kim 0000 880201
+## 2    Jay 0010 000106
+## 3 toreto 0022 930128
+## 4 haword &lt;NA&gt;   &lt;NA&gt;</code></pre>
+<p>or we can use <code>ifelse()</code> function like this.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="exploratory-data-analysis.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">is.na</span>(customer_df<span class="sc">$</span>id), <span class="st">&#39;Missing&#39;</span>, customer_df<span class="sc">$</span>id)</span></code></pre></div>
+<pre><code>## [1] &quot;0000&quot;    &quot;0010&quot;    &quot;0022&quot;    &quot;Missing&quot;</code></pre>
+</div>
+<div id="na.omit" class="section level2" number="1.8">
+<h2><span class="header-section-number">1.8</span> na.omit</h2>
+<p>or we can delete all missing values.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="exploratory-data-analysis.html#cb60-1" aria-hidden="true" tabindex="-1"></a>customer_df <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(customer_df)</span>
+<span id="cb60-2"><a href="exploratory-data-analysis.html#cb60-2" aria-hidden="true" tabindex="-1"></a>customer_df</span></code></pre></div>
+<pre><code>##    names   id  birth
+## 1    Kim 0000 880201
+## 2    Jay 0010 000106
+## 3 toreto 0022 930128</code></pre>
+</div>
+<div id="barplot" class="section level2" number="1.9">
+<h2><span class="header-section-number">1.9</span> barplot</h2>
+<p>In case of outliers are in data frame, we have to select how to handle this outliers.</p>
+<p>If you have great domain knowledge, you can just use visualization and judge whether this value is outlier or not.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="exploratory-data-analysis.html#cb62-1" aria-hidden="true" tabindex="-1"></a>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">180</span>, <span class="dv">177</span>, <span class="dv">17</span>)</span>
+<span id="cb62-2"><a href="exploratory-data-analysis.html#cb62-2" aria-hidden="true" tabindex="-1"></a>customer_df<span class="sc">$</span>height <span class="ot">&lt;-</span> height</span>
+<span id="cb62-3"><a href="exploratory-data-analysis.html#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(customer_df<span class="sc">$</span>height, <span class="at">names=</span>customer_df<span class="sc">$</span>names)</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<p>is that right? is Toreto’s height 17(cm)?
+No. It’s may be typing error. maybe it’s 170, 177 etc.</p>
+<p>In many case, there are so many data in dataset so that it’s hard to check one by one through table, so it’s so useful to use visualization.</p>
+</div>
+<div id="baxplot" class="section level2" number="1.10">
+<h2><span class="header-section-number">1.10</span> baxplot</h2>
+<p>Especially when you do not have deep domain knowledge or want to look for statistical outliers, boxplot is a great help.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="exploratory-data-analysis.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(mpg<span class="sc">$</span>cty)</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<p>We can see 4 outliers in boxplot.
+let’s check them.</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="exploratory-data-analysis.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mpg)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 11
+##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class 
+##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
+## 1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compa…
+## 2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compa…
+## 3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compa…
+## 4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compa…
+## 5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compa…
+## 6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="exploratory-data-analysis.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="exploratory-data-analysis.html#cb70-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb70-2"><a href="exploratory-data-analysis.html#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, model, year, cty) <span class="sc">%&gt;%</span></span>
+<span id="cb70-3"><a href="exploratory-data-analysis.html#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(cty)) <span class="sc">%&gt;%</span></span>
+<span id="cb70-4"><a href="exploratory-data-analysis.html#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 10 x 4
+##    manufacturer model       year   cty
+##    &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt; &lt;int&gt;
+##  1 volkswagen   new beetle  1999    35
+##  2 volkswagen   jetta       1999    33
+##  3 volkswagen   new beetle  1999    29
+##  4 honda        civic       1999    28
+##  5 toyota       corolla     2008    28
+##  6 honda        civic       2008    26
+##  7 toyota       corolla     1999    26
+##  8 toyota       corolla     2008    26
+##  9 honda        civic       1999    25
+## 10 honda        civic       2008    25</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="exploratory-data-analysis.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mpg<span class="sc">$</span>cty)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    9.00   14.00   17.00   16.86   19.00   35.00</code></pre>
+<p>We can also extract boxplot’s output as numerical values.</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="exploratory-data-analysis.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(mpg<span class="sc">$</span>cty)<span class="sc">$</span>out</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<pre><code>## [1] 28 28 33 35 29</code></pre>
+<p>And let’s check this values from our dataframe.</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="exploratory-data-analysis.html#cb76-1" aria-hidden="true" tabindex="-1"></a>outputs <span class="ot">&lt;-</span> <span class="fu">boxplot</span>(mpg<span class="sc">$</span>cty)<span class="sc">$</span>out</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="exploratory-data-analysis.html#cb77-1" aria-hidden="true" tabindex="-1"></a>mpg[mpg<span class="sc">$</span>cty <span class="sc">%in%</span> outputs, ]</span></code></pre></div>
+<pre><code>## # A tibble: 5 x 11
+##   manufacturer model   displ  year   cyl trans   drv     cty   hwy fl    class  
+##   &lt;chr&gt;        &lt;chr&gt;   &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
+## 1 honda        civic     1.6  1999     4 manual… f        28    33 r     subcom…
+## 2 toyota       corolla   1.8  2008     4 manual… f        28    37 r     compact
+## 3 volkswagen   jetta     1.9  1999     4 manual… f        33    44 d     compact
+## 4 volkswagen   new be…   1.9  1999     4 manual… f        35    44 d     subcom…
+## 5 volkswagen   new be…   1.9  1999     4 auto(l… f        29    41 d     subcom…</code></pre>
 
 </div>
 </div>

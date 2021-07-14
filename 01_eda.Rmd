@@ -179,6 +179,127 @@ If you input categorical variable(ex. mpg$class) into `hist` function,
 it returns error that `Error in hist.default(mpg$class) : 'x' must be numeric`
 
 
+## is.na
+
+`is.na()` is the function that check whether the input has missing value or not.
+
+and the input can be vector, list, data.frame etc.
+
+```{r}
+names <- c('Kim', 'Jay', 'toreto', NA)
+is.na(names)
+```
+
+we can count `NA` by using `table` function.
+```{r}
+table(is.na(names))
+```
+
+How about a dataframe?
+
+```{r}
+id <- c('0000', '0010', '0022', NA)
+birth <- c('880201', '000106', '930128', NA)
+
+customer_df <- data.frame(names, id, birth)
+customer_df
+
+```
+
+```{r}
+table(is.na(customer_df))
+```
+
+we can visualize table by using `plot()` method
+```{r}
+plot(table(is.na(customer_df)))
+```
+
+If we just need to check only `NA`, we can use `sum()`.
+
+```{r}
+sum(is.na(customer_df))
+```
+
+There are many ways to fill `NA`.
+
+first, just fill `NA` as specific value.
+
+```{r}
+customer_df[4,]['names'] <- 'haword'
+customer_df
+```
+
+or we can use `ifelse()` function like this.
+
+```{r}
+ifelse(is.na(customer_df$id), 'Missing', customer_df$id)
+```
+
+## na.omit
+
+or we can delete all missing values.
+
+```{r}
+customer_df <- na.omit(customer_df)
+customer_df
+```
+
+## barplot
+In case of outliers are in data frame, we have to select how to handle this outliers.
+
+If you have great domain knowledge, you can just use visualization and judge whether this value is outlier or not.
+
+```{r}
+height <- c(180, 177, 17)
+customer_df$height <- height
+barplot(customer_df$height, names=customer_df$names)
+```
+
+is that right? is Toreto's height 17(cm)? 
+No. It's may be typing error. maybe it's 170, 177 etc.
+
+In many case, there are so many data in dataset so that it's hard to check one by one through table, so it's so useful to use visualization.
+
+## baxplot
+
+Especially when you do not have deep domain knowledge or want to look for statistical outliers, boxplot is a great help.
+
+
+```{r}
+boxplot(mpg$cty)
+```
+
+We can see 4 outliers in boxplot.
+let's check them.
+
+```{r}
+head(mpg)
+```
+
+```{r}
+library(dplyr)
+mpg %>%
+  select(manufacturer, model, year, cty) %>%
+  arrange(desc(cty)) %>%
+  head(10)
+```
+
+```{r}
+summary(mpg$cty)
+```
+
+We can also extract boxplot's output as numerical values.
+```{r}
+boxplot(mpg$cty)$out
+```
+
+And let's check this values from our dataframe.
+
+```{r}
+outputs <- boxplot(mpg$cty)$out
+mpg[mpg$cty %in% outputs, ]
+```
 
 
 

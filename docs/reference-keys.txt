@@ -5,6 +5,10 @@ summary
 table
 qplot
 hist
+is.na
+na.omit
+barplot
+baxplot
 data-preprocessing
 ifelse
 dplyr-mutate

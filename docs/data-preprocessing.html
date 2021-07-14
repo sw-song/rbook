@@ -145,6 +145,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#table"><i class="fa fa-check"></i><b>1.4</b> table</a></li>
 <li class="chapter" data-level="1.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#qplot"><i class="fa fa-check"></i><b>1.5</b> qplot</a></li>
 <li class="chapter" data-level="1.6" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#hist"><i class="fa fa-check"></i><b>1.6</b> hist</a></li>
+<li class="chapter" data-level="1.7" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#is.na"><i class="fa fa-check"></i><b>1.7</b> is.na</a></li>
+<li class="chapter" data-level="1.8" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#na.omit"><i class="fa fa-check"></i><b>1.8</b> na.omit</a></li>
+<li class="chapter" data-level="1.9" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#barplot"><i class="fa fa-check"></i><b>1.9</b> barplot</a></li>
+<li class="chapter" data-level="1.10" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#baxplot"><i class="fa fa-check"></i><b>1.10</b> baxplot</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="data-preprocessing.html"><a href="data-preprocessing.html"><i class="fa fa-check"></i><b>2</b> Data Preprocessing</a>
 <ul>
@@ -191,15 +195,15 @@ And these work can be repeat until we construct a dataset that can make our prob
 <p><code>ifelse</code> is <code>Conditional Statments function</code> that is very simple and useful in R. We can use this with just 3 parameters - condition, return value when it’s true, return value when it’s false.</p>
 <p>let’s see example code.</p>
 <p>first, print the head of dataset</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="data-preprocessing.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mpg<span class="sc">$</span>hwy)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="data-preprocessing.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mpg<span class="sc">$</span>hwy)</span></code></pre></div>
 <pre><code>## [1] 29 29 31 30 26 26</code></pre>
 <p>And let’s apply ifelse to this head.
 if the hwy(highway fuel efficiency) is higher than 30, returns ‘Good.’</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="data-preprocessing.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">head</span>(mpg<span class="sc">$</span>hwy) <span class="sc">&gt;</span> <span class="dv">30</span>, <span class="st">&#39;Good&#39;</span>, <span class="st">&#39;Bad&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="data-preprocessing.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">head</span>(mpg<span class="sc">$</span>hwy) <span class="sc">&gt;</span> <span class="dv">30</span>, <span class="st">&#39;Good&#39;</span>, <span class="st">&#39;Bad&#39;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Good&quot; &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;</code></pre>
 <p>We can use this data by assign method(<code>&lt;-</code>). Let’s Control Entire variable.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="data-preprocessing.html#cb49-1" aria-hidden="true" tabindex="-1"></a>evaluate_hwy <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(mpg<span class="sc">$</span>hwy <span class="sc">&gt;</span> <span class="dv">30</span>, <span class="st">&#39;Good&#39;</span>, <span class="st">&#39;Bad&#39;</span>)</span>
-<span id="cb49-2"><a href="data-preprocessing.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(evaluate_hwy)</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="data-preprocessing.html#cb83-1" aria-hidden="true" tabindex="-1"></a>evaluate_hwy <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(mpg<span class="sc">$</span>hwy <span class="sc">&gt;</span> <span class="dv">30</span>, <span class="st">&#39;Good&#39;</span>, <span class="st">&#39;Bad&#39;</span>)</span>
+<span id="cb83-2"><a href="data-preprocessing.html#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(evaluate_hwy)</span></code></pre></div>
 <pre><code>##   [1] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Good&quot; &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
 ##  [11] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
 ##  [21] &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot;  &quot;Bad&quot; 
@@ -227,9 +231,9 @@ if the hwy(highway fuel efficiency) is higher than 30, returns ‘Good.’</p>
 <p>Then, Why is this necessary?</p>
 <p>Sometimes we need categorical data(nominal data or ordinal data) for not only visualization but also data handling. Especially, We do not always get gaussian distribution dataset, so since the data is not uniform, it is necessary to divide it into appropriate intervals.</p>
 <p>We can use this function to not only create new variable but also add another column.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="data-preprocessing.html#cb51-1" aria-hidden="true" tabindex="-1"></a>df_mpg <span class="ot">&lt;-</span> mpg</span>
-<span id="cb51-2"><a href="data-preprocessing.html#cb51-2" aria-hidden="true" tabindex="-1"></a>df_mpg[<span class="st">&#39;eval_hwy&#39;</span>] <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df_mpg<span class="sc">$</span>hwy<span class="sc">&gt;</span><span class="dv">30</span>, <span class="st">&#39;High&#39;</span>, <span class="st">&#39;Low&#39;</span>)</span>
-<span id="cb51-3"><a href="data-preprocessing.html#cb51-3" aria-hidden="true" tabindex="-1"></a>df_mpg<span class="sc">$</span>eval_hwy</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="data-preprocessing.html#cb85-1" aria-hidden="true" tabindex="-1"></a>df_mpg <span class="ot">&lt;-</span> mpg</span>
+<span id="cb85-2"><a href="data-preprocessing.html#cb85-2" aria-hidden="true" tabindex="-1"></a>df_mpg[<span class="st">&#39;eval_hwy&#39;</span>] <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df_mpg<span class="sc">$</span>hwy<span class="sc">&gt;</span><span class="dv">30</span>, <span class="st">&#39;High&#39;</span>, <span class="st">&#39;Low&#39;</span>)</span>
+<span id="cb85-3"><a href="data-preprocessing.html#cb85-3" aria-hidden="true" tabindex="-1"></a>df_mpg<span class="sc">$</span>eval_hwy</span></code></pre></div>
 <pre><code>##   [1] &quot;Low&quot;  &quot;Low&quot;  &quot;High&quot; &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
 ##  [11] &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
 ##  [21] &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot;  &quot;Low&quot; 
@@ -259,17 +263,9 @@ if the hwy(highway fuel efficiency) is higher than 30, returns ‘Good.’</p>
 <h2><span class="header-section-number">2.2</span> dplyr :: mutate</h2>
 <p>In R, <code>dplyr</code> package is the most popular library for data preprocessing. Especially it provides pipe(‘%&gt;%’), and it’s very helpful for intuitive coding. And <code>mutate</code> in <code>dplyr</code> package do exactly same work as the one above, However it is simpler and easier to use. Let’s see this.</p>
 <p>(before load, you have to install “dplyr” package)</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="data-preprocessing.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;dplyr&quot;) </span></span>
-<span id="cb53-2"><a href="data-preprocessing.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="data-preprocessing.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_mpg)</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="data-preprocessing.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;dplyr&quot;) </span></span>
+<span id="cb87-2"><a href="data-preprocessing.html#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="data-preprocessing.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_mpg)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 12
 ##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class 
 ##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
@@ -281,9 +277,9 @@ if the hwy(highway fuel efficiency) is higher than 30, returns ‘Good.’</p>
 ## 6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…
 ## # … with 1 more variable: eval_hwy &lt;chr&gt;</code></pre>
 <p>We’ll use <code>mutate</code> function and <code>pipe</code> syntex to handle <code>cty</code>(city fuel economy) column.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="data-preprocessing.html#cb59-1" aria-hidden="true" tabindex="-1"></a>df_mpg <span class="sc">%&gt;%</span></span>
-<span id="cb59-2"><a href="data-preprocessing.html#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean_fuel =</span> (cty <span class="sc">+</span> hwy)<span class="sc">/</span><span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb59-3"><a href="data-preprocessing.html#cb59-3" aria-hidden="true" tabindex="-1"></a>  head</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="data-preprocessing.html#cb90-1" aria-hidden="true" tabindex="-1"></a>df_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb90-2"><a href="data-preprocessing.html#cb90-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean_fuel =</span> (cty <span class="sc">+</span> hwy)<span class="sc">/</span><span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb90-3"><a href="data-preprocessing.html#cb90-3" aria-hidden="true" tabindex="-1"></a>  head</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 13
 ##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class 
 ##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
@@ -296,10 +292,10 @@ if the hwy(highway fuel efficiency) is higher than 30, returns ‘Good.’</p>
 ## # … with 2 more variables: eval_hwy &lt;chr&gt;, mean_fuel &lt;dbl&gt;</code></pre>
 <p>We can see the last column is added and named with <code>mean_fuel</code>. We didn’t have to use the name of dataframa(df_mpg) repeatly to use columns. It’s very nice.</p>
 <p>And of course we can use <code>ifelse</code> function with the <code>pipe</code> and <code>mutate</code>.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="data-preprocessing.html#cb61-1" aria-hidden="true" tabindex="-1"></a>df_mpg <span class="sc">%&gt;%</span></span>
-<span id="cb61-2"><a href="data-preprocessing.html#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean_fuel =</span> (cty <span class="sc">+</span> hwy)<span class="sc">/</span><span class="dv">2</span>, </span>
-<span id="cb61-3"><a href="data-preprocessing.html#cb61-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">eval_fuel =</span> <span class="fu">ifelse</span>(mean_fuel <span class="sc">&gt;</span> <span class="dv">20</span>, <span class="st">&#39;high&#39;</span>, <span class="st">&#39;low&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb61-4"><a href="data-preprocessing.html#cb61-4" aria-hidden="true" tabindex="-1"></a>  head</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="data-preprocessing.html#cb92-1" aria-hidden="true" tabindex="-1"></a>df_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb92-2"><a href="data-preprocessing.html#cb92-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean_fuel =</span> (cty <span class="sc">+</span> hwy)<span class="sc">/</span><span class="dv">2</span>, </span>
+<span id="cb92-3"><a href="data-preprocessing.html#cb92-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">eval_fuel =</span> <span class="fu">ifelse</span>(mean_fuel <span class="sc">&gt;</span> <span class="dv">20</span>, <span class="st">&#39;high&#39;</span>, <span class="st">&#39;low&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb92-4"><a href="data-preprocessing.html#cb92-4" aria-hidden="true" tabindex="-1"></a>  head</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 14
 ##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class 
 ##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
@@ -311,10 +307,10 @@ if the hwy(highway fuel efficiency) is higher than 30, returns ‘Good.’</p>
 ## 6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…
 ## # … with 3 more variables: eval_hwy &lt;chr&gt;, mean_fuel &lt;dbl&gt;, eval_fuel &lt;chr&gt;</code></pre>
 <p>If you want to use this data table continuously, you have to assign this table to the new variable like this.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="data-preprocessing.html#cb63-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="ot">&lt;-</span> df_mpg <span class="sc">%&gt;%</span></span>
-<span id="cb63-2"><a href="data-preprocessing.html#cb63-2" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mutate</span>(<span class="at">mean_fuel =</span> (cty <span class="sc">+</span> hwy)<span class="sc">/</span><span class="dv">2</span>, </span>
-<span id="cb63-3"><a href="data-preprocessing.html#cb63-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">eval_fuel =</span> <span class="fu">ifelse</span>(mean_fuel <span class="sc">&gt;</span> <span class="dv">20</span>, <span class="st">&#39;high&#39;</span>, <span class="st">&#39;low&#39;</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="data-preprocessing.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(new_mpg)</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="data-preprocessing.html#cb94-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="ot">&lt;-</span> df_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb94-2"><a href="data-preprocessing.html#cb94-2" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mutate</span>(<span class="at">mean_fuel =</span> (cty <span class="sc">+</span> hwy)<span class="sc">/</span><span class="dv">2</span>, </span>
+<span id="cb94-3"><a href="data-preprocessing.html#cb94-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">eval_fuel =</span> <span class="fu">ifelse</span>(mean_fuel <span class="sc">&gt;</span> <span class="dv">20</span>, <span class="st">&#39;high&#39;</span>, <span class="st">&#39;low&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="data-preprocessing.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(new_mpg)</span></code></pre></div>
 <pre><code>## tibble [234 × 14] (S3: tbl_df/tbl/data.frame)
 ##  $ manufacturer: chr [1:234] &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...
 ##  $ model       : chr [1:234] &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; ...
@@ -330,17 +326,17 @@ if the hwy(highway fuel efficiency) is higher than 30, returns ‘Good.’</p>
 ##  $ eval_hwy    : chr [1:234] &quot;Low&quot; &quot;Low&quot; &quot;High&quot; &quot;Low&quot; ...
 ##  $ mean_fuel   : num [1:234] 23.5 25 25.5 25.5 21 22 22.5 22 20.5 24 ...
 ##  $ eval_fuel   : chr [1:234] &quot;high&quot; &quot;high&quot; &quot;high&quot; &quot;high&quot; ...</code></pre>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="data-preprocessing.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(new_mpg<span class="sc">$</span>mean_fuel)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="data-preprocessing.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(new_mpg<span class="sc">$</span>mean_fuel)</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="rbook_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="data-preprocessing.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(new_mpg<span class="sc">$</span>eval_fuel)</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<p><img src="rbook_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="data-preprocessing.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(new_mpg<span class="sc">$</span>eval_fuel)</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
 <p>We can use more functions from <code>dplyr</code> package. The commonly used functions that except mutate we have seen already are <code>filter()</code>, <code>select()</code>, <code>arrange()</code>, <code>summarise()</code>. Let’s look at these one by one.</p>
 </div>
 <div id="dplyr-filter" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> dplyr :: filter</h2>
 <p>First, <code>filter()</code> function. <code>filter</code> extracts rows by some conditions.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="data-preprocessing.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(new_mpg)</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="data-preprocessing.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(new_mpg)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 14
 ##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class 
 ##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
@@ -352,8 +348,8 @@ if the hwy(highway fuel efficiency) is higher than 30, returns ‘Good.’</p>
 ## 6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…
 ## # … with 3 more variables: eval_hwy &lt;chr&gt;, mean_fuel &lt;dbl&gt;, eval_fuel &lt;chr&gt;</code></pre>
 <p>If you want to extract only <code>audi</code>, you can use <code>filter</code>.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="data-preprocessing.html#cb71-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
-<span id="cb71-2"><a href="data-preprocessing.html#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer<span class="sc">==</span><span class="st">&#39;audi&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="data-preprocessing.html#cb102-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb102-2"><a href="data-preprocessing.html#cb102-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer<span class="sc">==</span><span class="st">&#39;audi&#39;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 18 x 14
 ##    manufacturer model    displ  year   cyl trans   drv     cty   hwy fl    class
 ##    &lt;chr&gt;        &lt;chr&gt;    &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
@@ -377,8 +373,8 @@ if the hwy(highway fuel efficiency) is higher than 30, returns ‘Good.’</p>
 ## 18 audi         a6 quat…   4.2  2008     8 auto(s… 4        16    23 p     mids…
 ## # … with 3 more variables: eval_hwy &lt;chr&gt;, mean_fuel &lt;dbl&gt;, eval_fuel &lt;chr&gt;</code></pre>
 <p>If you want to extract <code>audi a4</code> model,</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="data-preprocessing.html#cb73-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
-<span id="cb73-2"><a href="data-preprocessing.html#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer<span class="sc">==</span><span class="st">&#39;audi&#39;</span> <span class="sc">&amp;</span> model<span class="sc">==</span><span class="st">&#39;a4&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="data-preprocessing.html#cb104-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb104-2"><a href="data-preprocessing.html#cb104-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer<span class="sc">==</span><span class="st">&#39;audi&#39;</span> <span class="sc">&amp;</span> model<span class="sc">==</span><span class="st">&#39;a4&#39;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 14
 ##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class 
 ##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
@@ -391,8 +387,8 @@ if the hwy(highway fuel efficiency) is higher than 30, returns ‘Good.’</p>
 ## 7 audi         a4      3.1  2008     6 auto(av)   f        18    27 p     compa…
 ## # … with 3 more variables: eval_hwy &lt;chr&gt;, mean_fuel &lt;dbl&gt;, eval_fuel &lt;chr&gt;</code></pre>
 <p>If you want to extract <code>audi a4</code> that have <code>Good for highway fuel economy</code>,</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="data-preprocessing.html#cb75-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
-<span id="cb75-2"><a href="data-preprocessing.html#cb75-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer<span class="sc">==</span><span class="st">&#39;audi&#39;</span> <span class="sc">&amp;</span> model<span class="sc">==</span><span class="st">&#39;a4&#39;</span> <span class="sc">&amp;</span> eval_hwy <span class="sc">==</span> <span class="st">&#39;High&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="data-preprocessing.html#cb106-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb106-2"><a href="data-preprocessing.html#cb106-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer<span class="sc">==</span><span class="st">&#39;audi&#39;</span> <span class="sc">&amp;</span> model<span class="sc">==</span><span class="st">&#39;a4&#39;</span> <span class="sc">&amp;</span> eval_hwy <span class="sc">==</span> <span class="st">&#39;High&#39;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 14
 ##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class 
 ##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
@@ -404,9 +400,9 @@ if the hwy(highway fuel efficiency) is higher than 30, returns ‘Good.’</p>
 <h2><span class="header-section-number">2.4</span> dplyr :: select</h2>
 <p>Next, <code>select()</code> function.
 We have used <code>filter()</code> to extract rows, now we’ll use <code>select()</code> to extract columns.</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="data-preprocessing.html#cb77-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
-<span id="cb77-2"><a href="data-preprocessing.html#cb77-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer) <span class="sc">%&gt;%</span></span>
-<span id="cb77-3"><a href="data-preprocessing.html#cb77-3" aria-hidden="true" tabindex="-1"></a>  head</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="data-preprocessing.html#cb108-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb108-2"><a href="data-preprocessing.html#cb108-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer) <span class="sc">%&gt;%</span></span>
+<span id="cb108-3"><a href="data-preprocessing.html#cb108-3" aria-hidden="true" tabindex="-1"></a>  head</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 1
 ##   manufacturer
 ##   &lt;chr&gt;       
@@ -417,9 +413,9 @@ We have used <code>filter()</code> to extract rows, now we’ll use <code>select
 ## 5 audi        
 ## 6 audi</code></pre>
 <p>Two or more columns can be extracted at the same time.</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="data-preprocessing.html#cb79-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
-<span id="cb79-2"><a href="data-preprocessing.html#cb79-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, class, hwy) <span class="sc">%&gt;%</span></span>
-<span id="cb79-3"><a href="data-preprocessing.html#cb79-3" aria-hidden="true" tabindex="-1"></a>  head</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="data-preprocessing.html#cb110-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb110-2"><a href="data-preprocessing.html#cb110-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, class, hwy) <span class="sc">%&gt;%</span></span>
+<span id="cb110-3"><a href="data-preprocessing.html#cb110-3" aria-hidden="true" tabindex="-1"></a>  head</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   manufacturer class     hwy
 ##   &lt;chr&gt;        &lt;chr&gt;   &lt;int&gt;
@@ -430,10 +426,10 @@ We have used <code>filter()</code> to extract rows, now we’ll use <code>select
 ## 5 audi         compact    26
 ## 6 audi         compact    26</code></pre>
 <p>And with pipe, we can extract some rows and some columns at the same time too.</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="data-preprocessing.html#cb81-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
-<span id="cb81-2"><a href="data-preprocessing.html#cb81-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, model, class, hwy) <span class="sc">%&gt;%</span></span>
-<span id="cb81-3"><a href="data-preprocessing.html#cb81-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(hwy <span class="sc">&gt;</span> <span class="dv">23</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb81-4"><a href="data-preprocessing.html#cb81-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="data-preprocessing.html#cb112-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb112-2"><a href="data-preprocessing.html#cb112-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, model, class, hwy) <span class="sc">%&gt;%</span></span>
+<span id="cb112-3"><a href="data-preprocessing.html#cb112-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(hwy <span class="sc">&gt;</span> <span class="dv">23</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb112-4"><a href="data-preprocessing.html#cb112-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 4
 ##    manufacturer model      class     hwy
 ##    &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;   &lt;int&gt;
@@ -451,10 +447,10 @@ We have used <code>filter()</code> to extract rows, now we’ll use <code>select
 <div id="dplyr-arrange" class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> dplyr :: arrange</h2>
 <p>In case of numerical data(variable), we can order it. If data is categorical variable, It’ll return error.</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="data-preprocessing.html#cb83-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
-<span id="cb83-2"><a href="data-preprocessing.html#cb83-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, model, class, hwy) <span class="sc">%&gt;%</span></span>
-<span id="cb83-3"><a href="data-preprocessing.html#cb83-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(hwy) <span class="sc">%&gt;%</span></span>
-<span id="cb83-4"><a href="data-preprocessing.html#cb83-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="data-preprocessing.html#cb114-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb114-2"><a href="data-preprocessing.html#cb114-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, model, class, hwy) <span class="sc">%&gt;%</span></span>
+<span id="cb114-3"><a href="data-preprocessing.html#cb114-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(hwy) <span class="sc">%&gt;%</span></span>
+<span id="cb114-4"><a href="data-preprocessing.html#cb114-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 4
 ##    manufacturer model               class    hwy
 ##    &lt;chr&gt;        &lt;chr&gt;               &lt;chr&gt;  &lt;int&gt;
@@ -469,10 +465,10 @@ We have used <code>filter()</code> to extract rows, now we’ll use <code>select
 ##  9 chevrolet    k1500 tahoe 4wd     suv       15
 ## 10 dodge        dakota pickup 4wd   pickup    15</code></pre>
 <p>If you want to sort dataset from highest to lowest highway fuel economy, wrapping arrange variable by <code>desc()</code></p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="data-preprocessing.html#cb85-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
-<span id="cb85-2"><a href="data-preprocessing.html#cb85-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, model, class, hwy) <span class="sc">%&gt;%</span></span>
-<span id="cb85-3"><a href="data-preprocessing.html#cb85-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(hwy)) <span class="sc">%&gt;%</span></span>
-<span id="cb85-4"><a href="data-preprocessing.html#cb85-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="data-preprocessing.html#cb116-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb116-2"><a href="data-preprocessing.html#cb116-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, model, class, hwy) <span class="sc">%&gt;%</span></span>
+<span id="cb116-3"><a href="data-preprocessing.html#cb116-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(hwy)) <span class="sc">%&gt;%</span></span>
+<span id="cb116-4"><a href="data-preprocessing.html#cb116-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 4
 ##    manufacturer model      class        hwy
 ##    &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;      &lt;int&gt;
@@ -490,32 +486,32 @@ We have used <code>filter()</code> to extract rows, now we’ll use <code>select
 <div id="dplyr-summarise" class="section level2" number="2.6">
 <h2><span class="header-section-number">2.6</span> dplyr :: summarise</h2>
 <p>The function <code>summarise()</code> can be used to get basic statistics by specifying functions such as mean(), sd(), median(), etc.</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="data-preprocessing.html#cb87-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
-<span id="cb87-2"><a href="data-preprocessing.html#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer<span class="sc">==</span><span class="st">&#39;audi&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb87-3"><a href="data-preprocessing.html#cb87-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_hwy =</span> <span class="fu">mean</span>(hwy))</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="data-preprocessing.html#cb118-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb118-2"><a href="data-preprocessing.html#cb118-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer<span class="sc">==</span><span class="st">&#39;audi&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb118-3"><a href="data-preprocessing.html#cb118-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_hwy =</span> <span class="fu">mean</span>(hwy))</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 1
 ##   mean_hwy
 ##      &lt;dbl&gt;
 ## 1     26.4</code></pre>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="data-preprocessing.html#cb89-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="data-preprocessing.html#cb120-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="data-preprocessing.html#cb91-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
-<span id="cb91-2"><a href="data-preprocessing.html#cb91-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer<span class="sc">==</span><span class="st">&#39;audi&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb91-3"><a href="data-preprocessing.html#cb91-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_hwy =</span> <span class="fu">mean</span>(hwy),</span>
-<span id="cb91-4"><a href="data-preprocessing.html#cb91-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_hwy =</span> <span class="fu">max</span>(hwy),</span>
-<span id="cb91-5"><a href="data-preprocessing.html#cb91-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_hwy =</span> <span class="fu">min</span>(hwy))</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="data-preprocessing.html#cb122-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb122-2"><a href="data-preprocessing.html#cb122-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer<span class="sc">==</span><span class="st">&#39;audi&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb122-3"><a href="data-preprocessing.html#cb122-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_hwy =</span> <span class="fu">mean</span>(hwy),</span>
+<span id="cb122-4"><a href="data-preprocessing.html#cb122-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_hwy =</span> <span class="fu">max</span>(hwy),</span>
+<span id="cb122-5"><a href="data-preprocessing.html#cb122-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_hwy =</span> <span class="fu">min</span>(hwy))</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 3
 ##   mean_hwy max_hwy min_hwy
 ##      &lt;dbl&gt;   &lt;int&gt;   &lt;int&gt;
 ## 1     26.4      31      23</code></pre>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="data-preprocessing.html#cb93-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="data-preprocessing.html#cb124-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
 <p>But, this function can be more useful if used together with groupby.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="data-preprocessing.html#cb95-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
-<span id="cb95-2"><a href="data-preprocessing.html#cb95-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer) <span class="sc">%&gt;%</span></span>
-<span id="cb95-3"><a href="data-preprocessing.html#cb95-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_hwy =</span> <span class="fu">mean</span>(hwy),</span>
-<span id="cb95-4"><a href="data-preprocessing.html#cb95-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_hwy =</span> <span class="fu">max</span>(hwy),</span>
-<span id="cb95-5"><a href="data-preprocessing.html#cb95-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_hwy =</span> <span class="fu">min</span>(hwy))</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="data-preprocessing.html#cb126-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb126-2"><a href="data-preprocessing.html#cb126-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer) <span class="sc">%&gt;%</span></span>
+<span id="cb126-3"><a href="data-preprocessing.html#cb126-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_hwy =</span> <span class="fu">mean</span>(hwy),</span>
+<span id="cb126-4"><a href="data-preprocessing.html#cb126-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_hwy =</span> <span class="fu">max</span>(hwy),</span>
+<span id="cb126-5"><a href="data-preprocessing.html#cb126-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_hwy =</span> <span class="fu">min</span>(hwy))</span></code></pre></div>
 <pre><code>## # A tibble: 15 x 4
 ##    manufacturer mean_hwy max_hwy min_hwy
 ##    &lt;chr&gt;           &lt;dbl&gt;   &lt;int&gt;   &lt;int&gt;
@@ -535,12 +531,12 @@ We have used <code>filter()</code> to extract rows, now we’ll use <code>select
 ## 14 toyota           24.9      37      15
 ## 15 volkswagen       29.2      44      23</code></pre>
 <p>we can apply <code>arrange()</code> too.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="data-preprocessing.html#cb97-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
-<span id="cb97-2"><a href="data-preprocessing.html#cb97-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer) <span class="sc">%&gt;%</span></span>
-<span id="cb97-3"><a href="data-preprocessing.html#cb97-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_hwy =</span> <span class="fu">mean</span>(hwy),</span>
-<span id="cb97-4"><a href="data-preprocessing.html#cb97-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_hwy =</span> <span class="fu">max</span>(hwy),</span>
-<span id="cb97-5"><a href="data-preprocessing.html#cb97-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_hwy =</span> <span class="fu">min</span>(hwy)) <span class="sc">%&gt;%</span></span>
-<span id="cb97-6"><a href="data-preprocessing.html#cb97-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_hwy))</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="data-preprocessing.html#cb128-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb128-2"><a href="data-preprocessing.html#cb128-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer) <span class="sc">%&gt;%</span></span>
+<span id="cb128-3"><a href="data-preprocessing.html#cb128-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_hwy =</span> <span class="fu">mean</span>(hwy),</span>
+<span id="cb128-4"><a href="data-preprocessing.html#cb128-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_hwy =</span> <span class="fu">max</span>(hwy),</span>
+<span id="cb128-5"><a href="data-preprocessing.html#cb128-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_hwy =</span> <span class="fu">min</span>(hwy)) <span class="sc">%&gt;%</span></span>
+<span id="cb128-6"><a href="data-preprocessing.html#cb128-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_hwy))</span></code></pre></div>
 <pre><code>## # A tibble: 15 x 4
 ##    manufacturer mean_hwy max_hwy min_hwy
 ##    &lt;chr&gt;           &lt;dbl&gt;   &lt;int&gt;   &lt;int&gt;
@@ -560,11 +556,11 @@ We have used <code>filter()</code> to extract rows, now we’ll use <code>select
 ## 14 lincoln          17        18      16
 ## 15 land rover       16.5      18      15</code></pre>
 <p>We select 2 or more columns to <code>group_by</code> function like this.</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="data-preprocessing.html#cb99-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
-<span id="cb99-2"><a href="data-preprocessing.html#cb99-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer, model) <span class="sc">%&gt;%</span></span>
-<span id="cb99-3"><a href="data-preprocessing.html#cb99-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_hwy =</span> <span class="fu">mean</span>(hwy),</span>
-<span id="cb99-4"><a href="data-preprocessing.html#cb99-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_hwy =</span> <span class="fu">max</span>(hwy),</span>
-<span id="cb99-5"><a href="data-preprocessing.html#cb99-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_hwy =</span> <span class="fu">min</span>(hwy))</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="data-preprocessing.html#cb130-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb130-2"><a href="data-preprocessing.html#cb130-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer, model) <span class="sc">%&gt;%</span></span>
+<span id="cb130-3"><a href="data-preprocessing.html#cb130-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_hwy =</span> <span class="fu">mean</span>(hwy),</span>
+<span id="cb130-4"><a href="data-preprocessing.html#cb130-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_hwy =</span> <span class="fu">max</span>(hwy),</span>
+<span id="cb130-5"><a href="data-preprocessing.html#cb130-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_hwy =</span> <span class="fu">min</span>(hwy))</span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;manufacturer&#39;. You can override using the `.groups` argument.</code></pre>
 <pre><code>## # A tibble: 38 x 5
 ## # Groups:   manufacturer [15]
@@ -582,12 +578,12 @@ We have used <code>filter()</code> to extract rows, now we’ll use <code>select
 ## 10 dodge        durango 4wd            16        18      12
 ## # … with 28 more rows</code></pre>
 <p>and apply <code>filter()</code> too.</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="data-preprocessing.html#cb102-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
-<span id="cb102-2"><a href="data-preprocessing.html#cb102-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer, model) <span class="sc">%&gt;%</span></span>
-<span id="cb102-3"><a href="data-preprocessing.html#cb102-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_hwy =</span> <span class="fu">mean</span>(hwy),</span>
-<span id="cb102-4"><a href="data-preprocessing.html#cb102-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_hwy =</span> <span class="fu">max</span>(hwy),</span>
-<span id="cb102-5"><a href="data-preprocessing.html#cb102-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_hwy =</span> <span class="fu">min</span>(hwy)) <span class="sc">%&gt;%</span></span>
-<span id="cb102-6"><a href="data-preprocessing.html#cb102-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer<span class="sc">==</span><span class="st">&#39;audi&#39;</span> <span class="sc">|</span> manufacturer<span class="sc">==</span><span class="st">&#39;hyundai&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="data-preprocessing.html#cb133-1" aria-hidden="true" tabindex="-1"></a>new_mpg <span class="sc">%&gt;%</span></span>
+<span id="cb133-2"><a href="data-preprocessing.html#cb133-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer, model) <span class="sc">%&gt;%</span></span>
+<span id="cb133-3"><a href="data-preprocessing.html#cb133-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_hwy =</span> <span class="fu">mean</span>(hwy),</span>
+<span id="cb133-4"><a href="data-preprocessing.html#cb133-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_hwy =</span> <span class="fu">max</span>(hwy),</span>
+<span id="cb133-5"><a href="data-preprocessing.html#cb133-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_hwy =</span> <span class="fu">min</span>(hwy)) <span class="sc">%&gt;%</span></span>
+<span id="cb133-6"><a href="data-preprocessing.html#cb133-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer<span class="sc">==</span><span class="st">&#39;audi&#39;</span> <span class="sc">|</span> manufacturer<span class="sc">==</span><span class="st">&#39;hyundai&#39;</span>)</span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;manufacturer&#39;. You can override using the `.groups` argument.</code></pre>
 <pre><code>## # A tibble: 5 x 5
 ## # Groups:   manufacturer [2]
@@ -602,23 +598,23 @@ We have used <code>filter()</code> to extract rows, now we’ll use <code>select
 <div id="dplyr-left_join" class="section level2" number="2.7">
 <h2><span class="header-section-number">2.7</span> dplyr :: left_join</h2>
 <p><code>dplyr</code> package contain <code>join</code> functions. First, we try <code>left_join()</code> for our custom data.</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="data-preprocessing.html#cb105-1" aria-hidden="true" tabindex="-1"></a>students <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Jennie&#39;</span>, <span class="st">&#39;Tom&#39;</span>, <span class="st">&#39;Minsu&#39;</span>, <span class="st">&#39;Jay&#39;</span>, <span class="st">&#39;Bob&#39;</span>)</span>
-<span id="cb105-2"><a href="data-preprocessing.html#cb105-2" aria-hidden="true" tabindex="-1"></a>classes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;A&#39;</span>,<span class="st">&#39;B&#39;</span>,<span class="st">&#39;C&#39;</span>,<span class="st">&#39;D&#39;</span>,<span class="st">&#39;E&#39;</span>)</span>
-<span id="cb105-3"><a href="data-preprocessing.html#cb105-3" aria-hidden="true" tabindex="-1"></a>keys <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;JN&#39;</span>, <span class="st">&#39;T&#39;</span>, <span class="st">&#39;M&#39;</span>, <span class="st">&#39;J&#39;</span>, <span class="st">&#39;B&#39;</span>)</span>
-<span id="cb105-4"><a href="data-preprocessing.html#cb105-4" aria-hidden="true" tabindex="-1"></a>heights <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">155</span>, <span class="dv">190</span>, <span class="dv">165</span>, <span class="dv">177</span>, <span class="dv">180</span>)</span>
-<span id="cb105-5"><a href="data-preprocessing.html#cb105-5" aria-hidden="true" tabindex="-1"></a>weights <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">57</span>, <span class="dv">101</span>, <span class="dv">64</span>, <span class="dv">80</span>, <span class="dv">88</span>)</span>
-<span id="cb105-6"><a href="data-preprocessing.html#cb105-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb105-7"><a href="data-preprocessing.html#cb105-7" aria-hidden="true" tabindex="-1"></a>class_info <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(students, classes)</span>
-<span id="cb105-8"><a href="data-preprocessing.html#cb105-8" aria-hidden="true" tabindex="-1"></a>students_info <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(students, keys, heights, weights)</span>
-<span id="cb105-9"><a href="data-preprocessing.html#cb105-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb105-10"><a href="data-preprocessing.html#cb105-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(class_info)</span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="data-preprocessing.html#cb136-1" aria-hidden="true" tabindex="-1"></a>students <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Jennie&#39;</span>, <span class="st">&#39;Tom&#39;</span>, <span class="st">&#39;Minsu&#39;</span>, <span class="st">&#39;Jay&#39;</span>, <span class="st">&#39;Bob&#39;</span>)</span>
+<span id="cb136-2"><a href="data-preprocessing.html#cb136-2" aria-hidden="true" tabindex="-1"></a>classes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;A&#39;</span>,<span class="st">&#39;B&#39;</span>,<span class="st">&#39;C&#39;</span>,<span class="st">&#39;D&#39;</span>,<span class="st">&#39;E&#39;</span>)</span>
+<span id="cb136-3"><a href="data-preprocessing.html#cb136-3" aria-hidden="true" tabindex="-1"></a>keys <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;JN&#39;</span>, <span class="st">&#39;T&#39;</span>, <span class="st">&#39;M&#39;</span>, <span class="st">&#39;J&#39;</span>, <span class="st">&#39;B&#39;</span>)</span>
+<span id="cb136-4"><a href="data-preprocessing.html#cb136-4" aria-hidden="true" tabindex="-1"></a>heights <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">155</span>, <span class="dv">190</span>, <span class="dv">165</span>, <span class="dv">177</span>, <span class="dv">180</span>)</span>
+<span id="cb136-5"><a href="data-preprocessing.html#cb136-5" aria-hidden="true" tabindex="-1"></a>weights <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">57</span>, <span class="dv">101</span>, <span class="dv">64</span>, <span class="dv">80</span>, <span class="dv">88</span>)</span>
+<span id="cb136-6"><a href="data-preprocessing.html#cb136-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-7"><a href="data-preprocessing.html#cb136-7" aria-hidden="true" tabindex="-1"></a>class_info <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(students, classes)</span>
+<span id="cb136-8"><a href="data-preprocessing.html#cb136-8" aria-hidden="true" tabindex="-1"></a>students_info <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(students, keys, heights, weights)</span>
+<span id="cb136-9"><a href="data-preprocessing.html#cb136-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-10"><a href="data-preprocessing.html#cb136-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(class_info)</span></code></pre></div>
 <pre><code>##   students classes
 ## 1   Jennie       A
 ## 2      Tom       B
 ## 3    Minsu       C
 ## 4      Jay       D
 ## 5      Bob       E</code></pre>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="data-preprocessing.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(students_info)</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="data-preprocessing.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(students_info)</span></code></pre></div>
 <pre><code>##   students keys heights weights
 ## 1   Jennie   JN     155      57
 ## 2      Tom    T     190     101
@@ -627,8 +623,8 @@ We have used <code>filter()</code> to extract rows, now we’ll use <code>select
 ## 5      Bob    B     180      88</code></pre>
 <p>If we have to combine this two table, We need some “point”s. This means some “column”s that two table have in common. In this example, <code>students</code> column is that.</p>
 <p>Let’s combine datasets by Setting <code>students</code> column as a point.</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="data-preprocessing.html#cb109-1" aria-hidden="true" tabindex="-1"></a>all_info <span class="ot">&lt;-</span> <span class="fu">left_join</span>(class_info, students_info, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
-<span id="cb109-2"><a href="data-preprocessing.html#cb109-2" aria-hidden="true" tabindex="-1"></a>all_info</span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="data-preprocessing.html#cb140-1" aria-hidden="true" tabindex="-1"></a>all_info <span class="ot">&lt;-</span> <span class="fu">left_join</span>(class_info, students_info, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
+<span id="cb140-2"><a href="data-preprocessing.html#cb140-2" aria-hidden="true" tabindex="-1"></a>all_info</span></code></pre></div>
 <pre><code>##   students classes keys heights weights
 ## 1   Jennie       A   JN     155      57
 ## 2      Tom       B    T     190     101
@@ -640,8 +636,8 @@ We have used <code>filter()</code> to extract rows, now we’ll use <code>select
 <h2><span class="header-section-number">2.8</span> dplyr :: right_join</h2>
 <p>What if we use <code>right_join()</code>?
 In this table, it’s same.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="data-preprocessing.html#cb111-1" aria-hidden="true" tabindex="-1"></a>all_info2 <span class="ot">&lt;-</span> <span class="fu">right_join</span>(class_info, students_info, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
-<span id="cb111-2"><a href="data-preprocessing.html#cb111-2" aria-hidden="true" tabindex="-1"></a>all_info2</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="data-preprocessing.html#cb142-1" aria-hidden="true" tabindex="-1"></a>all_info2 <span class="ot">&lt;-</span> <span class="fu">right_join</span>(class_info, students_info, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
+<span id="cb142-2"><a href="data-preprocessing.html#cb142-2" aria-hidden="true" tabindex="-1"></a>all_info2</span></code></pre></div>
 <pre><code>##   students classes keys heights weights
 ## 1   Jennie       A   JN     155      57
 ## 2      Tom       B    T     190     101
@@ -650,15 +646,15 @@ In this table, it’s same.</p>
 ## 5      Bob       E    B     180      88</code></pre>
 <p>Because left table(class_info) and right rable(students_info) have same variable(students).</p>
 <p>If one side has Na in <code>students</code> column, the result will be different.</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="data-preprocessing.html#cb113-1" aria-hidden="true" tabindex="-1"></a>students_info2 <span class="ot">&lt;-</span> students_info[<span class="sc">-</span><span class="dv">1</span>,]</span>
-<span id="cb113-2"><a href="data-preprocessing.html#cb113-2" aria-hidden="true" tabindex="-1"></a>students_info2</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="data-preprocessing.html#cb144-1" aria-hidden="true" tabindex="-1"></a>students_info2 <span class="ot">&lt;-</span> students_info[<span class="sc">-</span><span class="dv">1</span>,]</span>
+<span id="cb144-2"><a href="data-preprocessing.html#cb144-2" aria-hidden="true" tabindex="-1"></a>students_info2</span></code></pre></div>
 <pre><code>##   students keys heights weights
 ## 2      Tom    T     190     101
 ## 3    Minsu    M     165      64
 ## 4      Jay    J     177      80
 ## 5      Bob    B     180      88</code></pre>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="data-preprocessing.html#cb115-1" aria-hidden="true" tabindex="-1"></a>all_info3 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(class_info, students_info2, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
-<span id="cb115-2"><a href="data-preprocessing.html#cb115-2" aria-hidden="true" tabindex="-1"></a>all_info3</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="data-preprocessing.html#cb146-1" aria-hidden="true" tabindex="-1"></a>all_info3 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(class_info, students_info2, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
+<span id="cb146-2"><a href="data-preprocessing.html#cb146-2" aria-hidden="true" tabindex="-1"></a>all_info3</span></code></pre></div>
 <pre><code>##   students classes keys heights weights
 ## 1   Jennie       A &lt;NA&gt;      NA      NA
 ## 2      Tom       B    T     190     101
@@ -667,8 +663,8 @@ In this table, it’s same.</p>
 ## 5      Bob       E    B     180      88</code></pre>
 <p>let’s see this. We have founded 3 NA values. It’s bacause students_info2 didn’t have the Jennie’s informatino(row)
 But,</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="data-preprocessing.html#cb117-1" aria-hidden="true" tabindex="-1"></a>all_info4 <span class="ot">&lt;-</span> <span class="fu">right_join</span>(class_info, students_info2, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
-<span id="cb117-2"><a href="data-preprocessing.html#cb117-2" aria-hidden="true" tabindex="-1"></a>all_info4</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="data-preprocessing.html#cb148-1" aria-hidden="true" tabindex="-1"></a>all_info4 <span class="ot">&lt;-</span> <span class="fu">right_join</span>(class_info, students_info2, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
+<span id="cb148-2"><a href="data-preprocessing.html#cb148-2" aria-hidden="true" tabindex="-1"></a>all_info4</span></code></pre></div>
 <pre><code>##   students classes keys heights weights
 ## 1      Tom       B    T     190     101
 ## 2    Minsu       C    M     165      64
@@ -682,22 +678,22 @@ It’s because students_info2 didn’t have the Jennie’s informatino(row). Sam
 <h2><span class="header-section-number">2.9</span> dplyr :: inner_join</h2>
 <p>How can we join tables if we met all of tables are have <code>NA</code> at base column of reference?
 Like this case,</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="data-preprocessing.html#cb119-1" aria-hidden="true" tabindex="-1"></a>class_info2 <span class="ot">&lt;-</span> class_info[<span class="sc">-</span><span class="dv">2</span>,]</span>
-<span id="cb119-2"><a href="data-preprocessing.html#cb119-2" aria-hidden="true" tabindex="-1"></a>class_info2</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="data-preprocessing.html#cb150-1" aria-hidden="true" tabindex="-1"></a>class_info2 <span class="ot">&lt;-</span> class_info[<span class="sc">-</span><span class="dv">2</span>,]</span>
+<span id="cb150-2"><a href="data-preprocessing.html#cb150-2" aria-hidden="true" tabindex="-1"></a>class_info2</span></code></pre></div>
 <pre><code>##   students classes
 ## 1   Jennie       A
 ## 3    Minsu       C
 ## 4      Jay       D
 ## 5      Bob       E</code></pre>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="data-preprocessing.html#cb121-1" aria-hidden="true" tabindex="-1"></a>all_info4 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(class_info2, students_info2, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
-<span id="cb121-2"><a href="data-preprocessing.html#cb121-2" aria-hidden="true" tabindex="-1"></a>all_info4</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="data-preprocessing.html#cb152-1" aria-hidden="true" tabindex="-1"></a>all_info4 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(class_info2, students_info2, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
+<span id="cb152-2"><a href="data-preprocessing.html#cb152-2" aria-hidden="true" tabindex="-1"></a>all_info4</span></code></pre></div>
 <pre><code>##   students classes keys heights weights
 ## 1   Jennie       A &lt;NA&gt;      NA      NA
 ## 2    Minsu       C    M     165      64
 ## 3      Jay       D    J     177      80
 ## 4      Bob       E    B     180      88</code></pre>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="data-preprocessing.html#cb123-1" aria-hidden="true" tabindex="-1"></a>all_info5 <span class="ot">&lt;-</span> <span class="fu">right_join</span>(class_info2, students_info2, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
-<span id="cb123-2"><a href="data-preprocessing.html#cb123-2" aria-hidden="true" tabindex="-1"></a>all_info5</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="data-preprocessing.html#cb154-1" aria-hidden="true" tabindex="-1"></a>all_info5 <span class="ot">&lt;-</span> <span class="fu">right_join</span>(class_info2, students_info2, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
+<span id="cb154-2"><a href="data-preprocessing.html#cb154-2" aria-hidden="true" tabindex="-1"></a>all_info5</span></code></pre></div>
 <pre><code>##   students classes keys heights weights
 ## 1    Minsu       C    M     165      64
 ## 2      Jay       D    J     177      80
@@ -705,8 +701,8 @@ Like this case,</p>
 ## 4      Tom    &lt;NA&gt;    T     190     101</code></pre>
 <p>Yes, returns have <code>NA</code> all as expected.
 But we want to get result that without missing value. In this case, we can use <code>inner_join()</code></p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="data-preprocessing.html#cb125-1" aria-hidden="true" tabindex="-1"></a>all_info6 <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(class_info2, students_info2, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
-<span id="cb125-2"><a href="data-preprocessing.html#cb125-2" aria-hidden="true" tabindex="-1"></a>all_info6</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="data-preprocessing.html#cb156-1" aria-hidden="true" tabindex="-1"></a>all_info6 <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(class_info2, students_info2, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
+<span id="cb156-2"><a href="data-preprocessing.html#cb156-2" aria-hidden="true" tabindex="-1"></a>all_info6</span></code></pre></div>
 <pre><code>##   students classes keys heights weights
 ## 1    Minsu       C    M     165      64
 ## 2      Jay       D    J     177      80
@@ -715,8 +711,8 @@ But we want to get result that without missing value. In this case, we can use <
 <div id="dplyr-full_join" class="section level2" number="2.10">
 <h2><span class="header-section-number">2.10</span> dplyr :: full_join</h2>
 <p>Conversely, if we want to display all values together even if there are missing values in left or right, we can use <code>full_join()</code></p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="data-preprocessing.html#cb127-1" aria-hidden="true" tabindex="-1"></a>all_info7 <span class="ot">&lt;-</span> <span class="fu">full_join</span>(class_info2, students_info2, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
-<span id="cb127-2"><a href="data-preprocessing.html#cb127-2" aria-hidden="true" tabindex="-1"></a>all_info7</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="data-preprocessing.html#cb158-1" aria-hidden="true" tabindex="-1"></a>all_info7 <span class="ot">&lt;-</span> <span class="fu">full_join</span>(class_info2, students_info2, <span class="at">by=</span><span class="st">&#39;students&#39;</span>)</span>
+<span id="cb158-2"><a href="data-preprocessing.html#cb158-2" aria-hidden="true" tabindex="-1"></a>all_info7</span></code></pre></div>
 <pre><code>##   students classes keys heights weights
 ## 1   Jennie       A &lt;NA&gt;      NA      NA
 ## 2    Minsu       C    M     165      64
@@ -727,7 +723,7 @@ But we want to get result that without missing value. In this case, we can use <
 <div id="dplyr-bind_cols" class="section level2" number="2.11">
 <h2><span class="header-section-number">2.11</span> dplyr :: bind_cols</h2>
 <p>If two data tables have the same number of rows, you can use <code>bind_cols()</code>. It is simple and return different result from <code>join</code>.</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="data-preprocessing.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_cols</span>(class_info2, students_info2)</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="data-preprocessing.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_cols</span>(class_info2, students_info2)</span></code></pre></div>
 <pre><code>## New names:
 ## * students -&gt; students...1
 ## * students -&gt; students...3</code></pre>
@@ -738,14 +734,14 @@ But we want to get result that without missing value. In this case, we can use <
 ## 4          Bob       E          Bob    B     180      88</code></pre>
 <p>Yes, it just concatenate two tables. There is no reference column.
 So, same number of rows should be noted. If each number of rows are different, It returns error.</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="data-preprocessing.html#cb132-1" aria-hidden="true" tabindex="-1"></a>class_info</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="data-preprocessing.html#cb163-1" aria-hidden="true" tabindex="-1"></a>class_info</span></code></pre></div>
 <pre><code>##   students classes
 ## 1   Jennie       A
 ## 2      Tom       B
 ## 3    Minsu       C
 ## 4      Jay       D
 ## 5      Bob       E</code></pre>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="data-preprocessing.html#cb134-1" aria-hidden="true" tabindex="-1"></a>students_info2</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="data-preprocessing.html#cb165-1" aria-hidden="true" tabindex="-1"></a>students_info2</span></code></pre></div>
 <pre><code>##   students keys heights weights
 ## 2      Tom    T     190     101
 ## 3    Minsu    M     165      64
@@ -756,7 +752,73 @@ So, same number of rows should be noted. If each number of rows are different, I
 </div>
 <div id="dplyr-bind_rows" class="section level2" number="2.12">
 <h2><span class="header-section-number">2.12</span> dplyr :: bind_rows</h2>
-<p>Unlike <code>bind_cols()</code>, it can receive input values.even if the number of each input columns is different.</p>
+<p>Unlike <code>bind_cols()</code>, it can join tables with different columns.</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="data-preprocessing.html#cb169-1" aria-hidden="true" tabindex="-1"></a>fruit <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;apple&#39;</span>, <span class="st">&#39;banana&#39;</span>, <span class="st">&#39;watermelon&#39;</span>, <span class="st">&#39;mango&#39;</span>)</span>
+<span id="cb169-2"><a href="data-preprocessing.html#cb169-2" aria-hidden="true" tabindex="-1"></a>berry <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;strawberry&#39;</span>, <span class="st">&#39;raspberry&#39;</span>, <span class="st">&#39;mulberry&#39;</span>, <span class="st">&#39;wildberry&#39;</span>)</span>
+<span id="cb169-3"><a href="data-preprocessing.html#cb169-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb169-4"><a href="data-preprocessing.html#cb169-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(fruit)</span></code></pre></div>
+<pre><code>## [1] &quot;apple&quot;      &quot;banana&quot;     &quot;watermelon&quot; &quot;mango&quot;</code></pre>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="data-preprocessing.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(berry)</span></code></pre></div>
+<pre><code>## [1] &quot;strawberry&quot; &quot;raspberry&quot;  &quot;mulberry&quot;   &quot;wildberry&quot;</code></pre>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="data-preprocessing.html#cb173-1" aria-hidden="true" tabindex="-1"></a>fruit_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(fruit)</span>
+<span id="cb173-2"><a href="data-preprocessing.html#cb173-2" aria-hidden="true" tabindex="-1"></a>fruit_df</span></code></pre></div>
+<pre><code>##        fruit
+## 1      apple
+## 2     banana
+## 3 watermelon
+## 4      mango</code></pre>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="data-preprocessing.html#cb175-1" aria-hidden="true" tabindex="-1"></a>berry_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(berry)</span>
+<span id="cb175-2"><a href="data-preprocessing.html#cb175-2" aria-hidden="true" tabindex="-1"></a>berry_df</span></code></pre></div>
+<pre><code>##        berry
+## 1 strawberry
+## 2  raspberry
+## 3   mulberry
+## 4  wildberry</code></pre>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="data-preprocessing.html#cb177-1" aria-hidden="true" tabindex="-1"></a>fruit_df<span class="sc">$</span>sugar <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">9</span>)</span>
+<span id="cb177-2"><a href="data-preprocessing.html#cb177-2" aria-hidden="true" tabindex="-1"></a>berry_df<span class="sc">$</span>sugar <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb177-3"><a href="data-preprocessing.html#cb177-3" aria-hidden="true" tabindex="-1"></a>berry_df<span class="sc">$</span>color <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;red&#39;</span>, <span class="st">&#39;red&#39;</span>, <span class="st">&#39;black&#39;</span>, <span class="st">&#39;red&#39;</span>)</span>
+<span id="cb177-4"><a href="data-preprocessing.html#cb177-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb177-5"><a href="data-preprocessing.html#cb177-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(fruit_df)</span></code></pre></div>
+<pre><code>##        fruit sugar
+## 1      apple     3
+## 2     banana     8
+## 3 watermelon     2
+## 4      mango     9</code></pre>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="data-preprocessing.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(berry_df)</span></code></pre></div>
+<pre><code>##        berry sugar color
+## 1 strawberry     2   red
+## 2  raspberry     1   red
+## 3   mulberry     1 black
+## 4  wildberry     1   red</code></pre>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="data-preprocessing.html#cb181-1" aria-hidden="true" tabindex="-1"></a>berry_df <span class="ot">&lt;-</span> <span class="fu">rename</span>(berry_df, <span class="at">fruit =</span> berry)</span>
+<span id="cb181-2"><a href="data-preprocessing.html#cb181-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(berry_df)</span></code></pre></div>
+<pre><code>##        fruit sugar color
+## 1 strawberry     2   red
+## 2  raspberry     1   red
+## 3   mulberry     1 black
+## 4  wildberry     1   red</code></pre>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="data-preprocessing.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(fruit_df, berry_df)</span></code></pre></div>
+<pre><code>##        fruit sugar color
+## 1      apple     3  &lt;NA&gt;
+## 2     banana     8  &lt;NA&gt;
+## 3 watermelon     2  &lt;NA&gt;
+## 4      mango     9  &lt;NA&gt;
+## 5 strawberry     2   red
+## 6  raspberry     1   red
+## 7   mulberry     1 black
+## 8  wildberry     1   red</code></pre>
+<p>Yes, It returns data table without error even if the structure of column is different.
+And of course, the number of rows doesn’t matter, since we’re joining rows. But let’s check them too.</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="data-preprocessing.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(fruit_df, berry_df[<span class="sc">-</span><span class="dv">1</span>,])</span></code></pre></div>
+<pre><code>##        fruit sugar color
+## 1      apple     3  &lt;NA&gt;
+## 2     banana     8  &lt;NA&gt;
+## 3 watermelon     2  &lt;NA&gt;
+## 4      mango     9  &lt;NA&gt;
+## 5  raspberry     1   red
+## 6   mulberry     1 black
+## 7  wildberry     1   red</code></pre>
+<p>Okay, Just one row decreased.</p>
 
 </div>
 </div>

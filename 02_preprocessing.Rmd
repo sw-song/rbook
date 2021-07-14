@@ -358,7 +358,55 @@ bind_cols(class_info, students_info2)
 
 ## dplyr :: bind_rows
 
-Unlike `bind_cols()`, it can receive input values.even if the number of each input columns is different.
+Unlike `bind_cols()`, it can join tables with different columns.
+
+
+```{r}
+fruit <- c('apple', 'banana', 'watermelon', 'mango')
+berry <- c('strawberry', 'raspberry', 'mulberry', 'wildberry')
+
+print(fruit)
+print(berry)
+```
 
 
 
+```{r}
+fruit_df <- data.frame(fruit)
+fruit_df
+```
+
+
+```{r}
+berry_df <- data.frame(berry)
+berry_df
+```
+
+```{r}
+fruit_df$sugar <- c(3,8,2,9)
+berry_df$sugar <- c(2,1,1,1)
+berry_df$color <- c('red', 'red', 'black', 'red')
+
+print(fruit_df)
+print(berry_df)
+```
+
+
+```{r}
+berry_df <- rename(berry_df, fruit = berry)
+print(berry_df)
+```
+
+
+```{r}
+bind_rows(fruit_df, berry_df)
+```
+
+Yes, It returns data table without error even if the structure of column is different.
+And of course, the number of rows doesn't matter, since we're joining rows. But let's check them too.
+
+```{r}
+bind_rows(fruit_df, berry_df[-1,])
+```
+
+Okay, Just one row decreased.
