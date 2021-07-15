@@ -1,0 +1,200 @@
+# R Basic
+
+Let's check the types and data structures in R. At the same time, let's prepare to deal with R by taking a look at the built-in functions that R has by default.
+
+## Data Types
+
+R has 6 basic data types. 
+- character
+- numeric
+- integer
+- logical
+- complex
+- raw
+
+And we can deal with these data types by using basic functions.
+```{r}
+character(3) # show the collection of 3 character elements
+typeof('Hello') # show the type of 'Hello'(character)
+length('Hello') # show the length of 'Hello'(1 character)
+str('Hello') # show the structure of 'Hello'
+```
+
+There are 3 ways to represent numbers
+
+```{r}
+numeric(3) 
+integer(3)
+complex(3)
+
+typeof(numeric(3))
+typeof(integer(3))
+typeof(complex(3))
+
+str(numeric(3))
+str(integer(3))
+str(complex(3))
+```
+
+and logical type.
+
+```{r}
+logical(5) # show the collection of 5 logical elements
+typeof(logical(5)) # show the type of the logical collection
+length(logical(5)) # show the length of the logical collection, or the number of the logical elements(5)
+str(logical(5)) # show the structure of the logical collection
+```
+
+The `raw` can represent a hex digit. So if we want to get ASCII code, we can use this. Contrary, we can convert ASCII code to ASCII characters.
+
+```{r}
+raw(5)
+typeof(raw(5))
+length(raw(5)) 
+
+ctr <- charToRaw('hi this is ASCII')
+print(ctr)
+rawToChar(ctr)
+```
+
+
+## Data Structure 
+
+Data structure is container that contain data elements. There are 5 basic data structures in R.
+- vector
+- matrix
+- dataframe
+- array
+- list
+
+## Data Structure - vector
+
+A vector is a data structure composed of one or more elements, and all elements must have the same data type.
+
+In fact, we made and output a vector while checking each type earlier.
+
+```{r}
+sample <- 'A'
+sample2 <- c(1,2)
+sample3 <- c(1,2,'A')
+
+str(sample)
+str(sample2)
+str(sample3)
+```
+
+All of that are vectors. The peculiar thing is that sample3 is of type chr. Repeat, all elements must have the same data type in vector.
+
+We see here that classes are not represented as vectors in vector structures. In R, a vector is the smallest data structure unit, so the class of the vector is data type as it is.
+
+## Data Structure - matrix
+
+Matrix is 2 dimension data structure and it requires all elements in this structure to be of the same data type.
+
+```{r}
+vector1 <- c(1,2,3,4,5,6,7,8,9,10)
+```
+
+
+1. Create a metric by filling the column first :
+
+```{r}
+matrix(vector1, nrow=2, ncol=5)
+```
+
+2. Create a metric by filling the row first :
+
+```{r}
+matrix(vector1, nrow=2, ncol=5, byrow=T)
+```
+
+3. Check the type of data(metrix) :
+
+```{r}
+mtr <- matrix(vector1, nrow=2, ncol=5, byrow=T)
+class(mtr)
+```
+
+
+Unlike vectors, matrix represent classes well as "matrix".
+
+If, you want to combine multiple vectors, you can use `cbind` or `rbind`.
+
+```{r}
+vector2 <- c(10,20,30,40,50,60,70,80,90,100)
+
+cbind(vector1, vector2)
+```
+
+If cbind combines vectors on a column basis, rbind can combine on a row basis.
+
+```{r}
+rbind(vector1[1:5], vector2[1:5])
+```
+
+We used indexing here. Only a specific section of a vector can be extracted through '[a,b]'.
+
+Let's take a quick look at indexing.
+
+```{r}
+vector2[c(1,3,5,7)]
+```
+
+```{r}
+vector2[seq(1,8,2)]
+```
+
+```{r}
+vector2[-1]
+```
+
+In this way, you can extract a value with a specific index through `c()`, set the interval and search interval with `seq()`, or exclude only the value of a specific index.(-)
+
+Next, Matrix indexing.
+
+```{r}
+mtr
+```
+
+1. row - 1, column - 1~3 : 
+```{r}
+mtr[1,1:3]
+```
+
+2. row - all, column - 4~5 :
+```{r}
+mtr[,4:5]
+```
+
+3. row - 2, column - all :
+```{r}
+mtr[2,]
+```
+
+4. row - all, column - 1,3,5 :
+```{r}
+mtr[,c(1,3,5)]
+```
+
+5. row - all, column - extract 1 and all :
+```{r}
+mtr[,-1]
+```
+
+Indexing is very important. Handling vectors and matrices freely is a key skill that must be preceded by data preprocessing.
+
+## Data Structure - dataframe
+
+Data frame is 2 dimension data structure that it's datatypes do not need to be uniform. That is, unlike a matrix, various types of vectors can be combined.
+
+```{r}
+column1 <- c(1,2,3,4,5)
+column2 <- c(10,20,30,40,50)
+column3 <- c('hi', 'this', 'is', 'vector', '!')
+
+sample_df <- data.frame(column1, column2, column3)
+
+str(sample_df)
+class(sample_df)
+```
+

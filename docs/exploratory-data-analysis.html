@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Exploratory Data Analysis | R Note</title>
+  <title>Chapter 2 Exploratory Data Analysis | R Note</title>
   <meta name="description" content="It’s R quick guide for anyone who start to study R" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Exploratory Data Analysis | R Note" />
+  <meta property="og:title" content="Chapter 2 Exploratory Data Analysis | R Note" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Exploratory Data Analysis | R Note" />
+  <meta name="twitter:title" content="Chapter 2 Exploratory Data Analysis | R Note" />
   
   <meta name="twitter:description" content="It’s R quick guide for anyone who start to study R" />
   
@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
+<link rel="prev" href="r-basic.html"/>
 <link rel="next" href="data-preprocessing.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -137,34 +137,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Intro to R</a></li>
-<li class="chapter" data-level="1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>1</b> Exploratory Data Analysis</a>
+<li class="chapter" data-level="1" data-path="r-basic.html"><a href="r-basic.html"><i class="fa fa-check"></i><b>1</b> R Basic</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#head-and-tail"><i class="fa fa-check"></i><b>1.1</b> head and tail</a></li>
-<li class="chapter" data-level="1.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#dim-and-str"><i class="fa fa-check"></i><b>1.2</b> dim and str</a></li>
-<li class="chapter" data-level="1.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#summary"><i class="fa fa-check"></i><b>1.3</b> summary</a></li>
-<li class="chapter" data-level="1.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#table"><i class="fa fa-check"></i><b>1.4</b> table</a></li>
-<li class="chapter" data-level="1.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#qplot"><i class="fa fa-check"></i><b>1.5</b> qplot</a></li>
-<li class="chapter" data-level="1.6" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#hist"><i class="fa fa-check"></i><b>1.6</b> hist</a></li>
-<li class="chapter" data-level="1.7" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#is.na"><i class="fa fa-check"></i><b>1.7</b> is.na</a></li>
-<li class="chapter" data-level="1.8" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#na.omit"><i class="fa fa-check"></i><b>1.8</b> na.omit</a></li>
-<li class="chapter" data-level="1.9" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#barplot"><i class="fa fa-check"></i><b>1.9</b> barplot</a></li>
-<li class="chapter" data-level="1.10" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#boxplot"><i class="fa fa-check"></i><b>1.10</b> boxplot</a></li>
-<li class="chapter" data-level="1.11" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#ggplot2-ggplot"><i class="fa fa-check"></i><b>1.11</b> ggplot2 :: ggplot</a></li>
+<li class="chapter" data-level="1.1" data-path="r-basic.html"><a href="r-basic.html#data-types"><i class="fa fa-check"></i><b>1.1</b> Data Types</a></li>
+<li class="chapter" data-level="1.2" data-path="r-basic.html"><a href="r-basic.html#data-structure"><i class="fa fa-check"></i><b>1.2</b> Data Structure</a></li>
+<li class="chapter" data-level="1.3" data-path="r-basic.html"><a href="r-basic.html#data-structure---vector"><i class="fa fa-check"></i><b>1.3</b> Data Structure - vector</a></li>
+<li class="chapter" data-level="1.4" data-path="r-basic.html"><a href="r-basic.html#data-structure---matrix"><i class="fa fa-check"></i><b>1.4</b> Data Structure - matrix</a></li>
+<li class="chapter" data-level="1.5" data-path="r-basic.html"><a href="r-basic.html#data-structure---dataframe"><i class="fa fa-check"></i><b>1.5</b> Data Structure - dataframe</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="data-preprocessing.html"><a href="data-preprocessing.html"><i class="fa fa-check"></i><b>2</b> Data Preprocessing</a>
+<li class="chapter" data-level="2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>2</b> Exploratory Data Analysis</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="data-preprocessing.html"><a href="data-preprocessing.html#ifelse"><i class="fa fa-check"></i><b>2.1</b> ifelse</a></li>
-<li class="chapter" data-level="2.2" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-mutate"><i class="fa fa-check"></i><b>2.2</b> dplyr :: mutate</a></li>
-<li class="chapter" data-level="2.3" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-filter"><i class="fa fa-check"></i><b>2.3</b> dplyr :: filter</a></li>
-<li class="chapter" data-level="2.4" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-select"><i class="fa fa-check"></i><b>2.4</b> dplyr :: select</a></li>
-<li class="chapter" data-level="2.5" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-arrange"><i class="fa fa-check"></i><b>2.5</b> dplyr :: arrange</a></li>
-<li class="chapter" data-level="2.6" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-summarise"><i class="fa fa-check"></i><b>2.6</b> dplyr :: summarise</a></li>
-<li class="chapter" data-level="2.7" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-left_join"><i class="fa fa-check"></i><b>2.7</b> dplyr :: left_join</a></li>
-<li class="chapter" data-level="2.8" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-right_join"><i class="fa fa-check"></i><b>2.8</b> dplyr :: right_join</a></li>
-<li class="chapter" data-level="2.9" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-inner_join"><i class="fa fa-check"></i><b>2.9</b> dplyr :: inner_join</a></li>
-<li class="chapter" data-level="2.10" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-full_join"><i class="fa fa-check"></i><b>2.10</b> dplyr :: full_join</a></li>
-<li class="chapter" data-level="2.11" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-bind_cols"><i class="fa fa-check"></i><b>2.11</b> dplyr :: bind_cols</a></li>
-<li class="chapter" data-level="2.12" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-bind_rows"><i class="fa fa-check"></i><b>2.12</b> dplyr :: bind_rows</a></li>
+<li class="chapter" data-level="2.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#head-and-tail"><i class="fa fa-check"></i><b>2.1</b> head and tail</a></li>
+<li class="chapter" data-level="2.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#dim-and-str"><i class="fa fa-check"></i><b>2.2</b> dim and str</a></li>
+<li class="chapter" data-level="2.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#summary"><i class="fa fa-check"></i><b>2.3</b> summary</a></li>
+<li class="chapter" data-level="2.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#table"><i class="fa fa-check"></i><b>2.4</b> table</a></li>
+<li class="chapter" data-level="2.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#qplot"><i class="fa fa-check"></i><b>2.5</b> qplot</a></li>
+<li class="chapter" data-level="2.6" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#hist"><i class="fa fa-check"></i><b>2.6</b> hist</a></li>
+<li class="chapter" data-level="2.7" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#is.na"><i class="fa fa-check"></i><b>2.7</b> is.na</a></li>
+<li class="chapter" data-level="2.8" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#na.omit"><i class="fa fa-check"></i><b>2.8</b> na.omit</a></li>
+<li class="chapter" data-level="2.9" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#barplot"><i class="fa fa-check"></i><b>2.9</b> barplot</a></li>
+<li class="chapter" data-level="2.10" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#boxplot"><i class="fa fa-check"></i><b>2.10</b> boxplot</a></li>
+<li class="chapter" data-level="2.11" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#ggplot2-ggplot"><i class="fa fa-check"></i><b>2.11</b> ggplot2 :: ggplot</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-preprocessing.html"><a href="data-preprocessing.html"><i class="fa fa-check"></i><b>3</b> Data Preprocessing</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-preprocessing.html"><a href="data-preprocessing.html#ifelse"><i class="fa fa-check"></i><b>3.1</b> ifelse</a></li>
+<li class="chapter" data-level="3.2" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-mutate"><i class="fa fa-check"></i><b>3.2</b> dplyr :: mutate</a></li>
+<li class="chapter" data-level="3.3" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-filter"><i class="fa fa-check"></i><b>3.3</b> dplyr :: filter</a></li>
+<li class="chapter" data-level="3.4" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-select"><i class="fa fa-check"></i><b>3.4</b> dplyr :: select</a></li>
+<li class="chapter" data-level="3.5" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-arrange"><i class="fa fa-check"></i><b>3.5</b> dplyr :: arrange</a></li>
+<li class="chapter" data-level="3.6" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-summarise"><i class="fa fa-check"></i><b>3.6</b> dplyr :: summarise</a></li>
+<li class="chapter" data-level="3.7" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-left_join"><i class="fa fa-check"></i><b>3.7</b> dplyr :: left_join</a></li>
+<li class="chapter" data-level="3.8" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-right_join"><i class="fa fa-check"></i><b>3.8</b> dplyr :: right_join</a></li>
+<li class="chapter" data-level="3.9" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-inner_join"><i class="fa fa-check"></i><b>3.9</b> dplyr :: inner_join</a></li>
+<li class="chapter" data-level="3.10" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-full_join"><i class="fa fa-check"></i><b>3.10</b> dplyr :: full_join</a></li>
+<li class="chapter" data-level="3.11" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-bind_cols"><i class="fa fa-check"></i><b>3.11</b> dplyr :: bind_cols</a></li>
+<li class="chapter" data-level="3.12" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-bind_rows"><i class="fa fa-check"></i><b>3.12</b> dplyr :: bind_rows</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -187,13 +195,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="exploratory-data-analysis" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Exploratory Data Analysis</h1>
+<div id="exploratory-data-analysis" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Exploratory Data Analysis</h1>
 <p>EDA(Exploratory Data Analysis) is necessary for data analyst to check the dataset before statistical modeling(or machine learning)</p>
-<div id="head-and-tail" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> head and tail</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="exploratory-data-analysis.html#cb1-1" aria-hidden="true" tabindex="-1"></a>df_mpg <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(ggplot2<span class="sc">::</span>mpg)</span>
-<span id="cb1-2"><a href="exploratory-data-analysis.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_mpg)</span></code></pre></div>
+<div id="head-and-tail" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> head and tail</h2>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="exploratory-data-analysis.html#cb86-1" aria-hidden="true" tabindex="-1"></a>df_mpg <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(ggplot2<span class="sc">::</span>mpg)</span>
+<span id="cb86-2"><a href="exploratory-data-analysis.html#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_mpg)</span></code></pre></div>
 <pre><code>##   manufacturer model displ year cyl      trans drv cty hwy fl   class
 ## 1         audi    a4   1.8 1999   4   auto(l5)   f  18  29  p compact
 ## 2         audi    a4   1.8 1999   4 manual(m5)   f  21  29  p compact
@@ -203,7 +211,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6         audi    a4   2.8 1999   6 manual(m5)   f  18  26  p compact</code></pre>
 <p>we have loaded <code>mpg</code> dataset from <code>ggplot2</code> package. <code>ggplot2</code> contains multiple useful datasets and various visualization tools.
 <code>head</code> function extract top 6 rows of input dataset. In contrast, we can extract bottom 6 rows using <code>tail</code> function.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="exploratory-data-analysis.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(df_mpg)</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="exploratory-data-analysis.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(df_mpg)</span></code></pre></div>
 <pre><code>##     manufacturer  model displ year cyl      trans drv cty hwy fl   class
 ## 229   volkswagen passat   1.8 1999   4   auto(l5)   f  18  29  p midsize
 ## 230   volkswagen passat   2.0 2008   4   auto(s6)   f  19  28  p midsize
@@ -213,34 +221,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 234   volkswagen passat   3.6 2008   6   auto(s6)   f  17  26  p midsize</code></pre>
 <p>It’s important to check rows in this way, because most of dataset we meet are so large that it can’t be shown just in one page.</p>
 </div>
-<div id="dim-and-str" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> dim and str</h2>
+<div id="dim-and-str" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> dim and str</h2>
 <p>using <code>dim</code> function, we can check the size of dataset. The size means rows x columns.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="exploratory-data-analysis.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_mpg)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="exploratory-data-analysis.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_mpg)</span></code></pre></div>
 <pre><code>## [1] 234  11</code></pre>
 <p>This <code>mpg</code> dataset has 234 rows and 11 columns(features).</p>
 <p>We do not need to use this function just for check entire dataset.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="exploratory-data-analysis.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(<span class="fu">head</span>(df_mpg))</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="exploratory-data-analysis.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(<span class="fu">head</span>(df_mpg))</span></code></pre></div>
 <pre><code>## [1]  6 11</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="exploratory-data-analysis.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_mpg[,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="exploratory-data-analysis.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_mpg[,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div>
 <pre><code>## [1] 234   3</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="exploratory-data-analysis.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_mpg[<span class="st">&#39;model&#39;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="exploratory-data-analysis.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_mpg[<span class="st">&#39;model&#39;</span>])</span></code></pre></div>
 <pre><code>## [1] 234   1</code></pre>
 <p>but we can’t use <code>dim</code> for 1-dim vector. Note that df_mpg[‘model’] is not a vector, it’s dataframe yet.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="exploratory-data-analysis.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df_mpg[<span class="st">&#39;model&#39;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="exploratory-data-analysis.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df_mpg[<span class="st">&#39;model&#39;</span>])</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    234 obs. of  1 variable:
 ##  $ model: chr  &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; ...</code></pre>
 <p>It’s different from df_mpg$model</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="exploratory-data-analysis.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df_mpg<span class="sc">$</span>model)</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="exploratory-data-analysis.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df_mpg<span class="sc">$</span>model)</span></code></pre></div>
 <pre><code>##  chr [1:234] &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4 quattro&quot; &quot;a4 quattro&quot; ...</code></pre>
 <p>This is vector. And it’s same with df_mpg[[‘model’]]</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="exploratory-data-analysis.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df_mpg[[<span class="st">&#39;model&#39;</span>]])</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="exploratory-data-analysis.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df_mpg[[<span class="st">&#39;model&#39;</span>]])</span></code></pre></div>
 <pre><code>##  chr [1:234] &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4 quattro&quot; &quot;a4 quattro&quot; ...</code></pre>
 </div>
-<div id="summary" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> summary</h2>
+<div id="summary" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> summary</h2>
 <p>we can check summary statistics using <code>summary</code> function.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="exploratory-data-analysis.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df_mpg)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="exploratory-data-analysis.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df_mpg)</span></code></pre></div>
 <pre><code>##  manufacturer          model               displ            year     
 ##  Length:234         Length:234         Min.   :1.600   Min.   :1999  
 ##  Class :character   Class :character   1st Qu.:2.400   1st Qu.:1999  
@@ -264,10 +272,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Max.   :44.00</code></pre>
 <p>If column is categorical variable, like <code>model</code>, <code>trans</code>, <code>drv</code>, <code>manufacturer</code>, <code>fl</code>, <code>class</code>, it just shows Length, Class and Mode. But in case of numerical, it can shows mean of variable, median of variable, minimum of variable, maximum of variable and 1st and 3rd quartile.</p>
 </div>
-<div id="table" class="section level2" number="1.4">
-<h2><span class="header-section-number">1.4</span> table</h2>
+<div id="table" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> table</h2>
 <p>And R also provides a frequency table. We can use this as call <code>table</code> function.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="exploratory-data-analysis.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df_mpg<span class="sc">$</span>model)</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="exploratory-data-analysis.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df_mpg<span class="sc">$</span>model)</span></code></pre></div>
 <pre><code>## 
 ##            4runner 4wd                     a4             a4 quattro 
 ##                      6                      7                      8 
@@ -295,26 +303,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##                     10                      4                      7 
 ##                tiburon      toyota tacoma 4wd 
 ##                      7                      7</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="exploratory-data-analysis.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df_mpg<span class="sc">$</span>class)</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="exploratory-data-analysis.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df_mpg<span class="sc">$</span>class)</span></code></pre></div>
 <pre><code>## 
 ##    2seater    compact    midsize    minivan     pickup subcompact        suv 
 ##          5         47         41         11         33         35         62</code></pre>
 <p>It’s helpful to check counts of each values in variable. To better use, we can use this table with visualizing original variable.</p>
 <p>first, let’s import <code>ggplot2</code> library</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="exploratory-data-analysis.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="exploratory-data-analysis.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(df_mpg<span class="sc">$</span>class)</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="exploratory-data-analysis.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="exploratory-data-analysis.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(df_mpg<span class="sc">$</span>class)</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-36-1.png" width="672" />
 You should be careful to visualize the table as it is. If you visualize the table, it shows the different one.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="exploratory-data-analysis.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="fu">table</span>(df_mpg<span class="sc">$</span>class))</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="exploratory-data-analysis.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="fu">table</span>(df_mpg<span class="sc">$</span>class))</span></code></pre></div>
 <pre><code>## Don&#39;t know how to automatically pick scale for object of type table. Defaulting to continuous.</code></pre>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="rbook_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="rbook_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 </div>
-<div id="qplot" class="section level2" number="1.5">
-<h2><span class="header-section-number">1.5</span> qplot</h2>
+<div id="qplot" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> qplot</h2>
 <p>Visualization is always important part for EDA. Let’s study more about <code>qplot</code>.
 we use <code>mpg</code> dataset. Extract top 5 rows</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="exploratory-data-analysis.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mpg)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="exploratory-data-analysis.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mpg)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 11
 ##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class 
 ##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
@@ -326,125 +334,125 @@ we use <code>mpg</code> dataset. Extract top 5 rows</p>
 ## 6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…</code></pre>
 <p><code>qplot</code> means “quick plot.” It is useful for quickly running our plot.</p>
 <p>let’s see some feature’s frequency using <code>qplot</code></p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="exploratory-data-analysis.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data=</span>mpg, <span class="at">x=</span>manufacturer)</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="exploratory-data-analysis.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data=</span>mpg, <span class="at">x=</span>fl)</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="exploratory-data-analysis.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data=</span>mpg, <span class="at">x=</span>year)</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="exploratory-data-analysis.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data=</span>mpg, <span class="at">x=</span>manufacturer)</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="exploratory-data-analysis.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data=</span>mpg, <span class="at">x=</span>fl)</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="exploratory-data-analysis.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data=</span>mpg, <span class="at">x=</span>year)</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="rbook_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><img src="rbook_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
 <p>it’s weired. <code>year</code> data have only 2 cases.
 let’s check that.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="exploratory-data-analysis.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(mpg<span class="sc">$</span>year)</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="exploratory-data-analysis.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(mpg<span class="sc">$</span>year)</span></code></pre></div>
 <pre><code>## 
 ## 1999 2008 
 ##  117  117</code></pre>
 <p>yes. it’s contain only the car data that manufacturered in 1999 and 2008. We have to think about this when analysis this dataset.</p>
 <p>and let’s go ahead and check the other feature one more.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="exploratory-data-analysis.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data=</span>mpg, <span class="at">x=</span>class)</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="exploratory-data-analysis.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data=</span>mpg, <span class="at">x=</span>class)</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
 <p>like this, we can show data’s frequency by input x(feature).</p>
 <p>and <code>class</code> contains types of car like size or shape etc.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="exploratory-data-analysis.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(mpg<span class="sc">$</span>class)</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="exploratory-data-analysis.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(mpg<span class="sc">$</span>class)</span></code></pre></div>
 <pre><code>## 
 ##    2seater    compact    midsize    minivan     pickup subcompact        suv 
 ##          5         47         41         11         33         35         62</code></pre>
 <p>Then, what will happen if we input y into qplot function?</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="exploratory-data-analysis.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data=</span>mpg, <span class="at">x=</span>class, <span class="at">y=</span>hwy)</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="exploratory-data-analysis.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data=</span>mpg, <span class="at">x=</span>class, <span class="at">y=</span>hwy)</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
 <p>This is scatter plot. From this plot, we can check highway fuel economy of each car class. Pick-up truck and SUV are not good at average fuel economy.</p>
 <p>But, we have more useful plot than scatter plot for checking the mean of data. Let’s use that.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="exploratory-data-analysis.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data=</span>mpg, <span class="at">x=</span>class, <span class="at">y=</span>hwy, <span class="at">geom=</span><span class="st">&#39;boxplot&#39;</span>, <span class="at">color=</span>class)</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="exploratory-data-analysis.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data=</span>mpg, <span class="at">x=</span>class, <span class="at">y=</span>hwy, <span class="at">geom=</span><span class="st">&#39;boxplot&#39;</span>, <span class="at">color=</span>class)</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
 <p>It’s box plot. We can check means easily and even outliers. It’s very important that how our data visualized and what tools we use.</p>
 <p>If we use line plot for this situation, It is difficult to accurately show the data.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="exploratory-data-analysis.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data=</span>mpg, <span class="at">x=</span>class, <span class="at">y=</span>hwy, <span class="at">geom=</span><span class="st">&#39;line&#39;</span>, <span class="at">color=</span>class)</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="exploratory-data-analysis.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data=</span>mpg, <span class="at">x=</span>class, <span class="at">y=</span>hwy, <span class="at">geom=</span><span class="st">&#39;line&#39;</span>, <span class="at">color=</span>class)</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
 </div>
-<div id="hist" class="section level2" number="1.6">
-<h2><span class="header-section-number">1.6</span> hist</h2>
+<div id="hist" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> hist</h2>
 <p>R have basic histplot function. We can use this by calling <code>hist()</code>. <code>hist</code> means histogram. It shows the distribution of continuous(numeric) variable.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="exploratory-data-analysis.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mpg<span class="sc">$</span>hwy)</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="exploratory-data-analysis.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mpg<span class="sc">$</span>hwy)</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
 <p>If you input categorical variable(ex. mpg$class) into <code>hist</code> function,</p>
 <p>it returns error that <code>Error in hist.default(mpg$class) : 'x' must be numeric</code></p>
 </div>
-<div id="is.na" class="section level2" number="1.7">
-<h2><span class="header-section-number">1.7</span> is.na</h2>
+<div id="is.na" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> is.na</h2>
 <p><code>is.na()</code> is the function that check whether the input has missing value or not.</p>
 <p>and the input can be vector, list, data.frame etc.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="exploratory-data-analysis.html#cb45-1" aria-hidden="true" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Kim&#39;</span>, <span class="st">&#39;Jay&#39;</span>, <span class="st">&#39;toreto&#39;</span>, <span class="cn">NA</span>)</span>
-<span id="cb45-2"><a href="exploratory-data-analysis.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(names)</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="exploratory-data-analysis.html#cb130-1" aria-hidden="true" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Kim&#39;</span>, <span class="st">&#39;Jay&#39;</span>, <span class="st">&#39;toreto&#39;</span>, <span class="cn">NA</span>)</span>
+<span id="cb130-2"><a href="exploratory-data-analysis.html#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(names)</span></code></pre></div>
 <pre><code>## [1] FALSE FALSE FALSE  TRUE</code></pre>
 <p>we can count <code>NA</code> by using <code>table</code> function.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="exploratory-data-analysis.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">is.na</span>(names))</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="exploratory-data-analysis.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">is.na</span>(names))</span></code></pre></div>
 <pre><code>## 
 ## FALSE  TRUE 
 ##     3     1</code></pre>
 <p>How about a dataframe?</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="exploratory-data-analysis.html#cb49-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;0000&#39;</span>, <span class="st">&#39;0010&#39;</span>, <span class="st">&#39;0022&#39;</span>, <span class="cn">NA</span>)</span>
-<span id="cb49-2"><a href="exploratory-data-analysis.html#cb49-2" aria-hidden="true" tabindex="-1"></a>birth <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;880201&#39;</span>, <span class="st">&#39;000106&#39;</span>, <span class="st">&#39;930128&#39;</span>, <span class="cn">NA</span>)</span>
-<span id="cb49-3"><a href="exploratory-data-analysis.html#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-4"><a href="exploratory-data-analysis.html#cb49-4" aria-hidden="true" tabindex="-1"></a>customer_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(names, id, birth)</span>
-<span id="cb49-5"><a href="exploratory-data-analysis.html#cb49-5" aria-hidden="true" tabindex="-1"></a>customer_df</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="exploratory-data-analysis.html#cb134-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;0000&#39;</span>, <span class="st">&#39;0010&#39;</span>, <span class="st">&#39;0022&#39;</span>, <span class="cn">NA</span>)</span>
+<span id="cb134-2"><a href="exploratory-data-analysis.html#cb134-2" aria-hidden="true" tabindex="-1"></a>birth <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;880201&#39;</span>, <span class="st">&#39;000106&#39;</span>, <span class="st">&#39;930128&#39;</span>, <span class="cn">NA</span>)</span>
+<span id="cb134-3"><a href="exploratory-data-analysis.html#cb134-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb134-4"><a href="exploratory-data-analysis.html#cb134-4" aria-hidden="true" tabindex="-1"></a>customer_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(names, id, birth)</span>
+<span id="cb134-5"><a href="exploratory-data-analysis.html#cb134-5" aria-hidden="true" tabindex="-1"></a>customer_df</span></code></pre></div>
 <pre><code>##    names   id  birth
 ## 1    Kim 0000 880201
 ## 2    Jay 0010 000106
 ## 3 toreto 0022 930128
 ## 4   &lt;NA&gt; &lt;NA&gt;   &lt;NA&gt;</code></pre>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="exploratory-data-analysis.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">is.na</span>(customer_df))</span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="exploratory-data-analysis.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">is.na</span>(customer_df))</span></code></pre></div>
 <pre><code>## 
 ## FALSE  TRUE 
 ##     9     3</code></pre>
 <p>we can visualize table by using <code>plot()</code> method</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="exploratory-data-analysis.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">table</span>(<span class="fu">is.na</span>(customer_df)))</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="exploratory-data-analysis.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">table</span>(<span class="fu">is.na</span>(customer_df)))</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
 <p>If we just need to check only <code>NA</code>, we can use <code>sum()</code>.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="exploratory-data-analysis.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(customer_df))</span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="exploratory-data-analysis.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(customer_df))</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>There are many ways to fill <code>NA</code>.</p>
 <p>first, just fill <code>NA</code> as specific value.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="exploratory-data-analysis.html#cb56-1" aria-hidden="true" tabindex="-1"></a>customer_df[<span class="dv">4</span>,][<span class="st">&#39;names&#39;</span>] <span class="ot">&lt;-</span> <span class="st">&#39;haword&#39;</span></span>
-<span id="cb56-2"><a href="exploratory-data-analysis.html#cb56-2" aria-hidden="true" tabindex="-1"></a>customer_df</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="exploratory-data-analysis.html#cb141-1" aria-hidden="true" tabindex="-1"></a>customer_df[<span class="dv">4</span>,][<span class="st">&#39;names&#39;</span>] <span class="ot">&lt;-</span> <span class="st">&#39;haword&#39;</span></span>
+<span id="cb141-2"><a href="exploratory-data-analysis.html#cb141-2" aria-hidden="true" tabindex="-1"></a>customer_df</span></code></pre></div>
 <pre><code>##    names   id  birth
 ## 1    Kim 0000 880201
 ## 2    Jay 0010 000106
 ## 3 toreto 0022 930128
 ## 4 haword &lt;NA&gt;   &lt;NA&gt;</code></pre>
 <p>or we can use <code>ifelse()</code> function like this.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="exploratory-data-analysis.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">is.na</span>(customer_df<span class="sc">$</span>id), <span class="st">&#39;Missing&#39;</span>, customer_df<span class="sc">$</span>id)</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="exploratory-data-analysis.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="fu">is.na</span>(customer_df<span class="sc">$</span>id), <span class="st">&#39;Missing&#39;</span>, customer_df<span class="sc">$</span>id)</span></code></pre></div>
 <pre><code>## [1] &quot;0000&quot;    &quot;0010&quot;    &quot;0022&quot;    &quot;Missing&quot;</code></pre>
 </div>
-<div id="na.omit" class="section level2" number="1.8">
-<h2><span class="header-section-number">1.8</span> na.omit</h2>
+<div id="na.omit" class="section level2" number="2.8">
+<h2><span class="header-section-number">2.8</span> na.omit</h2>
 <p>or we can delete all missing values.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="exploratory-data-analysis.html#cb60-1" aria-hidden="true" tabindex="-1"></a>customer_df <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(customer_df)</span>
-<span id="cb60-2"><a href="exploratory-data-analysis.html#cb60-2" aria-hidden="true" tabindex="-1"></a>customer_df</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="exploratory-data-analysis.html#cb145-1" aria-hidden="true" tabindex="-1"></a>customer_df <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(customer_df)</span>
+<span id="cb145-2"><a href="exploratory-data-analysis.html#cb145-2" aria-hidden="true" tabindex="-1"></a>customer_df</span></code></pre></div>
 <pre><code>##    names   id  birth
 ## 1    Kim 0000 880201
 ## 2    Jay 0010 000106
 ## 3 toreto 0022 930128</code></pre>
 </div>
-<div id="barplot" class="section level2" number="1.9">
-<h2><span class="header-section-number">1.9</span> barplot</h2>
+<div id="barplot" class="section level2" number="2.9">
+<h2><span class="header-section-number">2.9</span> barplot</h2>
 <p>In case of outliers are in data frame, we have to select how to handle this outliers.</p>
 <p>If you have great domain knowledge, you can just use visualization and judge whether this value is outlier or not.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="exploratory-data-analysis.html#cb62-1" aria-hidden="true" tabindex="-1"></a>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">180</span>, <span class="dv">177</span>, <span class="dv">17</span>)</span>
-<span id="cb62-2"><a href="exploratory-data-analysis.html#cb62-2" aria-hidden="true" tabindex="-1"></a>customer_df<span class="sc">$</span>height <span class="ot">&lt;-</span> height</span>
-<span id="cb62-3"><a href="exploratory-data-analysis.html#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(customer_df<span class="sc">$</span>height, <span class="at">names=</span>customer_df<span class="sc">$</span>names)</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="exploratory-data-analysis.html#cb147-1" aria-hidden="true" tabindex="-1"></a>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">180</span>, <span class="dv">177</span>, <span class="dv">17</span>)</span>
+<span id="cb147-2"><a href="exploratory-data-analysis.html#cb147-2" aria-hidden="true" tabindex="-1"></a>customer_df<span class="sc">$</span>height <span class="ot">&lt;-</span> height</span>
+<span id="cb147-3"><a href="exploratory-data-analysis.html#cb147-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(customer_df<span class="sc">$</span>height, <span class="at">names=</span>customer_df<span class="sc">$</span>names)</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
 <p>is that right? is Toreto’s height 17(cm)?
 No. It’s may be typing error. maybe it’s 170, 177 etc.</p>
 <p>In many case, there are so many data in dataset so that it’s hard to check one by one through table, so it’s so useful to use visualization.</p>
 </div>
-<div id="boxplot" class="section level2" number="1.10">
-<h2><span class="header-section-number">1.10</span> boxplot</h2>
+<div id="boxplot" class="section level2" number="2.10">
+<h2><span class="header-section-number">2.10</span> boxplot</h2>
 <p>Especially when you do not have deep domain knowledge or want to look for statistical outliers, boxplot is a great help.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="exploratory-data-analysis.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(mpg<span class="sc">$</span>cty)</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="exploratory-data-analysis.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(mpg<span class="sc">$</span>cty)</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
 <p>We can see 4 outliers in boxplot.
 let’s check them.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="exploratory-data-analysis.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mpg)</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="exploratory-data-analysis.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mpg)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 11
 ##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class 
 ##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
@@ -454,7 +462,7 @@ let’s check them.</p>
 ## 4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compa…
 ## 5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compa…
 ## 6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…</code></pre>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="exploratory-data-analysis.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="exploratory-data-analysis.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;dplyr&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:stats&#39;:
@@ -463,10 +471,10 @@ let’s check them.</p>
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="exploratory-data-analysis.html#cb70-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
-<span id="cb70-2"><a href="exploratory-data-analysis.html#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, model, year, cty) <span class="sc">%&gt;%</span></span>
-<span id="cb70-3"><a href="exploratory-data-analysis.html#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(cty)) <span class="sc">%&gt;%</span></span>
-<span id="cb70-4"><a href="exploratory-data-analysis.html#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="exploratory-data-analysis.html#cb155-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb155-2"><a href="exploratory-data-analysis.html#cb155-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, model, year, cty) <span class="sc">%&gt;%</span></span>
+<span id="cb155-3"><a href="exploratory-data-analysis.html#cb155-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(cty)) <span class="sc">%&gt;%</span></span>
+<span id="cb155-4"><a href="exploratory-data-analysis.html#cb155-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 4
 ##    manufacturer model       year   cty
 ##    &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt; &lt;int&gt;
@@ -480,17 +488,17 @@ let’s check them.</p>
 ##  8 toyota       corolla     2008    26
 ##  9 honda        civic       1999    25
 ## 10 honda        civic       2008    25</code></pre>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="exploratory-data-analysis.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mpg<span class="sc">$</span>cty)</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="exploratory-data-analysis.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mpg<span class="sc">$</span>cty)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    9.00   14.00   17.00   16.86   19.00   35.00</code></pre>
 <p>We can also extract boxplot’s output as numerical values.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="exploratory-data-analysis.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(mpg<span class="sc">$</span>cty)<span class="sc">$</span>out</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="exploratory-data-analysis.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(mpg<span class="sc">$</span>cty)<span class="sc">$</span>out</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
 <pre><code>## [1] 28 28 33 35 29</code></pre>
 <p>And let’s check this values from our dataframe.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="exploratory-data-analysis.html#cb76-1" aria-hidden="true" tabindex="-1"></a>outputs <span class="ot">&lt;-</span> <span class="fu">boxplot</span>(mpg<span class="sc">$</span>cty)<span class="sc">$</span>out</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="exploratory-data-analysis.html#cb77-1" aria-hidden="true" tabindex="-1"></a>mpg[mpg<span class="sc">$</span>cty <span class="sc">%in%</span> outputs, ]</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="exploratory-data-analysis.html#cb161-1" aria-hidden="true" tabindex="-1"></a>outputs <span class="ot">&lt;-</span> <span class="fu">boxplot</span>(mpg<span class="sc">$</span>cty)<span class="sc">$</span>out</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="exploratory-data-analysis.html#cb162-1" aria-hidden="true" tabindex="-1"></a>mpg[mpg<span class="sc">$</span>cty <span class="sc">%in%</span> outputs, ]</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 11
 ##   manufacturer model   displ  year   cyl trans   drv     cty   hwy fl    class  
 ##   &lt;chr&gt;        &lt;chr&gt;   &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
@@ -500,11 +508,11 @@ let’s check them.</p>
 ## 4 volkswagen   new be…   1.9  1999     4 manual… f        35    44 d     subcom…
 ## 5 volkswagen   new be…   1.9  1999     4 auto(l… f        29    41 d     subcom…</code></pre>
 </div>
-<div id="ggplot2-ggplot" class="section level2" number="1.11">
-<h2><span class="header-section-number">1.11</span> ggplot2 :: ggplot</h2>
+<div id="ggplot2-ggplot" class="section level2" number="2.11">
+<h2><span class="header-section-number">2.11</span> ggplot2 :: ggplot</h2>
 <p>ggplot2 is a package that helps with structural visualization using the R.</p>
 <p>scatter plot, box plot, line plot, hist plot etc. all type of chart that we discussed can all be used in ggplot. Let’s try it.</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="exploratory-data-analysis.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mpg)</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="exploratory-data-analysis.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mpg)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 11
 ##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class 
 ##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
@@ -514,19 +522,19 @@ let’s check them.</p>
 ## 4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compa…
 ## 5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compa…
 ## 6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…</code></pre>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="exploratory-data-analysis.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb81-2"><a href="exploratory-data-analysis.html#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mpg, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>cty)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-45-1.png" width="672" />
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="exploratory-data-analysis.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb166-2"><a href="exploratory-data-analysis.html#cb166-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mpg, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>cty)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-66-1.png" width="672" />
 Scatter plot is useful for checking distribution of dataset. But in this case, the <code>year</code> variable isn’t continuous. Let’s deal with other variable.</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="exploratory-data-analysis.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mpg, <span class="fu">aes</span>(<span class="at">x=</span>displ, <span class="at">y=</span>cty)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="exploratory-data-analysis.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mpg, <span class="fu">aes</span>(<span class="at">x=</span>displ, <span class="at">y=</span>cty)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
 <p>As with this one, if the two variables are not continuous, you should consider another chart.</p>
 <p>As another example,</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="exploratory-data-analysis.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mpg, <span class="fu">aes</span>(<span class="at">x=</span>class, <span class="at">y=</span>cty)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="exploratory-data-analysis.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mpg, <span class="fu">aes</span>(<span class="at">x=</span>class, <span class="at">y=</span>cty)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
 <p>It is better to use a box plot to compare the fuel efficiency of each class.</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="exploratory-data-analysis.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mpg, <span class="fu">aes</span>(<span class="at">x=</span>class, <span class="at">y=</span>cty)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
-<p><img src="rbook_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="exploratory-data-analysis.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mpg, <span class="fu">aes</span>(<span class="at">x=</span>class, <span class="at">y=</span>cty)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="rbook_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -535,7 +543,7 @@ Scatter plot is useful for checking distribution of dataset. But in this case, t
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-basic.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="data-preprocessing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

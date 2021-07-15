@@ -1,3 +1,9 @@
+r-basic
+data-types
+data-structure
+data-structure---vector
+data-structure---matrix
+data-structure---dataframe
 exploratory-data-analysis
 head-and-tail
 dim-and-str
