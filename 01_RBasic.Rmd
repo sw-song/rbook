@@ -2,15 +2,17 @@
 
 Let's check the types and data structures in R. At the same time, let's prepare to deal with R by taking a look at the built-in functions that R has by default.
 
-## Data Types
+## Data Types I
 
-R has 6 basic data types. 
+R has 5 basic data types. 
+
 - character
 - numeric
 - integer
-- logical
 - complex
-- raw
+- logical
+
+## Data Types - character
 
 And we can deal with these data types by using basic functions.
 ```{r}
@@ -19,6 +21,8 @@ typeof('Hello') # show the type of 'Hello'(character)
 length('Hello') # show the length of 'Hello'(1 character)
 str('Hello') # show the structure of 'Hello'
 ```
+
+## Data Types - numeric, integer, complex
 
 There are 3 ways to represent numbers
 
@@ -36,6 +40,8 @@ str(integer(3))
 str(complex(3))
 ```
 
+## Data Types - logical
+
 and logical type.
 
 ```{r}
@@ -44,6 +50,16 @@ typeof(logical(5)) # show the type of the logical collection
 length(logical(5)) # show the length of the logical collection, or the number of the logical elements(5)
 str(logical(5)) # show the structure of the logical collection
 ```
+
+## Data Types II
+
+Here are some other useful data types.
+
+- raw
+- factor
+- Date
+
+## Data Types - raw
 
 The `raw` can represent a hex digit. So if we want to get ASCII code, we can use this. Contrary, we can convert ASCII code to ASCII characters.
 
@@ -57,10 +73,82 @@ print(ctr)
 rawToChar(ctr)
 ```
 
+## Data Types - factor
+
+In statistics, variables are divided into categorical variables (discrete variables) and continuous variables. Going deeper, categorical variables can be divided into "normal variables with no order between variables" and "ordinal variables with order between variables", and continuous variables are "interval variables without absolute zeros" and "Ratio variables with absolute zeros" can be divided into.
+
+1. Categorical variable
+  - norminal variable
+  - ordinal variable
+  
+2. Continuous variable
+  - interval variable
+  - ratio variable
+
+In this classification, `Categorical variables` can be represented as `factor` type in R. The `factor` type can be used with factor() and ordered().
+
+In particular, when data is composed of numbers, it is important to understand whether this has meaning in order, and factor() excludes meaning in order by expressing it as a category.
+
+
+```{r}
+c(1,2,3,1,2,3,4)
+```
+
+```{r}
+factor(c(1,2,3,1,2,3,4))
+```
+
+## Data Types - ordered factor
+
+Also, an order can be added to the factor form. If you use factor(), you can create a norminal variable, and if you use ordered(), you can create an ordinal variable.
+
+```{r}
+ordered(c(1,2,3,1,2,3,1,2))
+```
+
+ordered() is especially effective when working with categorical data that has an ordered literal representation.
+
+```{r}
+ordered(c('Short','Tall','Grande','Tall','Short','Tall'),
+        levels=c('Short','Tall','Grande'))
+```
+
+Of course, it is also possible to change the levels in descending order or add a level that is not in the current data in advance.
+```{r}
+ordered(c(1,2,3,1,2,1,2,3,1),
+        levels=c(4,3,2,1))
+```
+
+## Data Types - date
+
+We'll deal with the date type from now on, but we'll use the method that converts a specific string to a date because we can put it in a function as a string or a number.
+
+```{r}
+day_info <- c('2018-12-24','2018-12-25')
+day_info
+typeof(day_info)
+```
+
+
+```{r}
+date_info <- as.Date(day_info)
+date_info
+typeof(date_info)
+```
+
+The results don't look much different. Why do we need this type?
+
+The reason we use date type is usually for time series analysis. This enables time calculation.
+
+```{r}
+date_info[2] - date_info[1]
+```
+If we had subtracted from day_info, we would have had an error.
 
 ## Data Structure 
 
 Data structure is container that contain data elements. There are 5 basic data structures in R.
+
 - vector
 - matrix
 - dataframe
@@ -354,3 +442,4 @@ Finally, let's look at the difference between using only one bracket.
 ```{r}
 str(li2[3])
 ```
+

@@ -1,5 +1,13 @@
 r-basic
-data-types
+data-types-i
+data-types---character
+data-types---numeric-integer-complex
+data-types---logical
+data-types-ii
+data-types---raw
+data-types---factor
+data-types---ordered-factor
+data-types---date
 data-structure
 data-structure---vector
 data-structure---matrix
