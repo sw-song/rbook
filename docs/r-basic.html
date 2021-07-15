@@ -144,6 +144,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.3" data-path="r-basic.html"><a href="r-basic.html#data-structure---vector"><i class="fa fa-check"></i><b>1.3</b> Data Structure - vector</a></li>
 <li class="chapter" data-level="1.4" data-path="r-basic.html"><a href="r-basic.html#data-structure---matrix"><i class="fa fa-check"></i><b>1.4</b> Data Structure - matrix</a></li>
 <li class="chapter" data-level="1.5" data-path="r-basic.html"><a href="r-basic.html#data-structure---dataframe"><i class="fa fa-check"></i><b>1.5</b> Data Structure - dataframe</a></li>
+<li class="chapter" data-level="1.6" data-path="r-basic.html"><a href="r-basic.html#data-structure---array"><i class="fa fa-check"></i><b>1.6</b> Data Structure - array</a></li>
+<li class="chapter" data-level="1.7" data-path="r-basic.html"><a href="r-basic.html#data-structure---list"><i class="fa fa-check"></i><b>1.7</b> Data Structure - list</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>2</b> Exploratory Data Analysis</a>
 <ul>
@@ -377,7 +379,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="data-structure---dataframe" class="section level2" number="1.5">
 <h2><span class="header-section-number">1.5</span> Data Structure - dataframe</h2>
-<p>Data frame is 2 dimension data structure that it’s datatypes do not need to be uniform. That is, unlike a matrix, various types of vectors can be combined.</p>
+<p>Dataframe is 2 dimension data structure that it’s datatypes do not need to be uniform. That is, unlike a matrix, various types of vectors can be combined.</p>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="r-basic.html#cb80-1" aria-hidden="true" tabindex="-1"></a>column1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
 <span id="cb80-2"><a href="r-basic.html#cb80-2" aria-hidden="true" tabindex="-1"></a>column2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>,<span class="dv">50</span>)</span>
 <span id="cb80-3"><a href="r-basic.html#cb80-3" aria-hidden="true" tabindex="-1"></a>column3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;hi&#39;</span>, <span class="st">&#39;this&#39;</span>, <span class="st">&#39;is&#39;</span>, <span class="st">&#39;vector&#39;</span>, <span class="st">&#39;!&#39;</span>)</span>
@@ -389,10 +391,286 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ column1: num  1 2 3 4 5
 ##  $ column2: num  10 20 30 40 50
 ##  $ column3: chr  &quot;hi&quot; &quot;this&quot; &quot;is&quot; &quot;vector&quot; ...</code></pre>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="r-basic.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&#39;------&#39;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;------&quot;</code></pre>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="r-basic.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(sample_df)</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="r-basic.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(sample_df)</span></code></pre></div>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<p>The indexing used for metrics can be applied to data frames as well.</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="r-basic.html#cb84-1" aria-hidden="true" tabindex="-1"></a>sample_df</span></code></pre></div>
+<pre><code>##   column1 column2 column3
+## 1       1      10      hi
+## 2       2      20    this
+## 3       3      30      is
+## 4       4      40  vector
+## 5       5      50       !</code></pre>
+<ol style="list-style-type: decimal">
+<li>row - 1, column - all :</li>
+</ol>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="r-basic.html#cb86-1" aria-hidden="true" tabindex="-1"></a>sample_df[<span class="dv">1</span>, ]</span></code></pre></div>
+<pre><code>##   column1 column2 column3
+## 1       1      10      hi</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>row - all, column - 1~2 :</li>
+</ol>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="r-basic.html#cb88-1" aria-hidden="true" tabindex="-1"></a>sample_df[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
+<pre><code>##   column1 column2
+## 1       1      10
+## 2       2      20
+## 3       3      30
+## 4       4      40
+## 5       5      50</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>row - all, column - extract 1 and all :</li>
+</ol>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="r-basic.html#cb90-1" aria-hidden="true" tabindex="-1"></a>sample_df[,<span class="sc">-</span><span class="dv">1</span>]</span></code></pre></div>
+<pre><code>##   column2 column3
+## 1      10      hi
+## 2      20    this
+## 3      30      is
+## 4      40  vector
+## 5      50       !</code></pre>
+</div>
+<div id="data-structure---array" class="section level2" number="1.6">
+<h2><span class="header-section-number">1.6</span> Data Structure - array</h2>
+<p>An array is a multi-dimensional data structure that can express two or more dimensions of a matrix, and all elements must be of the same data type, just like a matrix.</p>
+<ol style="list-style-type: decimal">
+<li>1 dimension :</li>
+</ol>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="r-basic.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>2 dimension :</li>
+</ol>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="r-basic.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">dim=</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">2</span>)) <span class="co"># c(row, column)</span></span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    1    6
+## [2,]    2    7
+## [3,]    3    8
+## [4,]    4    9
+## [5,]    5   10</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>3 dimension :</li>
+</ol>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="r-basic.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>, <span class="at">dim=</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">3</span>)) <span class="co"># c(row, column, N)</span></span></code></pre></div>
+<pre><code>## , , 1
+## 
+##      [,1] [,2]
+## [1,]    1    6
+## [2,]    2    7
+## [3,]    3    8
+## [4,]    4    9
+## [5,]    5   10
+## 
+## , , 2
+## 
+##      [,1] [,2]
+## [1,]   11   16
+## [2,]   12   17
+## [3,]   13   18
+## [4,]   14   19
+## [5,]   15   20
+## 
+## , , 3
+## 
+##      [,1] [,2]
+## [1,]   21   26
+## [2,]   22   27
+## [3,]   23   28
+## [4,]   24   29
+## [5,]   25   30</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>4 dimension :</li>
+</ol>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="r-basic.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">200</span>, <span class="at">dim=</span><span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">2</span>, <span class="dv">2</span>)) <span class="co"># c(row, column, N, N)</span></span></code></pre></div>
+<pre><code>## , , 1, 1
+## 
+##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+## [1,]    1    6   11   16   21   26   31   36   41    46
+## [2,]    2    7   12   17   22   27   32   37   42    47
+## [3,]    3    8   13   18   23   28   33   38   43    48
+## [4,]    4    9   14   19   24   29   34   39   44    49
+## [5,]    5   10   15   20   25   30   35   40   45    50
+## 
+## , , 2, 1
+## 
+##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+## [1,]   51   56   61   66   71   76   81   86   91    96
+## [2,]   52   57   62   67   72   77   82   87   92    97
+## [3,]   53   58   63   68   73   78   83   88   93    98
+## [4,]   54   59   64   69   74   79   84   89   94    99
+## [5,]   55   60   65   70   75   80   85   90   95   100
+## 
+## , , 1, 2
+## 
+##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+## [1,]  101  106  111  116  121  126  131  136  141   146
+## [2,]  102  107  112  117  122  127  132  137  142   147
+## [3,]  103  108  113  118  123  128  133  138  143   148
+## [4,]  104  109  114  119  124  129  134  139  144   149
+## [5,]  105  110  115  120  125  130  135  140  145   150
+## 
+## , , 2, 2
+## 
+##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+## [1,]  151  156  161  166  171  176  181  186  191   196
+## [2,]  152  157  162  167  172  177  182  187  192   197
+## [3,]  153  158  163  168  173  178  183  188  193   198
+## [4,]  154  159  164  169  174  179  184  189  194   199
+## [5,]  155  160  165  170  175  180  185  190  195   200</code></pre>
+<p>We can use indexing for array too. But it could be more complex than matrix or vector.</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="r-basic.html#cb100-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">200</span>, <span class="at">dim=</span><span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="r-basic.html#cb101-1" aria-hidden="true" tabindex="-1"></a>test[<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>,,,] <span class="co"># row indexing</span></span></code></pre></div>
+<pre><code>## , , 1, 1
+## 
+##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+## [1,]    3    8   13   18   23   28   33   38   43    48
+## [2,]    4    9   14   19   24   29   34   39   44    49
+## [3,]    5   10   15   20   25   30   35   40   45    50
+## 
+## , , 2, 1
+## 
+##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+## [1,]   53   58   63   68   73   78   83   88   93    98
+## [2,]   54   59   64   69   74   79   84   89   94    99
+## [3,]   55   60   65   70   75   80   85   90   95   100
+## 
+## , , 1, 2
+## 
+##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+## [1,]  103  108  113  118  123  128  133  138  143   148
+## [2,]  104  109  114  119  124  129  134  139  144   149
+## [3,]  105  110  115  120  125  130  135  140  145   150
+## 
+## , , 2, 2
+## 
+##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+## [1,]  153  158  163  168  173  178  183  188  193   198
+## [2,]  154  159  164  169  174  179  184  189  194   199
+## [3,]  155  160  165  170  175  180  185  190  195   200</code></pre>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="r-basic.html#cb103-1" aria-hidden="true" tabindex="-1"></a>test[<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">5</span><span class="sc">:</span><span class="dv">8</span>,,] <span class="co"># row and column indexing</span></span></code></pre></div>
+<pre><code>## , , 1, 1
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]   23   28   33   38
+## [2,]   24   29   34   39
+## [3,]   25   30   35   40
+## 
+## , , 2, 1
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]   73   78   83   88
+## [2,]   74   79   84   89
+## [3,]   75   80   85   90
+## 
+## , , 1, 2
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]  123  128  133  138
+## [2,]  124  129  134  139
+## [3,]  125  130  135  140
+## 
+## , , 2, 2
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]  173  178  183  188
+## [2,]  174  179  184  189
+## [3,]  175  180  185  190</code></pre>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="r-basic.html#cb105-1" aria-hidden="true" tabindex="-1"></a>test[<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">5</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">2</span>] <span class="co"># row and column + N(2,2) indexing ==&gt; extract part(some rows and some columns) of last matrix in array</span></span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]  173  178  183  188
+## [2,]  174  179  184  189
+## [3,]  175  180  185  190</code></pre>
+</div>
+<div id="data-structure---list" class="section level2" number="1.7">
+<h2><span class="header-section-number">1.7</span> Data Structure - list</h2>
+<p>List is the most flexible data structure in R. It can be expressed in all dimensions and can be expressed by collecting various data types.</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="r-basic.html#cb107-1" aria-hidden="true" tabindex="-1"></a>li <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="fu">c</span>(<span class="st">&#39;hi&#39;</span>,<span class="st">&#39;im&#39;</span>,<span class="st">&#39;in&#39;</span>,<span class="st">&#39;list&#39;</span>), sample_df)</span>
+<span id="cb107-2"><a href="r-basic.html#cb107-2" aria-hidden="true" tabindex="-1"></a>li</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 1 2 3 4
+## 
+## [[2]]
+## [1] &quot;hi&quot;   &quot;im&quot;   &quot;in&quot;   &quot;list&quot;
+## 
+## [[3]]
+##   column1 column2 column3
+## 1       1      10      hi
+## 2       2      20    this
+## 3       3      30      is
+## 4       4      40  vector
+## 5       5      50       !</code></pre>
+<p>We can find double square brackets for each indexes. So if we want to extract some values(not vector) from list, we have to use double bracket(‘[[’, ’]]’).</p>
+<p>First, If we need to 1 vector in list, the indexing method above can be used.
+for example,</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="r-basic.html#cb109-1" aria-hidden="true" tabindex="-1"></a>sample_df[<span class="dv">1</span>] <span class="co"># extract 1 column(vector)</span></span></code></pre></div>
+<pre><code>##   column1
+## 1       1
+## 2       2
+## 3       3
+## 4       4
+## 5       5</code></pre>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="r-basic.html#cb111-1" aria-hidden="true" tabindex="-1"></a>li[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 1 2 3 4</code></pre>
+<p>Here comes the other part, if you want to go deeper, i.e. extract only a few elements in smaller units, you have to use double brackets.
+Like this,</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="r-basic.html#cb113-1" aria-hidden="true" tabindex="-1"></a>li[[<span class="dv">1</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] 1 2 3</code></pre>
+<p>What makes difference?</p>
+<p>In list, if we use one bracket, it returns list type.</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="r-basic.html#cb115-1" aria-hidden="true" tabindex="-1"></a>li[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;hi&quot;   &quot;im&quot;   &quot;in&quot;   &quot;list&quot;</code></pre>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="r-basic.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(li[<span class="dv">2</span>])</span></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<p>and if we use double brackets, it returns the collection’s data type.</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="r-basic.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(li[[<span class="dv">2</span>]])</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>That is why you need to use double brackets to access a specific value of a list in a list</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="r-basic.html#cb121-1" aria-hidden="true" tabindex="-1"></a>li[[<span class="dv">2</span>]][<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;im&quot;   &quot;in&quot;   &quot;list&quot;</code></pre>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="r-basic.html#cb123-1" aria-hidden="true" tabindex="-1"></a>li[[<span class="dv">3</span>]][<span class="dv">2</span><span class="sc">:</span><span class="dv">1</span>,<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>] <span class="co"># indexing : first list, second dataframe</span></span></code></pre></div>
+<pre><code>##   column2 column3
+## 2      20    this
+## 1      10      hi</code></pre>
+<p>In the list, you can name the internal list just like the columns of the data frame.</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="r-basic.html#cb125-1" aria-hidden="true" tabindex="-1"></a>li2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">nu=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>),</span>
+<span id="cb125-2"><a href="r-basic.html#cb125-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">ch=</span><span class="fu">c</span>(<span class="st">&#39;hi&#39;</span>,<span class="st">&#39;hello&#39;</span>,<span class="st">&#39;hey&#39;</span>),</span>
+<span id="cb125-3"><a href="r-basic.html#cb125-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">df=</span><span class="fu">data.frame</span>(<span class="fu">c</span>(<span class="st">&#39;a&#39;</span>,<span class="st">&#39;b&#39;</span>,<span class="st">&#39;c&#39;</span>),<span class="fu">c</span>(<span class="st">&#39;any&#39;</span>,<span class="st">&#39;baby&#39;</span>,<span class="st">&#39;can&#39;</span>),<span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>)))</span>
+<span id="cb125-4"><a href="r-basic.html#cb125-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(li2)</span></code></pre></div>
+<pre><code>## List of 3
+##  $ nu: num [1:5] 1 2 3 4 5
+##  $ ch: chr [1:3] &quot;hi&quot; &quot;hello&quot; &quot;hey&quot;
+##  $ df:&#39;data.frame&#39;:  3 obs. of  3 variables:
+##   ..$ c..a....b....c..       : chr [1:3] &quot;a&quot; &quot;b&quot; &quot;c&quot;
+##   ..$ c..any....baby....can..: chr [1:3] &quot;any&quot; &quot;baby&quot; &quot;can&quot;
+##   ..$ c.10..11..12.          : num [1:3] 10 11 12</code></pre>
+<p>And if you’ve name each lists, you can call them using ‘$.’</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="r-basic.html#cb127-1" aria-hidden="true" tabindex="-1"></a>li2<span class="sc">$</span>nu</span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="r-basic.html#cb129-1" aria-hidden="true" tabindex="-1"></a>li2<span class="sc">$</span>ch</span></code></pre></div>
+<pre><code>## [1] &quot;hi&quot;    &quot;hello&quot; &quot;hey&quot;</code></pre>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="r-basic.html#cb131-1" aria-hidden="true" tabindex="-1"></a>li2<span class="sc">$</span>df</span></code></pre></div>
+<pre><code>##   c..a....b....c.. c..any....baby....can.. c.10..11..12.
+## 1                a                     any            10
+## 2                b                    baby            11
+## 3                c                     can            12</code></pre>
+<p>As you may have noticed, it does the same thing as double brackets.</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="r-basic.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(li2[[<span class="dv">3</span>]])</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    3 obs. of  3 variables:
+##  $ c..a....b....c..       : chr  &quot;a&quot; &quot;b&quot; &quot;c&quot;
+##  $ c..any....baby....can..: chr  &quot;any&quot; &quot;baby&quot; &quot;can&quot;
+##  $ c.10..11..12.          : num  10 11 12</code></pre>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="r-basic.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(li2<span class="sc">$</span>df)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    3 obs. of  3 variables:
+##  $ c..a....b....c..       : chr  &quot;a&quot; &quot;b&quot; &quot;c&quot;
+##  $ c..any....baby....can..: chr  &quot;any&quot; &quot;baby&quot; &quot;can&quot;
+##  $ c.10..11..12.          : num  10 11 12</code></pre>
+<p>Finally, let’s look at the difference between using only one bracket.</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="r-basic.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(li2[<span class="dv">3</span>])</span></code></pre></div>
+<pre><code>## List of 1
+##  $ df:&#39;data.frame&#39;:  3 obs. of  3 variables:
+##   ..$ c..a....b....c..       : chr [1:3] &quot;a&quot; &quot;b&quot; &quot;c&quot;
+##   ..$ c..any....baby....can..: chr [1:3] &quot;any&quot; &quot;baby&quot; &quot;can&quot;
+##   ..$ c.10..11..12.          : num [1:3] 10 11 12</code></pre>
 
 </div>
 </div>
