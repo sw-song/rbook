@@ -10,7 +10,7 @@ Thank you!
 
 ## Index
 
-> Update - 2021.07.13
+> Update - 2021.07.15
 
     Intro to R
 
