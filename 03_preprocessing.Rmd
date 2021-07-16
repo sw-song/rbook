@@ -410,3 +410,87 @@ bind_rows(fruit_df, berry_df[-1,])
 ```
 
 Okay, Just one row decreased.
+
+## reshape :: melt
+
+`reshape` is the most representative r package for data restructuring.
+
+We'll cover two functions that make the reshape package useful. One `melt()` that melts (deconstructs) the data, the other `cast()` that casts (reconstructs) the data. As you can see from the word, the name is compared to the casting process of iron.
+
+```{r}
+head(airquality)
+```
+
+```{r}
+library(reshape)
+sample_decon_df <- melt(airquality, id=c('Month','Day'))
+head(sample_decon_df)
+```
+
+```{r}
+summary(sample_decon_df$variable)
+```
+We can see that all columns except Month and Day, specified as id values in the melt function, are expressed as `variable`.
+
+
+## reshape :: cast
+
+The `cast()` function can cast the data melted above. Here, R's `fomula` should be handled flexibly, and you can learn it by implementing it in code.
+
+> 
+Fomula means an expression that expresses a function like a regular expression in text terms, and it is good to learn '~' and '+' at the most basic level.
+
+```{r}
+head(cast(sample_decon_df, Month+Day~variable))
+```
+
+You can see that the melted data is cast. There is a difference from the original, in that an index is added and the position of the column is changed. It's not that important, so let's move on.
+
+In formula, we defined to use both Month and Day as dependent variables through the '+' sign, and defined variable as the independent variable through the '~' sign.
+
+More precisely, what comes before the '~' sign is the dependent variable, and what comes after the sign is the independent variable. This can be thought of as f(x)~x.
+
+Let's try more.
+
+```{r}
+cast(sample_decon_df, Month~variable)
+```
+
+Only month was used as the dependent variable. The explanation of the `fomula` above will make more sense.
+
+```{r}
+cast(sample_decon_df, Month~Day+variable)[1:4,1:5]
+```
+
+This time, Day was added to the independent variable, not the dependent variable. It's a little complicated, but if you understand it, you can see that it is possible to further subdivide each independent variable into days, such as ozone on day 1 and solar on day 1.
+
+## reshape :: cast with aggregation
+
+Cast also has data aggregation capabilities. It is very simple and powerful. let's try.
+
+```{r}
+head(cast(sample_decon_df, Month+Day~variable, mean))
+```
+
+It doesn't look any different from the original. This is because there is only one data value for each date, so it cannot be aggregated. To be precise, the aggregation for a day is the same as the data for that day.
+
+Except for Day, you can look at monthly data like this.
+
+```{r}
+cast(sample_decon_df, Month~variable, mean)
+```
+
+Wait, if there is NA in some data like this, it is displayed as NA because aggregation is impossible. To prevent this we can set `na.rm` to True.
+  
+```{r}
+cast(sample_decon_df, Month~variable, mean, na.rm=T)
+```
+
+Of course, it is possible to count other than average.
+
+```{r}
+cast(sample_decon_df, Month~variable, max, na.rm=T)
+```
+```{r}
+cast(sample_decon_df, Month~variable, min, na.rm=T)
+```

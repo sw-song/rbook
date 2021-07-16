@@ -183,6 +183,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.10" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-full_join"><i class="fa fa-check"></i><b>3.10</b> dplyr :: full_join</a></li>
 <li class="chapter" data-level="3.11" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-bind_cols"><i class="fa fa-check"></i><b>3.11</b> dplyr :: bind_cols</a></li>
 <li class="chapter" data-level="3.12" data-path="data-preprocessing.html"><a href="data-preprocessing.html#dplyr-bind_rows"><i class="fa fa-check"></i><b>3.12</b> dplyr :: bind_rows</a></li>
+<li class="chapter" data-level="3.13" data-path="data-preprocessing.html"><a href="data-preprocessing.html#reshape-melt"><i class="fa fa-check"></i><b>3.13</b> reshape :: melt</a></li>
+<li class="chapter" data-level="3.14" data-path="data-preprocessing.html"><a href="data-preprocessing.html#reshape-cast"><i class="fa fa-check"></i><b>3.14</b> reshape :: cast</a></li>
+<li class="chapter" data-level="3.15" data-path="data-preprocessing.html"><a href="data-preprocessing.html#reshape-cast-with-aggregation"><i class="fa fa-check"></i><b>3.15</b> reshape :: cast with aggregation</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -838,6 +841,117 @@ And of course, the number of rows doesn’t matter, since we’re joining rows. 
 ## 6   mulberry     1 black
 ## 7  wildberry     1   red</code></pre>
 <p>Okay, Just one row decreased.</p>
+</div>
+<div id="reshape-melt" class="section level2" number="3.13">
+<h2><span class="header-section-number">3.13</span> reshape :: melt</h2>
+<p><code>reshape</code> is the most representative r package for data restructuring.</p>
+<p>We’ll cover two functions that make the reshape package useful. One <code>melt()</code> that melts (deconstructs) the data, the other <code>cast()</code> that casts (reconstructs) the data. As you can see from the word, the name is compared to the casting process of iron.</p>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="data-preprocessing.html#cb351-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(airquality)</span></code></pre></div>
+<pre><code>##   Ozone Solar.R Wind Temp Month Day
+## 1    41     190  7.4   67     5   1
+## 2    36     118  8.0   72     5   2
+## 3    12     149 12.6   74     5   3
+## 4    18     313 11.5   62     5   4
+## 5    NA      NA 14.3   56     5   5
+## 6    28      NA 14.9   66     5   6</code></pre>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="data-preprocessing.html#cb353-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;reshape&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     rename</code></pre>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="data-preprocessing.html#cb356-1" aria-hidden="true" tabindex="-1"></a>sample_decon_df <span class="ot">&lt;-</span> <span class="fu">melt</span>(airquality, <span class="at">id=</span><span class="fu">c</span>(<span class="st">&#39;Month&#39;</span>,<span class="st">&#39;Day&#39;</span>))</span>
+<span id="cb356-2"><a href="data-preprocessing.html#cb356-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sample_decon_df)</span></code></pre></div>
+<pre><code>##   Month Day variable value
+## 1     5   1    Ozone    41
+## 2     5   2    Ozone    36
+## 3     5   3    Ozone    12
+## 4     5   4    Ozone    18
+## 5     5   5    Ozone    NA
+## 6     5   6    Ozone    28</code></pre>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="data-preprocessing.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sample_decon_df<span class="sc">$</span>variable)</span></code></pre></div>
+<pre><code>##   Ozone Solar.R    Wind    Temp 
+##     153     153     153     153</code></pre>
+<p>We can see that all columns except Month and Day, specified as id values in the melt function, are expressed as <code>variable</code>.</p>
+</div>
+<div id="reshape-cast" class="section level2" number="3.14">
+<h2><span class="header-section-number">3.14</span> reshape :: cast</h2>
+<p>The <code>cast()</code> function can cast the data melted above. Here, R’s <code>fomula</code> should be handled flexibly, and you can learn it by implementing it in code.</p>
+<blockquote>
+<p>Fomula means an expression that expresses a function like a regular expression in text terms, and it is good to learn ‘~’ and ‘+’ at the most basic level.</p>
+</blockquote>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="data-preprocessing.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">cast</span>(sample_decon_df, Month<span class="sc">+</span>Day<span class="sc">~</span>variable))</span></code></pre></div>
+<pre><code>##   Month Day Ozone Solar.R Wind Temp
+## 1     5   1    41     190  7.4   67
+## 2     5   2    36     118  8.0   72
+## 3     5   3    12     149 12.6   74
+## 4     5   4    18     313 11.5   62
+## 5     5   5    NA      NA 14.3   56
+## 6     5   6    28      NA 14.9   66</code></pre>
+<p>You can see that the melted data is cast. There is a difference from the original, in that an index is added and the position of the column is changed. It’s not that important, so let’s move on.</p>
+<p>In formula, we defined to use both Month and Day as dependent variables through the ‘+’ sign, and defined variable as the independent variable through the ‘~’ sign.</p>
+<p>More precisely, what comes before the ‘~’ sign is the dependent variable, and what comes after the sign is the independent variable. This can be thought of as f(x)~x.</p>
+<p>Let’s try more.</p>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="data-preprocessing.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cast</span>(sample_decon_df, Month<span class="sc">~</span>variable)</span></code></pre></div>
+<pre><code>## Aggregation requires fun.aggregate: length used as default</code></pre>
+<pre><code>##   Month Ozone Solar.R Wind Temp
+## 1     5    31      31   31   31
+## 2     6    30      30   30   30
+## 3     7    31      31   31   31
+## 4     8    31      31   31   31
+## 5     9    30      30   30   30</code></pre>
+<p>Only month was used as the dependent variable. The explanation of the <code>fomula</code> above will make more sense.</p>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="data-preprocessing.html#cb365-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cast</span>(sample_decon_df, Month<span class="sc">~</span>Day<span class="sc">+</span>variable)[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
+<pre><code>##   Month 1_Ozone 1_Solar.R 1_Wind 1_Temp
+## 1     5      41       190    7.4     67
+## 2     6      NA       286    8.6     78
+## 3     7     135       269    4.1     84
+## 4     8      39        83    6.9     81</code></pre>
+<p>This time, Day was added to the independent variable, not the dependent variable. It’s a little complicated, but if you understand it, you can see that it is possible to further subdivide each independent variable into days, such as ozone on day 1 and solar on day 1.</p>
+</div>
+<div id="reshape-cast-with-aggregation" class="section level2" number="3.15">
+<h2><span class="header-section-number">3.15</span> reshape :: cast with aggregation</h2>
+<p>Cast also has data aggregation capabilities. It is very simple and powerful. let’s try.</p>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="data-preprocessing.html#cb367-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">cast</span>(sample_decon_df, Month<span class="sc">+</span>Day<span class="sc">~</span>variable, mean))</span></code></pre></div>
+<pre><code>##   Month Day Ozone Solar.R Wind Temp
+## 1     5   1    41     190  7.4   67
+## 2     5   2    36     118  8.0   72
+## 3     5   3    12     149 12.6   74
+## 4     5   4    18     313 11.5   62
+## 5     5   5    NA      NA 14.3   56
+## 6     5   6    28      NA 14.9   66</code></pre>
+<p>It doesn’t look any different from the original. This is because there is only one data value for each date, so it cannot be aggregated. To be precise, the aggregation for a day is the same as the data for that day.</p>
+<p>Except for Day, you can look at monthly data like this.</p>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="data-preprocessing.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cast</span>(sample_decon_df, Month<span class="sc">~</span>variable, mean)</span></code></pre></div>
+<pre><code>##   Month Ozone  Solar.R      Wind     Temp
+## 1     5    NA       NA 11.622581 65.54839
+## 2     6    NA 190.1667 10.266667 79.10000
+## 3     7    NA 216.4839  8.941935 83.90323
+## 4     8    NA       NA  8.793548 83.96774
+## 5     9    NA 167.4333 10.180000 76.90000</code></pre>
+<p>Wait, if there is NA in some data like this, it is displayed as NA because aggregation is impossible. To prevent this we can set <code>na.rm</code> to True.</p>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="data-preprocessing.html#cb371-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cast</span>(sample_decon_df, Month<span class="sc">~</span>variable, mean, <span class="at">na.rm=</span>T)</span></code></pre></div>
+<pre><code>##   Month    Ozone  Solar.R      Wind     Temp
+## 1     5 23.61538 181.2963 11.622581 65.54839
+## 2     6 29.44444 190.1667 10.266667 79.10000
+## 3     7 59.11538 216.4839  8.941935 83.90323
+## 4     8 59.96154 171.8571  8.793548 83.96774
+## 5     9 31.44828 167.4333 10.180000 76.90000</code></pre>
+<p>Of course, it is possible to count other than average.</p>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="data-preprocessing.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cast</span>(sample_decon_df, Month<span class="sc">~</span>variable, max, <span class="at">na.rm=</span>T)</span></code></pre></div>
+<pre><code>##   Month Ozone Solar.R Wind Temp
+## 1     5   115     334 20.1   81
+## 2     6    71     332 20.7   93
+## 3     7   135     314 14.9   92
+## 4     8   168     273 15.5   97
+## 5     9    96     259 16.6   93</code></pre>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="data-preprocessing.html#cb375-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cast</span>(sample_decon_df, Month<span class="sc">~</span>variable, min, <span class="at">na.rm=</span>T)</span></code></pre></div>
+<pre><code>##   Month Ozone Solar.R Wind Temp
+## 1     5     1       8  5.7   56
+## 2     6    12      31  1.7   65
+## 3     7     7       7  4.1   73
+## 4     8     9      24  2.3   72
+## 5     9     7      14  2.8   63</code></pre>
 
 
 </div>
